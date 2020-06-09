@@ -15,9 +15,34 @@
           <img src="img/footer/vk.png" alt="Vk" width="40" height="40" />
         </div>
         <div class="d-none d-md-block col-md-4"></div>
-        <div class="col-12 col-sm-6 col-md-4 pt-3">
-          Clients
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero magni atque reprehenderit at illo nobis quod maiores ut impedit officiis, magnam natus dignissimos, aliquid adipisci eaque odio cum? Odio, rerum!</p>
+        <div class="col-12 col-sm-6 col-md-4 pt-3 pb-3">
+          <h5>Клиенты</h5>
+          <div class="row">
+            <div class="col-3 pr-1">
+              <img src="img/footer/clients/1.png" alt="Client 1" width="100%" />
+            </div>
+            <div class="col-3 pr-1">
+              <img src="img/footer/clients/2.png" alt="Client 1" width="100%" />
+            </div>
+            <div class="col-3 pr-1">
+              <img src="img/footer/clients/3.png" alt="Client 1" width="100%" />
+            </div>
+            <div class="col-3 pr-1">
+              <img src="img/footer/clients/4.png" alt="Client 1" width="100%" />
+            </div>
+            <div class="col-3 pr-1 pt-3">
+              <img src="img/footer/clients/5.png" alt="Client 1" width="100%" />
+            </div>
+            <div class="col-3 pr-1 pt-3">
+              <img src="img/footer/clients/6.png" alt="Client 1" width="100%" />
+            </div>
+            <div class="col-3 pr-1 pt-3">
+              <img src="img/footer/clients/7.png" alt="Client 1" width="100%" />
+            </div>
+            <div class="col-3 pr-1 pt-3">
+              <img src="img/footer/clients/8.png" alt="Client 1" width="100%" />
+            </div>
+          </div>
         </div>
       </div>
     </div>
