@@ -1,3 +1,3 @@
 <template>
-  <h2>Index page</h2>
+  <h4>Footer</h4>
 </template>

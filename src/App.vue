@@ -1,12 +1,26 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+    <Navbar />
+    <div class="container pt-4">
+      <transition name="fade" mode="out-in">
+        <router-view />
+      </transition>
     </div>
-    <router-view/>
+    <Footer />
   </div>
 </template>
+
+<script>
+import Navbar from '@/components/Navbar.vue'
+import Footer from '@/components/Footer.vue'
+
+export default {
+  components: {
+    Navbar,
+    Footer
+  }
+}
+</script>
 
 <style>
 #app {
@@ -17,16 +31,17 @@
   color: #2c3e50;
 }
 
-#nav {
-  padding: 30px;
+#app .container {
+  max-width: 960px;
+  background: #fff;
+  padding-bottom: 24px;
 }
 
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.3s ease;
 }
-
-#nav a.router-link-exact-active {
-  color: #42b983;
+.fade-enter, .fade-leave-to /* .fade-leave-active до версии 2.1.8 */ {
+  opacity: 0;
 }
 </style>
