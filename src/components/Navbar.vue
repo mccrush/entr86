@@ -18,18 +18,18 @@
         </button>
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav mr-auto">
+          <ul class="navbar-nav mr-auto text-uppercase">
             <li class="nav-item">
-              <router-link tag="a" to="/" class="nav-link">Home</router-link>
+              <router-link tag="a" to="/" class="nav-link">Главная</router-link>
             </li>
             <li class="nav-item">
-              <router-link tag="a" to="/price" class="nav-link">Price</router-link>
+              <router-link tag="a" to="/price" class="nav-link">Прайс-лист</router-link>
             </li>
             <li class="nav-item">
-              <router-link tag="a" to="/portfolio" class="nav-link">Portfolio</router-link>
+              <router-link tag="a" to="/portfolio" class="nav-link">Портфолио</router-link>
             </li>
             <li class="nav-item">
-              <router-link tag="a" to="/contacts" class="nav-link">Contacts</router-link>
+              <router-link tag="a" to="/contacts" class="nav-link">Контакты</router-link>
             </li>
           </ul>
         </div>
