@@ -2,10 +2,10 @@ module.exports = {
   productionSourceMap: false,
 
   pwa: {
-    name: 'Enter',
-    themeColor: '#F5A623',
+    name: 'ENTR',
+    themeColor: '#ffcc00',
     manifestOptions: {
-      background_color: '#F5A623'
+      background_color: '#ffcc00'
     }
   }
 }

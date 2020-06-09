@@ -1,9 +1,9 @@
 <template>
   <div class="nav-border">
     <div class="container p-0">
-      <nav class="navbar navbar-expand-sm navbar-light bg-white">
+      <nav class="navbar navbar-expand-sm navbar-light bg-white pb-2">
         <router-link to="/" tag="a" class="navbar-brand">
-          <img src="/logo.png" class="logo" height="52" alt="logo" loading="lazy" />
+          <img src="/logo.gif" class="logo" height="64" alt="logo" loading="lazy" />
         </router-link>
         <button
           class="navbar-toggler"
@@ -53,6 +53,6 @@
 }
 
 .logo {
-  margin: -16px 0 -16px 0;
+  margin: -30px 0 -16px 0;
 }
 </style>
