@@ -23,8 +23,26 @@ export default {
 </script>
 
 <style>
+@font-face {
+  font-family: 'Cera Pro Regular';
+  src: url('/fonts/CeraPro-Regular.eot');
+  src: url('/fonts/CeraPro-Regular.eot?#iefix') format('embedded-opentype'),
+    url('/fonts/CeraPro-Regular.woff') format('woff'),
+    url('/fonts/CeraPro-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Cera Round Pro Regular';
+  font-style: normal;
+  font-weight: normal;
+  src: local('Cera Round Pro Regular'),
+    url('/fonts/TypeMates-CeraRoundProRegular.woff') format('woff');
+}
+
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: 'Cera Pro Regular';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
@@ -33,6 +51,16 @@ export default {
 
 #app .container {
   max-width: 960px;
+}
+
+#app h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Cera Round Pro Regular';
+  font-weight: bold;
 }
 
 .fade-enter-active,

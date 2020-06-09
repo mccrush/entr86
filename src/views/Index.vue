@@ -4,8 +4,8 @@
     <!-- Решения -->
     <div class="row justify-content-center m-auto" style="max-width: 640px">
       <div class="col-12 mt-5 mb-4">
-        <h1 class="blue">Мы реализуем любые</h1>
-        <h3>рекламно-производственные задачи</h3>
+        <h1 class="blue mb-0">Мы реализуем любые</h1>
+        <h4 class="bold">рекламно-производственные задачи</h4>
       </div>
 
       <div
@@ -15,7 +15,11 @@
         :class="reshen.justify"
         style="overflow-wrap: anywhere;"
       >
-        <h3 v-if="reshen.float === 'float-right'" class="text-left ml-3 mr-3" v-html="reshen.title"></h3>
+        <h3
+          v-if="reshen.float === 'float-right'"
+          class="text-left ml-3 mr-3 bold"
+          v-html="reshen.title"
+        ></h3>
         <img
           :src="'/img/index/icons/'+reshen.icon"
           :class="reshen.float"
@@ -23,7 +27,11 @@
           height="80"
           alt
         />
-        <h3 v-if="reshen.float === 'float-left'" class="text-left ml-3 mr-3" v-html="reshen.title"></h3>
+        <h3
+          v-if="reshen.float === 'float-left'"
+          class="text-left ml-3 mr-3 bold"
+          v-html="reshen.title"
+        ></h3>
       </div>
     </div>
     <!-- Конец Решения -->
@@ -42,20 +50,26 @@
           height="80"
           alt
         />
-        <h6 class="text-left" v-html="naprav.title"></h6>
+        <h5 class="text-left" v-html="naprav.title"></h5>
       </div>
     </div>
     <!-- Конец Направления -->
     <div class="space"></div>
     <!-- База -->
     <div class="row justify-content-center m-auto" style="max-width: 720px">
-      <div class="col-8 mt-4">
-        <h3 class="mb-0">Собственная производственная</h3>
+      <div class="col-12 col-sm-10 col-md-8 mt-4">
+        <h4 class="mb-0 bold">Собственная производственная</h4>
         <h1 class="blue">база позволяет нам:</h1>
         <ul class="list-unstyled text-left mt-3">
-          <li>1. Контролировать качество на всех этапах</li>
-          <li>2. Формировать оптимальные цены</li>
-          <li>3. Быть точными в конечном продукте</li>
+          <li>
+            <h5>1. Контролировать качество на всех этапах</h5>
+          </li>
+          <li>
+            <h5>2. Формировать оптимальные цены</h5>
+          </li>
+          <li>
+            <h5>3. Быть точными в конечном продукте</h5>
+          </li>
         </ul>
       </div>
 
@@ -100,5 +114,10 @@ export default {
 
 .blue {
   color: #00aaee;
+  font-weight: bold;
+}
+
+.bold {
+  font-weight: bold;
 }
 </style>
