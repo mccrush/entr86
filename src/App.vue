@@ -33,8 +33,6 @@ export default {
 
 #app .container {
   max-width: 960px;
-  background: #fff;
-  padding-bottom: 24px;
 }
 
 .fade-enter-active,

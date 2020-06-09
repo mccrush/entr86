@@ -1,7 +1,7 @@
 <template>
-  <div>
+  <div class="bg-dark">
     <div class="container">
-      <div class="row bg-dark text-light text-left">
+      <div class="row text-light text-left">
         <div class="col-12 col-sm-6 col-md-4">
           Contacts
           <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero magni atque reprehenderit at illo nobis quod maiores ut impedit officiis, magnam natus dignissimos, aliquid adipisci eaque odio cum? Odio, rerum!</p>
