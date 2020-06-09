@@ -4,7 +4,7 @@
     <router-link to="/about">About</router-link>
   </div>-->
 
-  <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+  <nav class="navbar navbar-expand-sm navbar-light bg-white shadow-sm">
     <router-link to="/" tag="a" class="navbar-brand">
       <img src="/logo.png" class="logo" height="52" alt="logo" loading="lazy" />
     </router-link>
@@ -22,23 +22,33 @@
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
-        <router-link tag="li" to="/" class="nav-item">
-          <a class="nav-link" href="#">Home</a>
-        </router-link>
-        <router-link tag="li" to="/price" class="nav-item">
-          <a class="nav-link" href="#">Price</a>
-        </router-link>
+        <li class="nav-item">
+          <router-link tag="a" to="/" class="nav-link">Home</router-link>
+        </li>
+        <li class="nav-item">
+          <router-link tag="a" to="/price" class="nav-link">Price</router-link>
+        </li>
+        <li class="nav-item">
+          <router-link tag="a" to="/portfolio" class="nav-link">Portfolio</router-link>
+        </li>
+        <li class="nav-item">
+          <router-link tag="a" to="/contacts" class="nav-link">Contacts</router-link>
+        </li>
       </ul>
     </div>
   </nav>
 </template>
 
 <style scoped>
-.nav-item a.router-link-exact-active {
-  color: #42b983;
+.nav-item a {
+  font-weight: bold;
+}
+
+.nav-item a.router-link-exact-active.router-link-active {
+  color: #ffcc00;
 }
 
 .logo {
-  margin: -18px 0 -16px 0;
+  margin: -16px 0 -16px 0;
 }
 </style>
