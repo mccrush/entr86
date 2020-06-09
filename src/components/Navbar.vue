@@ -1,5 +1,5 @@
 <template>
-  <div class="shadow-sm">
+  <div class="nav-border">
     <div class="container p-0">
       <nav class="navbar navbar-expand-sm navbar-light bg-white">
         <router-link to="/" tag="a" class="navbar-brand">
@@ -39,8 +39,13 @@
 </template>
 
 <style scoped>
+.nav-border {
+  border-bottom: 4px solid #000;
+  box-shadow: 0 0 0 8px #ffcc00;
+}
 .nav-item a {
   font-weight: bold;
+  font-size: 0.9rem;
 }
 
 .nav-item a.router-link-exact-active.router-link-active {

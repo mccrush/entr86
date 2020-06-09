@@ -42,7 +42,7 @@ import $ from 'jquery'
 export default {
   mounted() {
     $('.carousel').carousel({
-      interval: 5000
+      interval: 50000
     })
   }
 }

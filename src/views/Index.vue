@@ -4,7 +4,7 @@
     <!-- Решения -->
     <div class="row justify-content-center m-auto" style="max-width: 640px">
       <div class="col-12 mt-5 mb-4">
-        <h1>Мы реализуем любые</h1>
+        <h1 class="blue">Мы реализуем любые</h1>
         <h3>рекламно-производственные задачи</h3>
       </div>
 
@@ -51,7 +51,7 @@
     <div class="row justify-content-center m-auto" style="max-width: 720px">
       <div class="col-8 mt-4">
         <h3 class="mb-0">Собственная производственная</h3>
-        <h1>база позволяет нам:</h1>
+        <h1 class="blue">база позволяет нам:</h1>
         <ul class="list-unstyled text-left mt-3">
           <li>1. Контролировать качество на всех этапах</li>
           <li>2. Формировать оптимальные цены</li>
@@ -60,7 +60,7 @@
       </div>
 
       <div class="col-12 mt-3">
-        <h2 class="text-uppercase">
+        <h2 class="text-uppercase blue">
           Мы будем рады видеть
           <br />вас в числе
           <br />наших клиентов!
@@ -96,5 +96,9 @@ export default {
 <style scoped>
 .space {
   height: 50px;
+}
+
+.blue {
+  color: #00aaee;
 }
 </style>
