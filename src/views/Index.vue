@@ -3,7 +3,7 @@
     <Slider />
     <!-- Решения -->
     <div class="row justify-content-center m-auto" style="max-width: 640px">
-      <div class="col-12 mb-4">
+      <div class="col-12 mt-5 mb-4">
         <h1>Мы реализуем любые</h1>
         <h3>рекламно-производственные задачи</h3>
       </div>
@@ -46,6 +46,28 @@
       </div>
     </div>
     <!-- Конец Направления -->
+    <div class="space"></div>
+    <!-- База -->
+    <div class="row justify-content-center m-auto" style="max-width: 720px">
+      <div class="col-8 mt-4">
+        <h3 class="mb-0">Собственная производственная</h3>
+        <h1>база позволяет нам:</h1>
+        <ul class="list-unstyled text-left mt-3">
+          <li>1. Контролировать качество на всех этапах</li>
+          <li>2. Формировать оптимальные цены</li>
+          <li>3. Быть точными в конечном продукте</li>
+        </ul>
+      </div>
+
+      <div class="col-12 mt-3">
+        <h2 class="text-uppercase">
+          Мы будем рады видеть
+          <br />вас в числе
+          <br />наших клиентов!
+        </h2>
+      </div>
+    </div>
+    <!-- Конец База -->
   </div>
 </template>
 
