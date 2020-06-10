@@ -50,7 +50,8 @@ export default {
 }
 
 #app .container {
-  max-width: 960px;
+  max-width: 720px;
+  /* max-width: 960px; */
 }
 
 #app h1,
@@ -60,6 +61,19 @@ h4,
 h5,
 h6 {
   font-family: 'Cera Round Pro Regular';
+  font-weight: bold;
+}
+
+.space {
+  height: 50px;
+}
+
+.blue {
+  color: #00aaee;
+  font-weight: bold;
+}
+
+.bold {
   font-weight: bold;
 }
 
