@@ -46,6 +46,9 @@
           </div>
         </div>
       </div>
+      <div class="row">
+        <div class="col-12 text-light text-left mb-3">© 2020 entr.ru</div>
+      </div>
     </div>
   </div>
 </template>
