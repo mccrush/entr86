@@ -8,12 +8,12 @@
             ООО ЭНТР 628415,
             <br />Тюменская область
             <br />ХМАО-Югра г.&nbsp;Сургут,
-            <br />ул. Инжинерная 1/4
+            <br />ул. Инженерная 1/4
             <br />+7 (3462) 630 475
             <br />entr86@mail.ru
           </p>
-          <img src="img/footer/inst3.png" class="mr-2" alt="Instagram" width="40" height="40" />
-          <img src="img/footer/vk.png" alt="Vk" width="40" height="40" />
+          <img src="img/footer/icons/inst3.png" class="mr-2" alt="Instagram" width="40" height="40" />
+          <img src="img/footer/icons/vk.png" alt="Vk" width="40" height="40" />
         </div>
         <!-- <div class="d-none d-md-block col-md-2"></div> -->
         <div class="col-12 col-sm-6 pt-3 pb-3 pr-4">
