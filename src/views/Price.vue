@@ -1,5 +1,6 @@
 <template>
   <div class="row">
+    <vueHeadful title="ENTR - Прайс-лист" description="Стоимость услуг" />
     <div class="col-12">
       <h2 class="text-uppercase text-left mt-2 bold">Прайс-лист</h2>
       <Plenka />
@@ -13,12 +14,14 @@
 import Plenka from '@/components/price/Plenka'
 import Shiroko from '@/components/price/Shiroko'
 import Svet from '@/components/price/Svet'
+import vueHeadful from 'vue-headful'
 
 export default {
   components: {
     Plenka,
     Shiroko,
-    Svet
+    Svet,
+    vueHeadful
   }
 }
 </script>

@@ -1,5 +1,6 @@
 <template>
   <div class="row">
+    <vueHeadful title="ENTR - Ошибка 404" description="Страница не найдена" />
     <div class="col-12">
       <h2 class="text-uppercase mt-2 bold">Ошибка 404</h2>
       <h4>Страница не найдена</h4>
@@ -9,4 +10,14 @@
     </div>
   </div>
 </template>
+
+<script>
+import vueHeadful from 'vue-headful'
+
+export default {
+  components: {
+    vueHeadful
+  }
+}
+</script>
 

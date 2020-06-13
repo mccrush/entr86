@@ -1,5 +1,9 @@
 <template>
   <div>
+    <vueHeadful
+      title="ENTR - Рекламное агенство"
+      description="Мы реализуем любые рекламно-производственные задачи"
+    />
     <Slider />
     <!-- Решения -->
     <div class="row justify-content-center m-auto" style="max-width: 640px">
@@ -89,10 +93,12 @@
 import Slider from '@/components/index/Slider.vue'
 import { napravs } from '@/data/napravs'
 import { reshens } from '@/data/reshens'
+import vueHeadful from 'vue-headful'
 
 export default {
   components: {
-    Slider
+    Slider,
+    vueHeadful
   },
   data() {
     return {

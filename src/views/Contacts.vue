@@ -1,5 +1,9 @@
 <template>
   <div class="row">
+    <vueHeadful
+      title="ENTR - Контакты"
+      description="г.Сургут, ул. Инженерная 1/4,  тел.: +7 (3462) 630 475, email: entr86@mail.ru"
+    />
     <div class="col-12">
       <h2 class="text-uppercase text-left mt-2 bold">Контакты</h2>
       <p class="text-left mb-2">
@@ -53,6 +57,15 @@
     </div>
   </div>
 </template>
+
+<script>
+import vueHeadful from 'vue-headful'
+export default {
+  components: {
+    vueHeadful
+  }
+}
+</script>
 
 <style scoped>
 div.link-block {
