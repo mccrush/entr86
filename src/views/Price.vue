@@ -37,22 +37,6 @@ div.line {
   height: 4px;
 }
 
-.color-ping {
-  color: #e4097d;
-}
-
-.bg-ping {
-  background: #e4097d;
-}
-
-.color-blue {
-  color: #01a0e2;
-}
-
-.bg-blue {
-  background: #01a0e2;
-}
-
 .fs-08 {
   font-size: 0.8rem;
 }

@@ -4,8 +4,8 @@
     <!-- Решения -->
     <div class="row justify-content-center m-auto" style="max-width: 640px">
       <div class="col-12 mt-5 mb-4">
-        <h1 class="blue mb-0">Мы реализуем любые</h1>
-        <h4 class="bold">рекламно-производственные задачи</h4>
+        <h1 class="color-blue mb-0 fs-35">Мы реализуем любые</h1>
+        <h4 class="bold fs-21">рекламно-производственные задачи</h4>
       </div>
 
       <div
@@ -56,10 +56,10 @@
     <!-- Конец Направления -->
     <div class="space"></div>
     <!-- База -->
-    <div class="row justify-content-center m-auto" style="max-width: 720px">
-      <div class="col-12 col-sm-10 col-md-8 mt-4">
-        <h4 class="mb-0 bold">Собственная производственная</h4>
-        <h1 class="blue">база позволяет нам:</h1>
+    <div class="row justify-content-center m-auto" style="max-width: 640px">
+      <div class="col-12 mt-4">
+        <h4 class="mb-0 bold fs-24">Собственная производственная</h4>
+        <h1 class="blue fs-38">база позволяет нам:</h1>
         <ul class="list-unstyled text-left mt-3">
           <li>
             <h5>1. Контролировать качество на всех этапах</h5>
@@ -74,7 +74,7 @@
       </div>
 
       <div class="col-12 mt-3">
-        <h2 class="text-uppercase blue">
+        <h2 class="text-uppercase color-blue bold fs-31">
           Мы будем рады видеть
           <br />вас в числе
           <br />наших клиентов!
@@ -112,12 +112,23 @@ export default {
   height: 50px;
 }
 
-.blue {
-  color: #00aaee;
-  font-weight: bold;
+.fs-35 {
+  font-size: 3.5rem;
 }
 
-.bold {
-  font-weight: bold;
+.fs-38 {
+  font-size: 3.8rem;
+}
+
+.fs-31 {
+  font-size: 3.1rem;
+}
+
+.fs-21 {
+  font-size: 2.1rem;
+}
+
+.fs-24 {
+  font-size: 2.4rem;
 }
 </style>

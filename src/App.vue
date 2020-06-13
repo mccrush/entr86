@@ -51,7 +51,6 @@ export default {
 
 #app .container {
   max-width: 720px;
-  /* max-width: 960px; */
 }
 
 #app h1,
@@ -68,13 +67,24 @@ h6 {
   height: 50px;
 }
 
-.blue {
-  color: #00aaee;
+.bold {
   font-weight: bold;
 }
 
-.bold {
-  font-weight: bold;
+.color-ping {
+  color: #e4097d;
+}
+
+.bg-ping {
+  background: #e4097d;
+}
+
+.color-blue {
+  color: #00aaee;
+}
+
+.bg-blue {
+  background: #00aaee;
 }
 
 .fade-enter-active,
