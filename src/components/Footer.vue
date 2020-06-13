@@ -21,7 +21,7 @@
               height="40"
             />
           </a>
-          <a href="https://www.instagram.com/entr86/" target="_blank">
+          <a href="https://vk.com/entrrpk" target="_blank">
             <img src="img/footer/icons/vk.png" alt="Vk" width="40" height="40" />
           </a>
         </div>
