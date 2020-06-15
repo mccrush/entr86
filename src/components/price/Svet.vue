@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="overflow-auto">
     <table class="table table-sm table-borderless mt-5">
       <tr>
         <td colspan="12" class="text-left">
@@ -66,3 +66,9 @@
     </table>
   </div>
 </template>
+
+<style scoped>
+table.table {
+  min-width: 560px;
+}
+</style>
