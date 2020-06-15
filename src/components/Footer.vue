@@ -28,7 +28,7 @@
         <!-- <div class="d-none d-md-block col-md-2"></div> -->
         <div class="col-12 col-sm-6 pt-3 pb-3 pr-4">
           <h5>Клиенты</h5>
-          <div class="row">
+          <!-- <div class="row">
             <div class="col-3 pr-1">
               <img src="img/footer/clients/1.png" alt="Client 1" width="100%" />
             </div>
@@ -52,6 +52,24 @@
             </div>
             <div class="col-3 pr-1 pt-3">
               <img src="img/footer/clients/8.png" alt="Client 1" width="100%" />
+            </div>
+          </div>-->
+          <div class="overflow-auto">
+            <div class="row">
+              <div class="col-12 d-flex">
+                <img src="img/footer/clients/1.png" class="pr-2 pb-2" alt="Client 1" width="75" />
+                <img src="img/footer/clients/2.png" class="pr-2 pb-2" alt="Client 1" width="75" />
+                <img src="img/footer/clients/3.png" class="pr-2 pb-2" alt="Client 1" width="75" />
+                <img src="img/footer/clients/4.png" class="pr-2 pb-2" alt="Client 1" width="75" />
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-12 d-flex">
+                <img src="img/footer/clients/5.png" class="pr-2 pb-2" alt="Client 1" width="75" />
+                <img src="img/footer/clients/6.png" class="pr-2 pb-2" alt="Client 1" width="75" />
+                <img src="img/footer/clients/7.png" class="pr-2 pb-2" alt="Client 1" width="75" />
+                <img src="img/footer/clients/8.png" class="pr-2 pb-2" alt="Client 1" width="75" />
+              </div>
             </div>
           </div>
         </div>
