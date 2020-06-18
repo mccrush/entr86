@@ -44,17 +44,18 @@
             @touchstart="scrolRightStart"
             @touchend="scrolRightStop"
           >&raquo;</div>
-          <div class="overflow-hidden" ref="clients">
+          <div class="overflow-hidden ower" ref="clients">
             <div class="row">
               <div class="col-12 d-flex">
                 <img
                   v-for="i in 11"
                   :key="'ci'+i"
                   :src="'img/footer/clients/'+i+'.png'"
-                  class="pr-2 pb-2"
+                  class="pr-2 pb-2 no-select"
                   :alt="'Client '+i"
                   width="90"
                   height="90"
+                  draggable="false"
                 />
               </div>
             </div>
@@ -64,10 +65,11 @@
                   v-for="i in 11"
                   :key="'ci'+i"
                   :src="'img/footer/clients2/'+i+'.png'"
-                  class="pr-2 pb-2"
+                  class="pr-2 pb-2 no-select"
                   :alt="'Client '+i"
                   width="90"
                   height="90"
+                  draggable="false"
                 />
               </div>
             </div>
@@ -114,6 +116,56 @@ export default {
     scrolRightStop() {
       clearInterval(this.timeRight)
     }
+  },
+  mounted() {
+    const slider = document.querySelector('.ower')
+    let isDown = false
+    let startX
+    let scrollLeft
+
+    slider.addEventListener('mousedown', e => {
+      isDown = true
+      slider.classList.add('active')
+      startX = e.pageX - slider.offsetLeft
+      scrollLeft = slider.scrollLeft
+    })
+    slider.addEventListener('mouseleave', () => {
+      isDown = false
+      slider.classList.remove('active')
+    })
+    slider.addEventListener('mouseup', () => {
+      isDown = false
+      slider.classList.remove('active')
+    })
+    slider.addEventListener('mousemove', e => {
+      if (!isDown) return
+      e.preventDefault()
+      const x = e.pageX - slider.offsetLeft
+      const walk = x - startX
+      slider.scrollLeft = scrollLeft - walk
+    })
+    //
+    slider.addEventListener('touchstart', e => {
+      isDown = true
+      slider.classList.add('active')
+      startX = e.pageX - slider.offsetLeft
+      scrollLeft = slider.scrollLeft
+    })
+    slider.addEventListener('touchcancel', () => {
+      isDown = false
+      slider.classList.remove('active')
+    })
+    slider.addEventListener('touchend', () => {
+      isDown = false
+      slider.classList.remove('active')
+    })
+    slider.addEventListener('touchmove', e => {
+      if (!isDown) return
+      e.preventDefault()
+      const x = e.pageX - slider.offsetLeft
+      const walk = x - startX
+      slider.scrollLeft = scrollLeft - walk
+    })
   }
 }
 </script>
@@ -144,5 +196,9 @@ h5 {
 
 .errowRight {
   right: 20px;
+}
+
+.no-select {
+  user-select: none;
 }
 </style>
