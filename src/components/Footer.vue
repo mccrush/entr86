@@ -54,6 +54,7 @@
                   class="pr-2 pb-2"
                   :alt="'Client '+i"
                   width="90"
+                  height="90"
                 />
               </div>
             </div>
@@ -66,6 +67,7 @@
                   class="pr-2 pb-2"
                   :alt="'Client '+i"
                   width="90"
+                  height="90"
                 />
               </div>
             </div>
