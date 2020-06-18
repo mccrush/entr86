@@ -124,6 +124,8 @@ export default {
   cursor: pointer;
   top: 0;
   transition: 0.3s;
+  text-decoration: none;
+  color: #2c3e50;
 }
 
 .napravLink:hover {

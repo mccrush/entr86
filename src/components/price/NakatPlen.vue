@@ -1,11 +1,11 @@
 <template>
   <div class="overflow-auto">
-    <table class="table table-sm table-borderless mt-2">
+    <table class="table table-sm table-borderless mt-2" id="nakatplen">
       <tr>
         <td colspan="12" class="text-left">
           <div class="d-flex justify-content-between align-items-end">
             <div class>
-              <h5 class="text-nowrap m-0 color-blue" name="nakatplen">Накатка пленки</h5>
+              <h5 class="text-nowrap m-0 color-blue">Накатка пленки</h5>
             </div>
             <div class="p-2 flex-fill">
               <div class="bg-blue line">&nbsp;</div>

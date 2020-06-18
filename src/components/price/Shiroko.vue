@@ -1,11 +1,11 @@
 <template>
   <div class="overflow-auto">
-    <table class="table table-sm table-borderless mt-5">
+    <table class="table table-sm table-borderless mt-5" id="shiroko">
       <tr>
         <td colspan="12" class="text-left">
           <div class="d-flex justify-content-between align-items-end">
             <div class>
-              <h5 class="text-nowrap m-0 color-ping" id="shiroko">Широкоформатная печать</h5>
+              <h5 class="text-nowrap m-0 color-ping">Широкоформатная печать</h5>
             </div>
             <div class="p-2 flex-fill">
               <div class="bg-ping line">&nbsp;</div>
