@@ -7,11 +7,10 @@
     <div class="col-12">
       <h2 class="text-uppercase text-left mt-2 bold">Портфолио</h2>
       <div v-for="portfolio in portfolios" :key="'pt'+portfolio.id" class="row">
-        <div class="col-12 col-sm-6 mt-3">
+        <div class="col-12 mt-3">
+          <h3 class="text-uppercase text-left mt-2 bold">{{portfolio.title}}</h3>
           <img :src="'img/portfolio/portfolios/'+portfolio.icon" alt width="100%" />
-        </div>
-        <div class="col-12 col-sm-6 mt-3">
-          <p class="text-left">{{portfolio.title}}</p>
+          <p class="text-left mt-2">{{portfolio.description}}</p>
         </div>
       </div>
     </div>
