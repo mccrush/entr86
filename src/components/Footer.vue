@@ -98,7 +98,7 @@ export default {
     },
     scrolRightStart() {
       this.timeRight = setInterval(() => {
-        if (this.$refs.clients.scrollLeft < 504) {
+        if (this.$refs.clients.scrollLeft < 704) {
           this.$refs.clients.scrollLeft = this.$refs.clients.scrollLeft + 3
         } else {
           clearInterval(this.timeRight)
