@@ -7,6 +7,7 @@
       <Shiroko />
       <Svet />
       <NeSvet />
+      <NakatPlen />
     </div>
   </div>
 </template>
@@ -16,6 +17,7 @@ import Plenka from '@/components/price/Plenka'
 import Shiroko from '@/components/price/Shiroko'
 import Svet from '@/components/price/Svet'
 import NeSvet from '@/components/price/NeSvet'
+import NakatPlen from '@/components/price/NakatPlen'
 import vueHeadful from 'vue-headful'
 
 export default {
@@ -24,6 +26,7 @@ export default {
     Shiroko,
     Svet,
     NeSvet,
+    NakatPlen,
     vueHeadful
   }
 }
