@@ -3,6 +3,7 @@
     <vueHeadful title="ENTR - Прайс-лист" description="Стоимость услуг" />
     <div class="col-12">
       <h2 class="text-uppercase text-left mt-2 bold">Прайс-лист</h2>
+      <a href="#svet">Link</a>
       <Design />
       <Plenka />
       <Shiroko />

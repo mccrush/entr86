@@ -5,7 +5,7 @@
         <td colspan="12" class="text-left">
           <div class="d-flex justify-content-between align-items-end">
             <div class>
-              <h5 class="text-nowrap m-0 color-blue">Световая реклама</h5>
+              <h5 class="text-nowrap m-0 color-blue" id="svet">Световая реклама</h5>
             </div>
             <div class="p-2 flex-fill">
               <div class="bg-blue line">&nbsp;</div>

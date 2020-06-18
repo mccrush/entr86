@@ -42,10 +42,12 @@
     <div class="space"></div>
     <!-- Направления -->
     <div class="row justify-content-center m-auto" style="max-width: 720px">
-      <div
+      <router-link
+        tag="a"
         v-for="naprav in napravs"
         :key="'np'+naprav.id"
-        class="col-12 col-sm-6 col-md-4 d-flex align-items-center justify-content-start mt-4"
+        :to="{path: '/price', hash: '#'+naprav.type}"
+        class="col-12 col-sm-6 col-md-4 d-flex align-items-center justify-content-start mt-4 napravLink"
       >
         <img
           :src="'/img/index/icons/'+naprav.icon"
@@ -55,14 +57,14 @@
           alt
         />
         <h5 class="text-left" v-html="naprav.title"></h5>
-      </div>
+      </router-link>
     </div>
     <!-- Конец Направления -->
     <div class="space"></div>
     <!-- База -->
     <div class="row justify-content-center m-auto" style="max-width: 640px">
       <div class="col-12 mt-4">
-        <h4 class="mb-0 bold fs-24">Собственная производственная</h4>
+        <h4 class="mb-0 bold fs-24">Собственная производ&shy;ственная</h4>
         <h1 class="blue fs-38">база позволяет нам:</h1>
         <ul class="list-unstyled text-left mt-3">
           <li>
@@ -116,6 +118,16 @@ export default {
 <style scoped>
 .space {
   height: 50px;
+}
+
+.napravLink {
+  cursor: pointer;
+  top: 0;
+  transition: 0.3s;
+}
+
+.napravLink:hover {
+  top: -4px;
 }
 
 .fs-35 {

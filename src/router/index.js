@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+import Price from '../views/Price.vue'
 
 Vue.use(VueRouter)
 
@@ -12,7 +13,7 @@ const routes = [
   {
     path: '/price',
     name: 'price',
-    component: () => import('../views/Price.vue')
+    component: Price
   },
   {
     path: '/portfolio',
@@ -32,8 +33,16 @@ const routes = [
 
 const router = new VueRouter({
   mode: 'history',
+
   base: process.env.BASE_URL,
-  routes
+  routes,
+  scrollBehavior(to, from, savedPosition) {
+    if (to.hash) {
+      return { selector: to.hash }
+    } else {
+      return { x: 0, y: 0 }
+    }
+  }
 })
 
 export default router
