@@ -33,12 +33,16 @@
             @mousedown="scrolLeftStart"
             @mouseup="scrolLeftStop"
             @mouseover="scrolLeftStop"
+            @touchstart="scrolLeftStart"
+            @touchend="scrolLeftStop"
           >&laquo;</div>
           <div
             class="errow errowRight position-absolute rounded-circle text-center shadow pt-1"
             @mousedown="scrolRightStart"
             @mouseup="scrolRightStop"
             @mouseover="scrolRightStop"
+            @touchstart="scrolRightStart"
+            @touchend="scrolRightStop"
           >&raquo;</div>
           <div class="overflow-hidden" ref="clients">
             <div class="row">
