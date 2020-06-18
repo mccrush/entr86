@@ -1,6 +1,6 @@
 <template>
   <div class="overflow-auto">
-    <table class="table table-sm table-borderless mt-5">
+    <table class="table table-sm table-borderless mt-2">
       <tr>
         <td colspan="12" class="text-left">
           <div class="d-flex justify-content-between align-items-end">
@@ -9,9 +9,6 @@
             </div>
             <div class="p-2 flex-fill">
               <div class="bg-blue line">&nbsp;</div>
-            </div>
-            <div class>
-              <img src="img/price/icons/p3.png" alt width="96" height="96" class />
             </div>
           </div>
         </td>

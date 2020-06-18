@@ -11,7 +11,7 @@
               <div class="bg-ping line">&nbsp;</div>
             </div>
             <div class>
-              <img src="img/price/icons/p3.png" alt width="96" height="96" class />
+              <img src="img/price/icons/p4.png" alt width="96" height="96" class />
             </div>
           </div>
         </td>
@@ -30,19 +30,19 @@
       </tr>
       <tr>
         <td colspan="6" class="text-left">Изготовление пресс-волл+баннер 3*2</td>
-        <td colspan="6" class="text-right text-nowrap">от 6 500 &#x20bd;/шт</td>
+        <td colspan="6" class="text-right text-nowrap">от 6500 &#x20bd;/шт</td>
       </tr>
       <tr>
         <td colspan="6" class="text-left">Ростовая фигура</td>
-        <td colspan="6" class="text-right text-nowrap">от 4 000 &#x20bd;/шт</td>
+        <td colspan="6" class="text-right text-nowrap">от 4000 &#x20bd;/шт</td>
       </tr>
       <tr>
         <td colspan="6" class="text-left">Штендер 2-х сторонний</td>
-        <td colspan="6" class="text-right text-nowrap">от 3 500 &#x20bd;/шт</td>
+        <td colspan="6" class="text-right text-nowrap">от 3500 &#x20bd;/шт</td>
       </tr>
       <tr>
         <td colspan="6" class="text-left">Стенд с карманами (композит)</td>
-        <td colspan="6" class="text-right text-nowrap">от 2 000 &#x20bd;</td>
+        <td colspan="6" class="text-right text-nowrap">от 2000 &#x20bd;</td>
       </tr>
     </table>
   </div>
