@@ -9,7 +9,7 @@
       <div v-for="portfolio in portfolios" :key="'pt'+portfolio.id" class="row">
         <div class="col-12 mt-3">
           <h3 class="text-uppercase text-left mt-2 bold">{{portfolio.title}}</h3>
-          <img :src="'img/portfolio/portfolios/'+portfolio.icon" alt width="100%" />
+          <img :src="'img/portfolio/portfolios/'+portfolio.icon" alt width="100%" min-height="306" />
           <p class="text-left mt-2">{{portfolio.description}}</p>
         </div>
       </div>
@@ -35,3 +35,6 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+</style>
