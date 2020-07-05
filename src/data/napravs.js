@@ -1,4 +1,4 @@
-export const napravs = [
+export default [
   {
     title: 'Световая реклама',
     icon: 'in1.png',

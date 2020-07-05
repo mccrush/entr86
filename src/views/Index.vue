@@ -10,24 +10,7 @@
     <!-- Конец Задачи -->
     <div class="space"></div>
     <!-- Направления -->
-    <div class="row justify-content-center m-auto" style="max-width: 720px">
-      <router-link
-        tag="a"
-        v-for="naprav in napravs"
-        :key="'np'+naprav.id"
-        :to="{path: '/price', hash: '#'+naprav.type}"
-        class="col-12 col-sm-6 col-md-4 d-flex align-items-center justify-content-start mt-4 napravLink"
-      >
-        <img
-          :src="'/img/index/icons/'+naprav.icon"
-          class="float-left mr-3"
-          width="80"
-          height="80"
-          alt
-        />
-        <h5 class="text-left" v-html="naprav.title"></h5>
-      </router-link>
-    </div>
+    <Napravs />
     <!-- Конец Направления -->
     <div class="space"></div>
     <!-- База -->
@@ -61,25 +44,17 @@
 </template>
 
 <script>
-import Slider from '@/components/index/Slider.vue'
-import Zadachi from '@/components/index/Zadachi.vue'
-import { napravs } from '@/data/napravs'
-
+import Slider from '@/components/index/Slider'
+import Zadachi from '@/components/index/Zadachi'
+import Napravs from '@/components/index/Napravs'
 import vueHeadful from 'vue-headful'
 
 export default {
   components: {
     Slider,
     Zadachi,
+    Napravs,
     vueHeadful
-  },
-  data() {
-    return {
-      napravs: []
-    }
-  },
-  mounted() {
-    this.napravs = napravs
   }
 }
 </script>
