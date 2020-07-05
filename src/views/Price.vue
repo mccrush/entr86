@@ -48,8 +48,10 @@ export default {
   // },
   // Дождаться загрузки компонента и затем принудительно сделать скрол
   mounted() {
-    let elem = document.querySelector(this.$route.hash)
-    elem.scrollIntoView({ block: 'start', behavior: 'smooth' })
+    if (this.$route.hash) {
+      let elem = document.querySelector(this.$route.hash)
+      elem.scrollIntoView({ block: 'start', behavior: 'smooth' })
+    }
   }
 }
 </script>
