@@ -49,7 +49,4 @@ export default {
 </script>
 
 <style scoped>
-.slide {
-  min-height: 413px;
-}
 </style>

@@ -5,14 +5,15 @@
       description="Мы реализуем любые рекламно-производственные задачи"
     />
     <Slider />
+
     <!-- Задачи -->
     <Zadachi />
-    <!-- Конец Задачи -->
     <div class="space"></div>
+
     <!-- Направления -->
     <Napravs />
-    <!-- Конец Направления -->
     <div class="space"></div>
+
     <!-- База -->
     <div class="row justify-content-center m-auto" style="max-width: 640px">
       <div class="col-12 mt-4">

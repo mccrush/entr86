@@ -1,12 +1,16 @@
 <template>
   <div id="app">
-    <Navbar />
+    <transition name="fade" mode="out-in">
+      <Navbar v-if="footer" />
+    </transition>
     <div class="container pt-4 pb-4">
       <transition name="fade" mode="out-in">
         <router-view />
       </transition>
     </div>
-    <Footer />
+    <transition name="fade" mode="out-in">
+      <Footer v-if="footer" />
+    </transition>
     <!-- <Dev /> -->
   </div>
 </template>
@@ -21,6 +25,16 @@ export default {
     Navbar,
     Footer
     //Dev
+  },
+  data() {
+    return {
+      footer: false
+    }
+  },
+  mounted() {
+    setTimeout(() => {
+      this.footer = true
+    }, 0)
   }
 }
 </script>
