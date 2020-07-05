@@ -1,26 +1,26 @@
 <template>
   <div id="app">
-    <!-- <Navbar />
+    <Navbar />
     <div class="container pt-4 pb-4">
       <transition name="fade" mode="out-in">
         <router-view />
       </transition>
     </div>
-    <Footer />-->
-    <Dev />
+    <Footer />
+    <!-- <Dev /> -->
   </div>
 </template>
 
 <script>
 import Navbar from '@/components/Navbar.vue'
 import Footer from '@/components/Footer.vue'
-import Dev from '@/views/Dev.vue'
+//import Dev from '@/views/Dev.vue'
 
 export default {
   components: {
     Navbar,
-    Footer,
-    Dev
+    Footer
+    //Dev
   }
 }
 </script>
