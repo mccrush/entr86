@@ -9,7 +9,7 @@
             <br />Тюменская область
             <br />ХМАО-Югра г.&nbsp;Сургут,
             <br />ул. Инженерная 1/4
-            <br />+7 (3462) 630 475
+            <br />+7 3462 630 475
             <br />entr86@mail.ru
           </p>
           <a href="https://www.instagram.com/entr86/" target="_blank">
