@@ -5,40 +5,9 @@
       description="Мы реализуем любые рекламно-производственные задачи"
     />
     <Slider />
-    <!-- Решения -->
-    <div class="row justify-content-center m-auto" style="max-width: 640px">
-      <div class="col-12 mt-5 mb-4">
-        <h1 class="color-blue mb-0 fs-35">Мы реализуем любые</h1>
-        <h4 class="bold fs-21">рекламно-производственные задачи</h4>
-      </div>
-
-      <div
-        v-for="reshen in reshens"
-        :key="'rs'+reshen.id"
-        class="col-12 d-flex align-items-center mt-3"
-        :class="reshen.justify"
-        style="overflow-wrap: anywhere;"
-      >
-        <h3
-          v-if="reshen.float === 'float-right'"
-          class="text-left ml-3 mr-3 bold"
-          v-html="reshen.title"
-        ></h3>
-        <img
-          :src="'/img/index/icons/'+reshen.icon"
-          :class="reshen.float"
-          width="80"
-          height="80"
-          alt
-        />
-        <h3
-          v-if="reshen.float === 'float-left'"
-          class="text-left ml-3 mr-3 bold"
-          v-html="reshen.title"
-        ></h3>
-      </div>
-    </div>
-    <!-- Конец Решения -->
+    <!-- Задачи -->
+    <Zadachi />
+    <!-- Конец Задачи -->
     <div class="space"></div>
     <!-- Направления -->
     <div class="row justify-content-center m-auto" style="max-width: 720px">
@@ -93,29 +62,29 @@
 
 <script>
 import Slider from '@/components/index/Slider.vue'
+import Zadachi from '@/components/index/Zadachi.vue'
 import { napravs } from '@/data/napravs'
-import { reshens } from '@/data/reshens'
+
 import vueHeadful from 'vue-headful'
 
 export default {
   components: {
     Slider,
+    Zadachi,
     vueHeadful
   },
   data() {
     return {
-      reshens: [],
       napravs: []
     }
   },
   mounted() {
-    this.reshens = reshens
     this.napravs = napravs
   }
 }
 </script>
 
-<style scoped>
+<style>
 .space {
   height: 50px;
 }
