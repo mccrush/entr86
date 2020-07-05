@@ -10,8 +10,8 @@
       <img
         :src="'/img/index/icons/'+naprav.icon"
         class="float-left mr-3"
-        width="80"
-        height="80"
+        width="76"
+        height="76"
         alt
       />
       <h5 class="text-left" v-html="naprav.title"></h5>
@@ -29,3 +29,17 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+.napravLink {
+  cursor: pointer;
+  top: 0;
+  transition: 0.3s;
+  text-decoration: none;
+  color: #2c3e50;
+}
+
+.napravLink:hover {
+  top: -4px;
+}
+</style>

@@ -65,18 +65,6 @@ export default {
   height: 50px;
 }
 
-.napravLink {
-  cursor: pointer;
-  top: 0;
-  transition: 0.3s;
-  text-decoration: none;
-  color: #2c3e50;
-}
-
-.napravLink:hover {
-  top: -4px;
-}
-
 .fs-35 {
   font-size: 3.5rem;
 }
