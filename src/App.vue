@@ -1,15 +1,15 @@
 <template>
   <div id="app">
     <transition name="fade" mode="out-in">
-      <Navbar v-if="footer" />
+      <Navbar v-if="footer && $route.name != 'admin'" />
     </transition>
-    <div class="container pt-4 pb-4">
+    <div class="pt-4 pb-4" :class="$route.name === 'admin' ? 'container-fluid' : 'container'">
       <transition name="fade" mode="out-in">
         <router-view />
       </transition>
     </div>
     <transition name="fade" mode="out-in">
-      <Footer v-if="footer" />
+      <Footer v-if="footer && $route.name != 'admin'" />
     </transition>
     <!-- <Dev /> -->
   </div>
