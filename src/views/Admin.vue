@@ -39,6 +39,18 @@ export default {
   computed: {
     component() {
       return this.$route.hash.split('#')[1] || ''
+    },
+    collections() {
+      return this.$store.getters.collections
+    }
+  },
+  async mounted() {
+    try {
+      await this.$store.dispatch('getCollections')
+    } catch (err) {
+      console.log('Ошибка при получении данных в Админ:', err.message)
+    } finally {
+      console.log('Данные в Админ получены')
     }
   }
 }
