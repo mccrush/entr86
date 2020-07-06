@@ -9,14 +9,31 @@
       </div>
       <div class="row">
         <div class="col-2 border-right p-0">
-          <Collections />
+          <h6 class="border-bottom pt-2 pb-2 m-0">Коллекции</h6>
+          <transition name="fade" mode="out-in">
+            <img v-if="loading" src="/img/admin/loading.gif" alt="Loading..." />
+            <div v-else>
+              <Collections
+                v-for="(collection, index) in collections"
+                :key="'cole'+ index"
+                :collection="collection"
+                :selectCollectionAlias="selectCollectionAlias"
+                @select-collection="selectCollection"
+              />
+            </div>
+          </transition>
         </div>
         <div class="col-2 border-right p-0">
-          <Docs />
+          <transition name="fade" mode="out-in">
+            <img v-if="loading" src="/img/admin/loading.gif" alt="Loading..." />
+            <Docs v-else />
+          </transition>
         </div>
         <div class="col-8">
-          <component v-if="component" :is="component" />
-          <h5 v-else>Выберите Документ</h5>
+          <transition name="fade" mode="out-in">
+            <component v-if="component" :is="component" />
+            <h5 v-else>Выберите Документ</h5>
+          </transition>
         </div>
       </div>
     </div>
@@ -36,6 +53,12 @@ export default {
     Slider,
     Zadachi
   },
+  data() {
+    return {
+      loading: true,
+      selectCollectionAlias: ''
+    }
+  },
   computed: {
     component() {
       return this.$route.hash.split('#')[1] || ''
@@ -50,8 +73,23 @@ export default {
     } catch (err) {
       console.log('Ошибка при получении данных в Админ:', err.message)
     } finally {
-      console.log('Данные в Админ получены')
+      this.loading = false
+    }
+  },
+  methods: {
+    selectCollection(alias) {
+      this.selectCollectionAlias = alias
     }
   }
 }
 </script>
+
+<style scoped>
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.3s ease;
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active до версии 2.1.8 */ {
+  opacity: 0;
+}
+</style>

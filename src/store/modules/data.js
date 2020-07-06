@@ -4,9 +4,13 @@ export default {
   state: {
     collections: []
   },
-  mutations: {},
+  mutations: {
+    getCollections(state, collections) {
+      state.collections = collections
+    }
+  },
   actions: {
-    async getCollections() {
+    async getCollections({ commit }) {
       let collections = []
       try {
         const ref = db.collection('collections')
@@ -16,8 +20,13 @@ export default {
         });
       } catch (err) {
         throw err
-      } finally { console.log('collections:', collections) }
+      } finally {
+        commit('getCollections', collections)
+        //console.log('collections:', collections) 
+      }
     }
   },
-  getters: {}
+  getters: {
+    collections: state => state.collections
+  }
 }
