@@ -1,5 +1,13 @@
 <template>
-  <div>
-    <h6 class="border-bottom pt-2 pb-2">Документы</h6>
-  </div>
+  <button
+    class="btn btn-sm btn-block rounded-0 m-0"
+    :class="selectDocAlias === doc.alias ? 'btn-warning' : 'btn-light'"
+    @click="$emit('select-doc', doc.alias)"
+  >{{doc.title}}</button>
 </template>
+
+<script>
+export default {
+  props: ['doc', 'selectDocAlias']
+}
+</script>

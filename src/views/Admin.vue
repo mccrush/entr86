@@ -24,14 +24,24 @@
           </transition>
         </div>
         <div class="col-2 border-right p-0">
+          <h6 class="border-bottom pt-2 pb-2 m-0">Документы</h6>
           <transition name="fade" mode="out-in">
             <img v-if="loading" src="/img/admin/loading.gif" alt="Loading..." />
-            <Docs v-else />
+            <div v-else>
+              <Docs
+                v-for="(doc, index) in docs"
+                :key="'doc'+ index"
+                :doc="doc"
+                :selectDocAlias="selectDocAlias"
+                @select-doc="selectDoc"
+              />
+            </div>
           </transition>
         </div>
         <div class="col-8">
           <transition name="fade" mode="out-in">
-            <component v-if="component" :is="component" />
+            <component v-if="selectCollectionAlias && selectDocAlias" :is="selectCollectionAlias" />
+            <h5 v-else-if="!selectCollectionAlias">Выберите Коллекцию</h5>
             <h5 v-else>Выберите Документ</h5>
           </transition>
         </div>
@@ -43,31 +53,33 @@
 <script>
 import Collections from '@/components/admin/Collections'
 import Docs from '@/components/admin/Docs'
-import Slider from '@/components/admin/forms/Slider'
+import Sliders from '@/components/admin/forms/Sliders'
 import Zadachi from '@/components/admin/forms/Zadachi'
 
 export default {
   components: {
     Collections,
     Docs,
-    Slider,
+    Sliders,
     Zadachi
   },
   data() {
     return {
       loading: true,
-      selectCollectionAlias: ''
+      selectCollectionAlias: '',
+      selectDocAlias: '',
+      docs: []
     }
   },
   computed: {
-    component() {
-      return this.$route.hash.split('#')[1] || ''
-    },
     collections() {
       return this.$store.getters.collections
     },
-    docs() {
-      return this.$store.getters.docs
+    sliders() {
+      return this.$store.getters.sliders
+    },
+    zadachi() {
+      return this.$store.getters.zadachi
     }
   },
   async mounted() {
@@ -83,7 +95,19 @@ export default {
   },
   methods: {
     selectCollection(alias) {
+      this.selectDocAlias = ''
       this.selectCollectionAlias = alias
+      switch (alias) {
+        case 'sliders':
+          this.docs = this.sliders
+          break
+        case 'zadachi':
+          this.docs = this.zadachi
+          break
+      }
+    },
+    selectDoc(alias) {
+      this.selectDocAlias = alias
     }
   }
 }

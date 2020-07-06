@@ -9,10 +9,5 @@
 <script>
 export default {
   props: ['collection', 'selectCollectionAlias']
-  // data() {
-  //   return {
-  //     collection: ''
-  //   }
-  // }
 }
 </script>
