@@ -65,11 +65,16 @@ export default {
     },
     collections() {
       return this.$store.getters.collections
+    },
+    docs() {
+      return this.$store.getters.docs
     }
   },
   async mounted() {
     try {
-      await this.$store.dispatch('getCollections')
+      await this.$store.dispatch('getData', 'collections')
+      await this.$store.dispatch('getData', 'sliders')
+      await this.$store.dispatch('getData', 'zadachi')
     } catch (err) {
       console.log('Ошибка при получении данных в Админ:', err.message)
     } finally {
