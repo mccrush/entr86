@@ -1,9 +1,9 @@
 <template>
   <div class="row">
-    <div class="col-12 col-lg-10 col-xl-8 m-auto">
+    <div class="col-12 col-lg-10 col-xl-8 m-auto shadow-sm">
       <div class="row">
-        <div class="col-12 d-flex justify-content-between align-content-center border-bottom pb-2">
-          <h5>Панель администратора</h5>
+        <div class="col-12 d-flex justify-content-between align-content-center border-bottom p-3">
+          <h5 class="m-0 mt-1">Панель администратора</h5>
           <button class="btn btn-sm btn-light">Выйти</button>
         </div>
       </div>
