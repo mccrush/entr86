@@ -7,11 +7,32 @@ export default {
     zadachi: []
   },
   mutations: {
+    addDoc(state, { doc, collection }) {
+      state[collection].push(doc)
+    },
     getData(state, { collections, collection }) {
       state[collection] = collections
     }
   },
   actions: {
+    async updateDoc({ commit }, { doc, collection }) {
+      try {
+        await db.collection(collection).doc(doc.id).update(doc)
+      } catch (err) {
+        throw err
+      } finally {
+        commit('updateDoc', { doc, collection })
+      }
+    },
+    async addDoc({ commit }, { doc, collection }) {
+      try {
+        await db.collection(collection).doc(doc.id).set(doc, { merge: true })
+      } catch (err) {
+        throw err
+      } finally {
+        commit('addDoc', { doc, collection })
+      }
+    },
     async getData({ commit }, collection) {
       let collections = []
       try {

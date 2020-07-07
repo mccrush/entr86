@@ -30,17 +30,15 @@
           </transition>
         </div>
         <div class="col-2 border-right p-0">
-          <!-- <div class="d-flex justify-content-between"> -->
           <h6 class="border-bottom pt-2 pb-2 m-0">
             Документы
             <button
-              @click="createDoc = true"
+              @click="createDoc = true; doc = {}"
               class="btn btn-sm btn-outline-primary p-0 pl-2 pr-2 ml-1"
               :disabled="!selectCollectionAlias ? true: false"
             >+</button>
           </h6>
 
-          <!-- </div> -->
           <transition name="fade" mode="out-in">
             <img v-if="loading" src="/img/admin/loading.gif" alt="Loading..." />
             <div v-else>
@@ -59,6 +57,8 @@
             <component
               v-if="selectCollectionAlias && (selectDocAlias || createDoc)"
               :is="selectCollectionAlias"
+              :doc="doc"
+              :collection="selectCollectionAlias"
             />
             <h5 v-else-if="!selectCollectionAlias">Выберите Коллекцию</h5>
             <h5 v-else>Выберите Документ</h5>
@@ -90,7 +90,8 @@ export default {
       selectCollectionAlias: '',
       selectDocAlias: '',
       createDoc: false,
-      docs: []
+      docs: [],
+      doc: {}
     }
   },
   computed: {
@@ -135,6 +136,7 @@ export default {
     selectDoc(alias) {
       this.createDoc = false
       this.selectDocAlias = alias
+      this.doc = this.docs.find(doc => doc.alias === alias)
     }
   }
 }
