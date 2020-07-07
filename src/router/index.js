@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Price from '../views/Price.vue'
+import { auth } from "@/main.js";
 
 Vue.use(VueRouter)
 
@@ -13,7 +13,7 @@ const routes = [
   {
     path: '/price',
     name: 'price',
-    component: Price
+    component: () => import('../views/Price.vue')
   },
   {
     path: '/portfolio',
@@ -26,9 +26,17 @@ const routes = [
     component: () => import('../views/Contacts.vue')
   },
   {
+    path: '/login',
+    name: 'login',
+    component: () => import('../views/Login.vue')
+  },
+  {
     path: '/admin',
     name: 'admin',
-    component: () => import('../views/Admin.vue')
+    component: () => import('../views/Admin.vue'),
+    meta: {
+      requiresAuth: true
+    }
   },
   {
     path: '*',
@@ -50,6 +58,22 @@ const router = new VueRouter({
   // scrollBehavior() {
   //   return { x: 0, y: 0 }
   // }
+})
+
+router.beforeEach((to, from, next) => {
+  let currentUser = auth.currentUser
+  let requiresAuth = to.matched.some(record => record.meta.requiresAuth)
+
+  // 3
+  if (requiresAuth) {
+    if (currentUser) {
+      next()
+    } else {
+      next('login')
+    }
+  } else {
+    next()
+  }
 })
 
 export default router
