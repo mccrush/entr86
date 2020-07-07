@@ -9,11 +9,17 @@
       </div>
       <div class="row">
         <div class="col-2 border-right p-0">
-          <h6 class="border-bottom pt-2 pb-2 m-0">Коллекции</h6>
+          <h6 class="border-bottom pt-2 pb-2 m-0">
+            Коллекции
+            <button
+              @click="selectCollection('collections')"
+              class="btn btn-sm btn-outline-primary p-0 pl-2 pr-2 ml-1"
+            >~</button>
+          </h6>
           <transition name="fade" mode="out-in">
             <img v-if="loading" src="/img/admin/loading.gif" alt="Loading..." />
             <div v-else>
-              <Collections
+              <CollectionsList
                 v-for="(collection, index) in collections"
                 :key="'cole'+ index"
                 :collection="collection"
@@ -28,6 +34,7 @@
           <h6 class="border-bottom pt-2 pb-2 m-0">
             Документы
             <button
+              @click="createDoc = true"
               class="btn btn-sm btn-outline-primary p-0 pl-2 pr-2 ml-1"
               :disabled="!selectCollectionAlias ? true: false"
             >+</button>
@@ -47,9 +54,12 @@
             </div>
           </transition>
         </div>
-        <div class="col-8">
+        <div class="col-8 pt-3 pb-3">
           <transition name="fade" mode="out-in">
-            <component v-if="selectCollectionAlias && selectDocAlias" :is="selectCollectionAlias" />
+            <component
+              v-if="selectCollectionAlias && (selectDocAlias || createDoc)"
+              :is="selectCollectionAlias"
+            />
             <h5 v-else-if="!selectCollectionAlias">Выберите Коллекцию</h5>
             <h5 v-else>Выберите Документ</h5>
           </transition>
@@ -60,23 +70,26 @@
 </template>
 
 <script>
-import Collections from '@/components/admin/Collections'
+import CollectionsList from '@/components/admin/Collections'
 import Docs from '@/components/admin/Docs'
 import Sliders from '@/components/admin/forms/Sliders'
 import Zadachi from '@/components/admin/forms/Zadachi'
+import Collections from '@/components/admin/forms/Collections'
 
 export default {
   components: {
-    Collections,
+    CollectionsList,
     Docs,
     Sliders,
-    Zadachi
+    Zadachi,
+    Collections
   },
   data() {
     return {
       loading: true,
       selectCollectionAlias: '',
       selectDocAlias: '',
+      createDoc: false,
       docs: []
     }
   },
@@ -104,9 +117,13 @@ export default {
   },
   methods: {
     selectCollection(alias) {
+      this.createDoc = false
       this.selectDocAlias = ''
       this.selectCollectionAlias = alias
       switch (alias) {
+        case 'collections':
+          this.docs = this.collections
+          break
         case 'sliders':
           this.docs = this.sliders
           break
@@ -116,6 +133,7 @@ export default {
       }
     },
     selectDoc(alias) {
+      this.createDoc = false
       this.selectDocAlias = alias
     }
   }
