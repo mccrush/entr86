@@ -12,6 +12,12 @@ export default {
     zadachi: [],
   },
   mutations: {
+    removeDoc(state, { id, collection }) {
+      let tempDoc = state[collection].filter(doc => doc.id != id)
+      state[collection] = tempDoc
+      console.log('state[collection]:', state[collection]);
+
+    },
     updateDoc(state, { doc, collection }) {
       const index = state[collection].findIndex(col => col.id === doc.id)
       state[collection][index] = doc
@@ -24,6 +30,17 @@ export default {
     }
   },
   actions: {
+    async removeDoc({ commit, dispatch }, { id, collection }) {
+      try {
+        await db.collection(collection).doc(id).delete()
+      } catch (err) {
+        //throw err
+        console.log('Ошибка при удалении документа:', err)
+      } finally {
+        console.log('Документ успешно удален')
+        commit('removeDoc', { id, collection })
+      }
+    },
     async updateDoc({ commit, dispatch }, { doc, collection }) {
       try {
         await db.collection(collection).doc(doc.id).update(doc)

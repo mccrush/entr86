@@ -130,7 +130,19 @@ export default {
         console.log('Заполните все поля:', doc)
       }
     },
-    removeDoc() {}
+    async removeDoc(id, collections) {
+      if (confirm('Точно удалить?')) {
+        try {
+          await this.$store.dispatch('removeDoc', {
+            id: this.doc.id,
+            collection: this.collection
+          })
+        } catch (err) {
+        } finally {
+          this.$emit('update-doc', this.collection)
+        }
+      }
+    }
   },
   watch: {
     doc() {

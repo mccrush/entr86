@@ -45,6 +45,7 @@
               @click="createDoc = true; selectDocAlias=''; doc = {}"
               class="btn btn-sm btn-outline-primary p-0 pl-2 pr-2 ml-1"
               :disabled="!selectCollectionAlias ? true: false"
+              title="Создать документ"
             >+</button>
           </h6>
 
@@ -55,7 +56,7 @@
                 v-for="(doc, index) in docs"
                 :key="'doc'+ index"
                 :doc="doc"
-                :selectDocAlias="selectDocAlias"
+                :selectDocId="selectDocId"
                 @select-doc="selectDoc"
               />
             </div>
@@ -64,7 +65,7 @@
         <div class="col-8 pt-3 pb-3">
           <transition name="fade" mode="out-in">
             <component
-              v-if="selectCollectionAlias && (selectDocAlias || createDoc)"
+              v-if="selectCollectionAlias && (selectDocId || createDoc)"
               :is="selectCollectionAlias"
               :doc="doc"
               :collection="selectCollectionAlias"
@@ -113,7 +114,7 @@ export default {
       user: auth.currentUser,
       loading: true,
       selectCollectionAlias: '',
-      selectDocAlias: '',
+      selectDocId: '',
       createDoc: false,
       docs: [],
       doc: {}
@@ -156,17 +157,14 @@ export default {
   methods: {
     selectCollection(alias) {
       this.createDoc = false
-      this.selectDocAlias = ''
+      this.selectDocId = ''
       this.selectCollectionAlias = alias
       this.docs = this[alias]
     },
-    selectDoc(alias) {
+    selectDoc(id) {
       this.createDoc = false
-      this.selectDocAlias = alias
-      this.doc = this.docs.find(doc => doc.alias === alias)
-    },
-    updateDoc(alias) {
-      this.docs = this[alias]
+      this.selectDocId = id
+      this.doc = this.docs.find(doc => doc.id === id)
     },
     async logOut() {
       await this.$store.dispatch('logOut')
