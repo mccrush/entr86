@@ -41,6 +41,6 @@ firebase.auth().onAuthStateChanged((user) => {
     }).$mount('#app')
   }
   if (user) {
-    store.dispatch("logIn");
+    //store.dispatch("logIn");
   }
 })

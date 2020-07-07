@@ -88,10 +88,7 @@ export default {
 
       if (this.email && this.password) {
         try {
-          await this.$store.dispatch('logIn', {
-            email: this.email,
-            password: this.password
-          })
+          await this.$store.dispatch('logIn', formData)
         } catch (err) {
           if (err.code === 'auth/invalid-email') {
             this.$store.commit('addMessage', {
