@@ -24,7 +24,16 @@
           </transition>
         </div>
         <div class="col-2 border-right p-0">
-          <h6 class="border-bottom pt-2 pb-2 m-0">Документы</h6>
+          <!-- <div class="d-flex justify-content-between"> -->
+          <h6 class="border-bottom pt-2 pb-2 m-0">
+            Документы
+            <button
+              class="btn btn-sm btn-outline-primary p-0 pl-2 pr-2 ml-1"
+              :disabled="!selectCollectionAlias ? true: false"
+            >+</button>
+          </h6>
+
+          <!-- </div> -->
           <transition name="fade" mode="out-in">
             <img v-if="loading" src="/img/admin/loading.gif" alt="Loading..." />
             <div v-else>
@@ -114,6 +123,11 @@ export default {
 </script>
 
 <style scoped>
+.btn-outline-primary {
+  height: 16px;
+  line-height: 1;
+}
+
 .fade-enter-active,
 .fade-leave-active {
   transition: opacity 0.3s ease;
