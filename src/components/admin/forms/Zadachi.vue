@@ -63,9 +63,8 @@ export default {
               collection: this.collection
             })
           } catch (err) {
-            console.log('Ошибка при обновлении документа:', err)
           } finally {
-            console.log('Документ успешно обновлен')
+            this.$emit('update-doc', this.collection)
           }
         } else {
           try {
@@ -74,14 +73,12 @@ export default {
               collection: this.collection
             })
           } catch (err) {
-            console.log('Ошибка при создании документа:', err)
           } finally {
             this.title = ''
             this.alias = ''
             this.position = +this.position + 1
             this.active = true
             this.img = ''
-            console.log('Документ успешно создан')
           }
         }
       } else {

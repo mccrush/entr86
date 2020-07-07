@@ -28,8 +28,10 @@ export default {
       try {
         await db.collection(collection).doc(doc.id).update(doc)
       } catch (err) {
-        throw err
+        //throw err
+        console.log('Ошибка при обновлении документа:', err)
       } finally {
+        console.log('Документ успешно обновлен')
         commit('updateDoc', { doc, collection })
       }
     },
@@ -37,8 +39,10 @@ export default {
       try {
         await db.collection(collection).doc(doc.id).set(doc, { merge: true })
       } catch (err) {
-        throw err
+        //throw err
+        console.log('Ошибка при создании документа:', err)
       } finally {
+        console.log('Документ успешно создан')
         commit('addDoc', { doc, collection })
       }
     },
