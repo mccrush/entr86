@@ -175,7 +175,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style>
 .btn-outline-primary {
   height: 16px;
   line-height: 1;

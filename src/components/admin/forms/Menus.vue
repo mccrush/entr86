@@ -22,11 +22,14 @@
     </div>
     <div class="row mt-3">
       <div class="col-4">
-        <button
-          @click="removeDoc"
-          type="button"
-          class="btn btn-sm btn-block btn-outline-danger"
-        >Удалить</button>
+        <transition name="fade" mode="out-in">
+          <button
+            v-if="doc.id"
+            @click="removeDoc"
+            type="button"
+            class="btn btn-sm btn-block btn-outline-danger"
+          >Удалить</button>
+        </transition>
       </div>
       <div class="col-4">
         <button type="reset" class="btn btn-sm btn-block btn-light">Очистить</button>
@@ -86,7 +89,19 @@ export default {
         console.log('Заполните все поля:', doc)
       }
     },
-    removeDoc() {}
+    async removeDoc(id, collections) {
+      if (confirm('Точно удалить?')) {
+        try {
+          await this.$store.dispatch('removeDoc', {
+            id: this.doc.id,
+            collection: this.collection
+          })
+        } catch (err) {
+        } finally {
+          this.$emit('update-doc', this.collection)
+        }
+      }
+    }
   },
   watch: {
     doc() {
