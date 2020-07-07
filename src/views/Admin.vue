@@ -36,7 +36,7 @@
           <h6 class="border-bottom pt-2 pb-2 m-0">
             Документы
             <button
-              @click="createDoc = true; doc = {}"
+              @click="createDoc = true; selectDocAlias=''; doc = {}"
               class="btn btn-sm btn-outline-primary p-0 pl-2 pr-2 ml-1"
               :disabled="!selectCollectionAlias ? true: false"
             >+</button>
