@@ -76,6 +76,8 @@ export default {
           } catch (err) {
             console.log('Ошибка при создании документа:', err)
           } finally {
+            this.title = ''
+            this.alias = ''
             console.log('Документ успешно создан')
           }
         }

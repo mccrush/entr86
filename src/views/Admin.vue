@@ -73,20 +73,32 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 import { auth } from '@/main.js'
 import CollectionsList from '@/components/admin/Collections'
 import Docs from '@/components/admin/Docs'
+
+import Collections from '@/components/admin/forms/Collections'
+import Clients from '@/components/admin/forms/Clients'
+import Menus from '@/components/admin/forms/Menus'
+import Napravs from '@/components/admin/forms/Napravs'
+import Portfolios from '@/components/admin/forms/Portfolios'
+import Prices from '@/components/admin/forms/Prices'
 import Sliders from '@/components/admin/forms/Sliders'
 import Zadachi from '@/components/admin/forms/Zadachi'
-import Collections from '@/components/admin/forms/Collections'
 
 export default {
   components: {
     CollectionsList,
     Docs,
+    Collections,
+    Clients,
+    Menus,
+    Napravs,
+    Portfolios,
+    Prices,
     Sliders,
-    Zadachi,
-    Collections
+    Zadachi
   },
   data() {
     return {
@@ -103,22 +115,34 @@ export default {
     collections() {
       return this.$store.getters.collections
     },
-    sliders() {
-      return this.$store.getters.sliders
-    },
-    zadachi() {
-      return this.$store.getters.zadachi
-    }
+    ...mapGetters([
+      'clients',
+      'menus',
+      'napravs',
+      'portfolios',
+      'prices',
+      'sliders',
+      'zadachi'
+    ])
   },
   async mounted() {
     try {
       await this.$store.dispatch('getData', 'collections')
-      await this.$store.dispatch('getData', 'sliders')
-      await this.$store.dispatch('getData', 'zadachi')
     } catch (err) {
       console.log('Ошибка при получении данных в Админ:', err.message)
     } finally {
       this.loading = false
+      try {
+        await this.$store.dispatch('getData', 'clients')
+        await this.$store.dispatch('getData', 'menus')
+        await this.$store.dispatch('getData', 'napravs')
+        await this.$store.dispatch('getData', 'portfolios')
+        await this.$store.dispatch('getData', 'prices')
+        await this.$store.dispatch('getData', 'sliders')
+        await this.$store.dispatch('getData', 'zadachi')
+      } catch (err) {
+        console.log('Ошибка при получении данных в Админ:', err.message)
+      }
     }
   },
   methods: {
@@ -126,17 +150,7 @@ export default {
       this.createDoc = false
       this.selectDocAlias = ''
       this.selectCollectionAlias = alias
-      switch (alias) {
-        case 'collections':
-          this.docs = this.collections
-          break
-        case 'sliders':
-          this.docs = this.sliders
-          break
-        case 'zadachi':
-          this.docs = this.zadachi
-          break
-      }
+      this.docs = this[alias]
     },
     selectDoc(alias) {
       this.createDoc = false

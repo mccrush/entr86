@@ -1,3 +1,96 @@
 <template>
-  <h6>Форма Задачи</h6>
+  <form @submit.prevent="saveDoc">
+    <div class="row">
+      <div class="col-6">
+        <input
+          type="text"
+          v-model="title"
+          class="form-control form-control-sm"
+          placeholder="Заголовок"
+          required
+        />
+      </div>
+      <div class="col-6">
+        <input
+          type="text"
+          v-model="alias"
+          class="form-control form-control-sm"
+          placeholder="Алиас"
+          required
+        />
+      </div>
+    </div>
+    <div class="row mt-3">
+      <div class="col-4">
+        <button
+          @click="removeDoc"
+          type="button"
+          class="btn btn-sm btn-block btn-outline-danger"
+        >Удалить</button>
+      </div>
+      <div class="col-4">
+        <button type="reset" class="btn btn-sm btn-block btn-light">Очистить</button>
+      </div>
+      <div class="col-4">
+        <button type="submit" class="btn btn-sm btn-block btn-success">Сохранить</button>
+      </div>
+    </div>
+  </form>
 </template>
+
+<script>
+export default {
+  props: ['doc', 'collection'],
+  data() {
+    return {
+      title: this.doc.title || '',
+      alias: this.doc.alias || ''
+    }
+  },
+  methods: {
+    async saveDoc() {
+      let doc = {}
+      if (this.title.trim() && this.alias.trim()) {
+        doc = {
+          id: this.doc.id || Date.now().toString(),
+          title: this.title.trim(),
+          alias: this.alias.trim()
+        }
+        if (this.doc.id) {
+          try {
+            await this.$store.dispatch('updateDoc', {
+              doc,
+              collection: this.collection
+            })
+          } catch (err) {
+            console.log('Ошибка при обновлении документа:', err)
+          } finally {
+            console.log('Документ успешно обновлен')
+          }
+        } else {
+          try {
+            await this.$store.dispatch('addDoc', {
+              doc,
+              collection: this.collection
+            })
+          } catch (err) {
+            console.log('Ошибка при создании документа:', err)
+          } finally {
+            console.log('Документ успешно создан')
+          }
+        }
+      } else {
+        // Выделить поле красной рамкой
+        console.log('Заполните все поля:', doc)
+      }
+    },
+    removeDoc() {}
+  },
+  watch: {
+    doc() {
+      this.title = this.doc.title
+      this.alias = this.doc.alias
+    }
+  }
+}
+</script>

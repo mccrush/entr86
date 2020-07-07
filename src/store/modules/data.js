@@ -2,9 +2,14 @@ import { db } from '@/main.js'
 
 export default {
   state: {
+    clients: [],
     collections: [],
+    menus: [],
+    napravs: [],
+    portfolios: [],
+    prices: [],
     sliders: [],
-    zadachi: []
+    zadachi: [],
   },
   mutations: {
     addDoc(state, { doc, collection }) {
@@ -51,7 +56,12 @@ export default {
   },
   getters: {
     collections: state => state.collections,
+    clients: state => state.clients,
+    menus: state => state.menus,
+    napravs: state => state.napravs,
+    portfolios: state => state.portfolios,
+    prices: state => state.prices,
     sliders: state => state.sliders,
-    zadachi: state => state.zadachi
+    zadachi: state => state.zadachi,
   }
 }
