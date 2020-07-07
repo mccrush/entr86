@@ -5,6 +5,12 @@
         <div class="col-12 d-flex justify-content-between align-content-center border-bottom p-3">
           <h5 class="m-0 mt-1">Панель администратора</h5>
           <div>
+            <!-- <img
+              src="@/assets/icons/person-circle.svg"
+              alt="Юзерпик"
+              class="opacity-06 mr-2"
+              height="20"
+            />-->
             <span class="text-muted small mr-3">{{'@'+ user.email.split('@')[0]}}</span>
             <button @click="logOut" class="btn btn-sm btn-light">Выйти</button>
           </div>
@@ -170,6 +176,10 @@ export default {
 .btn-outline-primary {
   height: 16px;
   line-height: 1;
+}
+
+.opacity-06 {
+  opacity: 0.6;
 }
 
 .fade-enter-active,
