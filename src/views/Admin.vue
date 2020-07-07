@@ -62,6 +62,7 @@
               :is="selectCollectionAlias"
               :doc="doc"
               :collection="selectCollectionAlias"
+              :length="docs.length"
             />
             <h5 v-else-if="!selectCollectionAlias">Выберите Коллекцию</h5>
             <h5 v-else>Выберите Документ</h5>
