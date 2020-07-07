@@ -1,7 +1,7 @@
 <template>
   <div class="row justify-content-center">
     <vue-headful title="Авторизация" description="Авторизация" />
-    <div class="col-12 col-sm-6 col-md-4 col-xl-4 text-left">
+    <div class="col-12 col-sm-8 col-md-6 text-left">
       <form @submit.prevent="login" class="mt-5 mb-3 p-3 shadow-sm ml-auto mr-auto max-width">
         <h4 class="text-center mt-2 mb-4">Авторизация</h4>
         <label for="email">Почта</label>
@@ -88,9 +88,10 @@ export default {
 
       if (this.email && this.password) {
         try {
-          await this.$store.dispatch('logIn', formData)
-
-          this.$router.push('/')
+          await this.$store.dispatch('logIn', {
+            email: this.email,
+            password: this.password
+          })
         } catch (err) {
           if (err.code === 'auth/invalid-email') {
             this.$store.commit('addMessage', {
@@ -118,10 +119,12 @@ export default {
               type: 'bg-danger'
             })
           }
+        } finally {
+          this.$router.push('/admin')
         }
       } else {
         this.$store.commit('addMessage', {
-          text: 'Ошибка: поля не заполнены' + err.code,
+          text: 'Ошибка: поля не заполнены',
           type: 'bg-danger'
         })
       }

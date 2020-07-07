@@ -4,7 +4,10 @@
       <div class="row">
         <div class="col-12 d-flex justify-content-between align-content-center border-bottom p-3">
           <h5 class="m-0 mt-1">Панель администратора</h5>
-          <button class="btn btn-sm btn-light">Выйти</button>
+          <div>
+            <span class="text-muted small mr-3">{{'@'+ user.email.split('@')[0]}}</span>
+            <button @click="logOut" class="btn btn-sm btn-light">Выйти</button>
+          </div>
         </div>
       </div>
       <div class="row">
@@ -70,6 +73,7 @@
 </template>
 
 <script>
+import { auth } from '@/main.js'
 import CollectionsList from '@/components/admin/Collections'
 import Docs from '@/components/admin/Docs'
 import Sliders from '@/components/admin/forms/Sliders'
@@ -86,6 +90,7 @@ export default {
   },
   data() {
     return {
+      user: auth.currentUser,
       loading: true,
       selectCollectionAlias: '',
       selectDocAlias: '',
@@ -137,6 +142,10 @@ export default {
       this.createDoc = false
       this.selectDocAlias = alias
       this.doc = this.docs.find(doc => doc.alias === alias)
+    },
+    async logOut() {
+      await this.$store.dispatch('logOut')
+      this.$router.push('/login')
     }
   }
 }
