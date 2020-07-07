@@ -40,7 +40,7 @@
 
 <script>
 export default {
-  props: ['doc', 'collection'],
+  props: ['doc', 'collection', 'length'],
   data() {
     return {
       title: this.doc.title || '',
@@ -76,6 +76,11 @@ export default {
           } catch (err) {
             console.log('Ошибка при создании документа:', err)
           } finally {
+            this.title = ''
+            this.alias = ''
+            this.position = +this.position + 1
+            this.active = true
+            this.img = ''
             console.log('Документ успешно создан')
           }
         }

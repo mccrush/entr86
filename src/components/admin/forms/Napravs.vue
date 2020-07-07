@@ -23,8 +23,8 @@
     <div class="row mt-3">
       <div class="col-6">
         <div class="form-group row">
-          <label for="position" class="col-4">Позиция</label>
-          <div class="col-sm-4">
+          <label for="position" class="col-4 pt-1">Позиция</label>
+          <div class="col-4">
             <input
               type="number"
               id="position"
@@ -35,14 +35,15 @@
               class="form-control form-control-sm"
             />
           </div>
+          <div class="col-4 pt-1">
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" v-model="active" id="active" />
+              <label class="form-check-label" for="active">Активна</label>
+            </div>
+          </div>
         </div>
       </div>
-      <div class="col-6 text-left">
-        <div class="form-check">
-          <input class="form-check-input" type="checkbox" v-model="active" id="active" />
-          <label class="form-check-label" for="active">Активна</label>
-        </div>
-      </div>
+      <div class="col-6 text-left"></div>
     </div>
     <div class="row">
       <div class="col-6 text-left">
