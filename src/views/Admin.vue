@@ -69,6 +69,7 @@
               :doc="doc"
               :collection="selectCollectionAlias"
               :length="docs.length"
+              @update-doc="selectCollection"
             />
             <h5 v-else-if="!selectCollectionAlias">Выберите Коллекцию</h5>
             <h5 v-else>Выберите Документ</h5>
@@ -164,11 +165,15 @@ export default {
       this.selectDocAlias = alias
       this.doc = this.docs.find(doc => doc.alias === alias)
     },
+    updateDoc(alias) {
+      this.docs = this[alias]
+    },
     async logOut() {
       await this.$store.dispatch('logOut')
       this.$router.push('/login')
     }
-  }
+  },
+  watch: {}
 }
 </script>
 

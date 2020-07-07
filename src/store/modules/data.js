@@ -12,6 +12,10 @@ export default {
     zadachi: [],
   },
   mutations: {
+    updateDoc(state, { doc, collection }) {
+      const index = state[collection].findIndex(col => col.id === doc.id)
+      state[collection][index] = doc
+    },
     addDoc(state, { doc, collection }) {
       state[collection].push(doc)
     },
@@ -20,7 +24,7 @@ export default {
     }
   },
   actions: {
-    async updateDoc({ commit }, { doc, collection }) {
+    async updateDoc({ commit, dispatch }, { doc, collection }) {
       try {
         await db.collection(collection).doc(doc.id).update(doc)
       } catch (err) {

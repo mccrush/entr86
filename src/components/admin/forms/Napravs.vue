@@ -109,6 +109,7 @@ export default {
           } catch (err) {
             console.log('Ошибка при обновлении документа:', err)
           } finally {
+            this.$emit('update-doc', this.collection)
             console.log('Документ успешно обновлен')
           }
         } else {
