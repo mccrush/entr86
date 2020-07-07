@@ -14,10 +14,10 @@
         <div class="col-2 border-right p-0">
           <h6 class="border-bottom pt-2 pb-2 m-0">
             Коллекции
-            <button
+            <!-- <button
               @click="selectCollection('collections')"
               class="btn btn-sm btn-outline-primary p-0 pl-2 pr-2 ml-1"
-            >~</button>
+            >~</button>-->
           </h6>
           <transition name="fade" mode="out-in">
             <img v-if="loading" src="/img/admin/loading.gif" alt="Loading..." />
