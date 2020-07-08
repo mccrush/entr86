@@ -53,7 +53,7 @@
         </div>
       </div>
       <div class="col-6">
-        <img :src="img" alt="Изображение" class height="80" />
+        <img :src="img" alt="Изображение" class height="76" />
       </div>
     </div>
     <div class="row mt-3">
@@ -88,21 +88,18 @@ export default {
       alias: this.doc.alias || '',
       position: +this.doc.position || this.length + 1,
       active: this.doc.active ? true : false,
-      img: this.doc.img || '@/assets/icons/image.svg'
+      img: this.doc.img || '/img/admin/image.svg'
     }
   },
   methods: {
     async uploadImage(e) {
       const file = e.target.files[0]
-
-      // Загрузка изображения на сервер
       let storageRef = storage.ref()
-      let imagesRef = storageRef.child(this.collection + '/' + file.name)
-      await imagesRef.put(file).then(snapshot => {
-        snapshot.ref.getDownloadURL().then(downloadURL => {
-          this.img = downloadURL
-        })
-      })
+      let imagesRef = storageRef.child(
+        this.collection + '/' + this.doc.id + '/' + file.name
+      )
+      const snapshot = await imagesRef.put(file)
+      this.img = await snapshot.ref.getDownloadURL()
     },
     async saveDoc() {
       let doc = {}
@@ -137,7 +134,7 @@ export default {
             this.alias = ''
             this.position = +this.position + 1
             this.active = true
-            this.img = '@/assets/icons/image.svg'
+            this.img = '/img/admin/image.svg'
           }
         }
       } else {
@@ -165,7 +162,7 @@ export default {
       this.alias = this.doc.alias
       this.position = +this.doc.position || this.length + 1
       this.active = this.doc.active ? true : false
-      this.img = this.doc.img || '@/assets/icons/image.svg'
+      this.img = this.doc.img || '/img/admin/image.svg'
     }
   }
 }
