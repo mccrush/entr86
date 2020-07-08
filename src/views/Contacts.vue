@@ -30,21 +30,21 @@
         <div class="col-12 col-sm-6 mt-4">
           <img src="img/contacts/qr/q1.png" alt="Позвоните нам" width="200" class="mb-4" />
           <div
-            class="bg-dark pl-3 pr-3 pt-1 pb-1 mt-3 d-inline-block w-75 rounded justify-content-center m-auto mt-3 position-relative link-block"
+            class="bg-dark shadow-sm pl-3 pr-3 pt-1 pb-1 mt-3 d-inline-block w-75 rounded-lg justify-content-center m-auto mt-3 position-relative link-block"
           >
             <img src="img/footer/icons/phone_40.png" width="30" heigth="30" class="mr-2 mb-1" />
-            <h5 class="text-uppercase text-light mt-2 d-inline-block">
-              <a href="tel:+73462630475" target="_blank" class="stretched-link">Позвони нам</a>
+            <h5 class="mt-2 d-inline-block">
+              <a href="tel:+73462630475" target="_blank" class="stretched-link">Позвоните нам</a>
             </h5>
           </div>
         </div>
         <div class="col-12 col-sm-6 mt-4">
           <img src="img/contacts/qr/q2.png" alt="Позвоните нам" width="200" class="mb-4" />
           <div
-            class="bg-dark pl-3 pr-3 pt-1 pb-1 w-75 rounded justify-content-center m-auto mt-3 position-relative link-block"
+            class="bg-dark pl-3 pr-3 pt-1 pb-1 w-75 rounded-lg justify-content-center m-auto mt-3 position-relative link-block"
           >
             <img src="img/footer/icons/inst3.png" width="30" heigth="30" class="mr-2 mb-1" />
-            <h5 class="text-light mt-2 d-inline-block">
+            <h5 class="mt-2 d-inline-block">
               <a
                 href="https://www.instagram.com/entr86/"
                 target="_blank"

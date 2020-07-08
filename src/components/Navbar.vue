@@ -19,9 +19,9 @@
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav mr-auto text-uppercase">
-            <li class="nav-item">
+            <!-- <li class="nav-item">
               <router-link tag="a" to="/" class="nav-link">Главная</router-link>
-            </li>
+            </li>-->
             <li class="nav-item">
               <router-link tag="a" to="/price" class="nav-link">Прайс-лист</router-link>
             </li>
