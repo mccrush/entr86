@@ -17,7 +17,7 @@
         </div>
       </div>
       <div class="row">
-        <div class="col-2 border-right p-0">
+        <div class="col-2 border-right p-0 min-height-450">
           <h6 class="border-bottom pt-2 pb-2 m-0">
             Коллекции
             <!-- <button
@@ -183,6 +183,10 @@ export default {
 
 .opacity-06 {
   opacity: 0.6;
+}
+
+.min-height-450 {
+  min-height: 450px;
 }
 
 .fade-enter-active,
