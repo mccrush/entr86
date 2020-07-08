@@ -47,15 +47,13 @@
     </div>
     <div class="row">
       <div class="col-6 text-left">
-        <form>
-          <div class="form-group">
-            <label for="img">Изображение</label>
-            <input type="file" class="form-control-file" id="img" />
-          </div>
-        </form>
+        <div class="form-group">
+          <label for="img">Изображение</label>
+          <input type="file" class="form-control-file" id="img" @change="uploadImage" />
+        </div>
       </div>
       <div class="col-6">
-        <img src="@/assets/icons/image.svg" alt="Изображение" class height="80" />
+        <img :src="img" alt="Изображение" class height="80" />
       </div>
     </div>
     <div class="row mt-3">
@@ -80,6 +78,8 @@
 </template>
 
 <script>
+import { storage } from '@/main.js'
+
 export default {
   props: ['doc', 'collection', 'length'],
   data() {
@@ -88,10 +88,22 @@ export default {
       alias: this.doc.alias || '',
       position: +this.doc.position || this.length + 1,
       active: this.doc.active ? true : false,
-      img: this.doc.img || ''
+      img: this.doc.img || '@/assets/icons/image.svg'
     }
   },
   methods: {
+    async uploadImage(e) {
+      const file = e.target.files[0]
+
+      // Загрузка изображения на сервер
+      let storageRef = storage.ref()
+      let imagesRef = storageRef.child(this.collection + '/' + file.name)
+      await imagesRef.put(file).then(snapshot => {
+        snapshot.ref.getDownloadURL().then(downloadURL => {
+          this.img = downloadURL
+        })
+      })
+    },
     async saveDoc() {
       let doc = {}
       if (this.title.trim() && this.alias.trim()) {
@@ -125,7 +137,7 @@ export default {
             this.alias = ''
             this.position = +this.position + 1
             this.active = true
-            this.img = ''
+            this.img = '@/assets/icons/image.svg'
           }
         }
       } else {
@@ -153,7 +165,7 @@ export default {
       this.alias = this.doc.alias
       this.position = +this.doc.position || this.length + 1
       this.active = this.doc.active ? true : false
-      this.img = this.doc.img
+      this.img = this.doc.img || '@/assets/icons/image.svg'
     }
   }
 }
