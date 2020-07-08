@@ -74,7 +74,7 @@ export default {
       title: this.doc.title || '',
       alias: this.doc.alias || '',
       position: +this.doc.position || this.length + 1,
-      active: this.doc.active || true
+      active: this.doc.active ? true : false
     }
   },
   methods: {
@@ -136,7 +136,7 @@ export default {
       this.title = this.doc.title
       this.alias = this.doc.alias
       this.position = +this.doc.position || this.length + 1
-      this.active = this.doc.active || true
+      this.active = this.doc.active ? true : false
     }
   }
 }

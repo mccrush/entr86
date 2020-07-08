@@ -67,7 +67,7 @@ export default {
       let collections = []
       try {
         const ref = db.collection(collection)
-        const snapshot = await ref.get()
+        const snapshot = await ref.orderBy('position').get()
         snapshot.forEach(doc => {
           collections.push(doc.data())
         });

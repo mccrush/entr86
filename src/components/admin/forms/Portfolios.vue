@@ -90,7 +90,7 @@ export default {
       title: this.doc.title || '',
       desc: this.doc.desc || '',
       position: +this.doc.position || this.length + 1,
-      active: this.doc.active || true,
+      active: this.doc.active ? true : false,
       img: this.doc.img || ''
     }
   },
@@ -155,7 +155,7 @@ export default {
       this.title = this.doc.title
       this.desc = this.doc.desc
       this.position = +this.doc.position || this.length + 1
-      this.active = this.doc.active || true
+      this.active = this.doc.active ? true : false
       this.img = this.doc.img
     }
   }
