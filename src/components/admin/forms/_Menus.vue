@@ -21,31 +21,6 @@
       </div>
     </div>
     <div class="row mt-3">
-      <div class="col-6">
-        <div class="form-group row">
-          <label for="position" class="col-4 pt-1">Позиция</label>
-          <div class="col-4">
-            <input
-              type="number"
-              id="position"
-              min="0"
-              max="20"
-              step="1"
-              v-model="position"
-              class="form-control form-control-sm"
-            />
-          </div>
-          <div class="col-4 pt-1">
-            <div class="form-check">
-              <input class="form-check-input" type="checkbox" v-model="active" id="active" />
-              <label class="form-check-label" for="active">Активна</label>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-6 text-left"></div>
-    </div>
-    <div class="row mt-3">
       <div class="col-4">
         <transition name="fade" mode="out-in">
           <button
@@ -72,9 +47,7 @@ export default {
   data() {
     return {
       title: this.doc.title || '',
-      alias: this.doc.alias || '',
-      position: +this.doc.position || this.length + 1,
-      active: this.doc.active || true
+      alias: this.doc.alias || ''
     }
   },
   methods: {
@@ -84,9 +57,7 @@ export default {
         doc = {
           id: this.doc.id || Date.now().toString(),
           title: this.title.trim(),
-          alias: this.alias.trim(),
-          position: +this.position,
-          active: this.active
+          alias: this.alias.trim()
         }
         if (this.doc.id) {
           try {
@@ -110,6 +81,7 @@ export default {
             this.alias = ''
             this.position = +this.position + 1
             this.active = true
+            this.img = ''
           }
         }
       } else {
@@ -135,8 +107,6 @@ export default {
     doc() {
       this.title = this.doc.title
       this.alias = this.doc.alias
-      this.position = +this.doc.position || this.length + 1
-      this.active = this.doc.active || true
     }
   }
 }
