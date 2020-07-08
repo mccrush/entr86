@@ -21,7 +21,7 @@
               type="number"
               id="position"
               min="0"
-              max="20"
+              max="42"
               step="1"
               v-model="position"
               class="form-control form-control-sm"
