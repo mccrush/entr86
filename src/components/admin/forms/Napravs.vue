@@ -47,13 +47,25 @@
     </div>
     <div class="row">
       <div class="col-6 text-left">
-        <div class="form-group">
+        <div v-if="!this.img.name" class="form-group">
           <label for="img">Изображение</label>
-          <input type="file" class="form-control-file" id="img" @change="uploadImage" />
+          <input
+            type="file"
+            class="form-control-file"
+            id="img"
+            @change="uploadImage"
+            ref="selectFile"
+          />
         </div>
       </div>
       <div class="col-6">
-        <img :src="img" alt="Изображение" class height="76" />
+        <img :src="img.url" alt="Изображение" class height="76" />
+        <button
+          v-if="this.img.name"
+          class="btn btn-sm btn-light position-absolute"
+          type="button"
+          @click="removeImage"
+        >Удалить</button>
       </div>
     </div>
     <div class="row mt-3">
@@ -88,18 +100,40 @@ export default {
       alias: this.doc.alias || '',
       position: +this.doc.position || this.length + 1,
       active: this.doc.active ? true : false,
-      img: this.doc.img || '/img/admin/image.svg'
+      img: {
+        url: this.doc.img.url || '/img/admin/image.svg',
+        name: this.doc.img.name || ''
+      }
     }
   },
   methods: {
+    // selectImage(e) {
+    //   const file = e.target.files[0]
+    //   let reader = new FileReader()
+    //   reader.onload = e => {
+    //     this.img.url = e.target.result
+    //   }
+    //   reader.readAsDataURL(file)
+    // },
+    async removeImage() {
+      let storageRef = storage.ref()
+      let imagesRef = storageRef.child(
+        this.collection + '/' + this.doc.id + '/' + this.doc.img.name
+      )
+      await imagesRef.delete()
+      this.img.url = '/img/admin/image.svg'
+      this.img.name = ''
+    },
     async uploadImage(e) {
       const file = e.target.files[0]
+      this.img.name = file.name
       let storageRef = storage.ref()
       let imagesRef = storageRef.child(
         this.collection + '/' + this.doc.id + '/' + file.name
       )
       const snapshot = await imagesRef.put(file)
-      this.img = await snapshot.ref.getDownloadURL()
+      this.img.url = await snapshot.ref.getDownloadURL()
+      // Обновить поле img в БД и Storege
     },
     async saveDoc() {
       let doc = {}
@@ -110,7 +144,7 @@ export default {
           alias: this.alias.trim(),
           position: +this.position,
           active: this.active,
-          img: this.img || ''
+          img: this.img || null
         }
         if (this.doc.id) {
           try {
@@ -134,7 +168,7 @@ export default {
             this.alias = ''
             this.position = +this.position + 1
             this.active = true
-            this.img = '/img/admin/image.svg'
+            this.img.url = '/img/admin/image.svg'
           }
         }
       } else {
@@ -162,7 +196,10 @@ export default {
       this.alias = this.doc.alias
       this.position = +this.doc.position || this.length + 1
       this.active = this.doc.active ? true : false
-      this.img = this.doc.img || '/img/admin/image.svg'
+      this.img.url = this.doc.img.url || '/img/admin/image.svg'
+      this.img.name = this.doc.img.name || ''
+      console.log('this.img.name:', this.img.name)
+      console.log('this.img.url:', this.img.url)
     }
   }
 }
