@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <transition name="fade" mode="out-in">
-      <Navbar v-if="$route.name != 'login' && $route.name != 'admin' && footer" />
+      <Navbar v-if="$route.name != 'login' && $route.name != 'admin' && navbar" />
     </transition>
     <div class="pt-4 pb-4" :class="$route.name === 'admin' ? 'container-fluid' : 'container'">
       <transition name="fade" mode="out-in">
@@ -28,13 +28,17 @@ export default {
   },
   data() {
     return {
+      navbar: false,
       footer: false
     }
   },
   mounted() {
     setTimeout(() => {
-      this.footer = true
+      this.navbar = true
     }, 0)
+    setTimeout(() => {
+      this.footer = true
+    }, 100)
   }
 }
 </script>
