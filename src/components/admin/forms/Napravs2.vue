@@ -94,20 +94,20 @@ import { storage } from '@/main.js'
 
 export default {
   props: ['doc', 'collection', 'length'],
-  data() {
-    return {
-      id: this.doc.id || Date.now().toString(),
-      status: this.doc.id ? 'update' : 'create',
-      title: this.doc.title || '',
-      alias: this.doc.alias || '',
-      position: +this.doc.position || this.length + 1,
-      active: this.doc.active ? true : false,
-      img: {
-        url: this.doc.img.url || '/img/admin/image.svg',
-        name: this.doc.img.name || ''
-      }
-    }
-  },
+  // data() {
+  //   return {
+  //     id: this.doc.id || Date.now().toString(),
+  //     status: this.doc.id ? 'update' : 'create',
+  //     title: this.doc.title || '',
+  //     alias: this.doc.alias || '',
+  //     position: +this.doc.position || this.length + 1,
+  //     active: this.doc.active ? true : false,
+  //     img: {
+  //       url: this.doc.img.url || '/img/admin/image.svg',
+  //       name: this.doc.img.name || ''
+  //     }
+  //   }
+  // },
   methods: {
     // selectImage(e) {
     //   const file = e.target.files[0]

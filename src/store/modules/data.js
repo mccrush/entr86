@@ -30,6 +30,7 @@ export default {
     }
   },
   actions: {
+    async updateImageFill({ commit }, { collection, id, img }) { },
     async removeDoc({ commit, dispatch }, { id, collection }) {
       try {
         await db.collection(collection).doc(id).delete()
