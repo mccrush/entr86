@@ -4,7 +4,7 @@
       <div class="col-6">
         <input
           type="text"
-          v-model="title"
+          v-model="doc.title"
           class="form-control form-control-sm"
           placeholder="Заголовок"
           required
@@ -13,7 +13,7 @@
       <div class="col-6">
         <input
           type="text"
-          v-model="alias"
+          v-model="doc.alias"
           class="form-control form-control-sm"
           placeholder="Алиас"
           required
@@ -31,13 +31,14 @@
               min="0"
               max="20"
               step="1"
-              v-model="position"
+              v-model="doc.position"
+              required
               class="form-control form-control-sm"
             />
           </div>
           <div class="col-4 pt-1">
             <div class="form-check">
-              <input class="form-check-input" type="checkbox" v-model="active" id="active" />
+              <input class="form-check-input" type="checkbox" v-model="doc.active" id="active" />
               <label class="form-check-label" for="active">Активна</label>
             </div>
           </div>
@@ -47,21 +48,22 @@
     </div>
     <div class="row">
       <div class="col-6 text-left">
-        <div v-if="!img.name" class="form-group">
+        <div class="form-group">
           <label for="img">Изображение</label>
           <input
             type="file"
             class="form-control-file"
             id="img"
+            accept="image/png, image/jpeg"
+            :disabled="doc.id ? false : true"
             @change="uploadImage"
-            ref="selectFile"
           />
         </div>
       </div>
-      <div class="col-6">
-        <img :src="img.url" alt="Изображение" class height="76" />
+      <div v-if="doc.id" class="col-6">
+        <img v-if="doc.img.name" :src="doc.img.url" alt="Изображение" class height="76" />
         <button
-          v-if="img.name"
+          v-if="doc.img.name"
           class="btn btn-sm btn-light position-absolute"
           type="button"
           @click="removeImage"
@@ -72,18 +74,18 @@
       <div class="col-4">
         <transition name="fade" mode="out-in">
           <button
-            v-if="id"
             @click="removeDoc"
             type="button"
             class="btn btn-sm btn-block btn-outline-danger"
+            :disabled="doc.id ? false : true"
           >Удалить</button>
         </transition>
       </div>
       <div class="col-4">
-        <button type="reset" class="btn btn-sm btn-block btn-light">Очистить</button>
+        <!-- Очистить -->
       </div>
       <div class="col-4">
-        <button type="submit" class="btn btn-sm btn-block btn-success">Сохранить</button>
+        <button type="submit" class="btn btn-sm btn-block btn-outline-success">Сохранить</button>
       </div>
     </div>
   </form>
@@ -94,120 +96,93 @@ import { storage } from '@/main.js'
 
 export default {
   props: ['doc', 'collection', 'length'],
-  data() {
-    return {
-      id: this.doc.id || Date.now().toString(),
-      status: this.doc.id ? 'update' : 'create',
-      title: this.doc.title || '',
-      alias: this.doc.alias || '',
-      position: +this.doc.position || this.length + 1,
-      active: this.doc.active ? true : false,
-      img: {
-        url: this.doc.img.url || '/img/admin/image.svg',
-        name: this.doc.img.name || ''
-      }
-    }
-  },
   methods: {
-    // selectImage(e) {
-    //   const file = e.target.files[0]
-    //   let reader = new FileReader()
-    //   reader.onload = e => {
-    //     this.img.url = e.target.result
-    //   }
-    //   reader.readAsDataURL(file)
-    // },
     async removeImage() {
       let storageRef = storage.ref()
       let imagesRef = storageRef.child(
         this.collection + '/' + this.doc.id + '/' + this.doc.img.name
       )
-      await imagesRef.delete()
-      this.img.url = '/img/admin/image.svg'
-      this.img.name = ''
+      try {
+        await imagesRef.delete()
+        this.doc.img.url = ''
+        this.doc.img.name = ''
+        await this.$store.dispatch('updateImageFill', {
+          collection: this.collection,
+          id: this.doc.id,
+          img: this.doc.img
+        })
+      } catch (err) {
+      } finally {
+        console.log('Изображение успешно удалено')
+      }
     },
     async uploadImage(e) {
       const file = e.target.files[0]
-      this.img.name = file.name
-      let storageRef = storage.ref()
-      let imagesRef = storageRef.child(
-        this.collection + '/' + this.doc.id + '/' + file.name
-      )
-      const snapshot = await imagesRef.put(file)
-      this.img.url = await snapshot.ref.getDownloadURL()
-      this.$store.dispatch('updateImageFill', {
-        collection: this.collection,
-        id: this.doc.id,
-        img: this.img
-      })
-      // Обновить поле img в БД и Storege
+      if (file) {
+        this.doc.img.url = '/img/admin/loading-image.gif'
+        this.doc.img.name = file.name
+        let storageRef = storage.ref()
+        let imagesRef = storageRef.child(
+          this.collection + '/' + this.doc.id + '/' + file.name
+        )
+        try {
+          const snapshot = await imagesRef.put(file)
+          this.doc.img.url = await snapshot.ref.getDownloadURL()
+          await this.$store.dispatch('updateImageFill', {
+            collection: this.collection,
+            id: this.doc.id,
+            img: this.doc.img
+          })
+        } catch (err) {
+        } finally {
+          console.log('Изображение успешно загружено')
+        }
+      }
     },
     async saveDoc() {
       let doc = {}
-      if (this.title.trim() && this.alias.trim()) {
+      if (this.doc.title.trim() && this.doc.alias.trim()) {
         doc = {
-          id: this.doc,
-          title: this.title.trim(),
-          alias: this.alias.trim(),
-          position: +this.position,
-          active: this.active,
-          img: this.img || null
+          id: this.doc.id || Date.now().toString(),
+          title: this.doc.title.trim(),
+          alias: this.doc.alias.trim(),
+          position: +this.doc.position,
+          active: this.doc.active,
+          img: this.doc.img || { url: '', name: '' }
         }
-        if (this.doc.id) {
-          try {
-            await this.$store.dispatch('updateDoc', {
-              doc,
-              collection: this.collection
-            })
-          } catch (err) {
-          } finally {
-            this.$emit('update-doc', this.collection)
-          }
-        } else {
-          try {
+        try {
+          if (!this.doc.id) {
             await this.$store.dispatch('addDoc', {
-              doc,
-              collection: this.collection
+              collection: this.collection,
+              doc
             })
-          } catch (err) {
-          } finally {
-            this.title = ''
-            this.alias = ''
-            this.position = +this.position + 1
-            this.active = true
-            this.img.url = '/img/admin/image.svg'
+          } else {
+            await this.$store.dispatch('updateDoc', {
+              collection: this.collection,
+              doc
+            })
           }
+        } catch (err) {
+        } finally {
+          this.$emit('update-doc', this.collection)
         }
       } else {
-        // Выделить поле красной рамкой
-        console.log('Заполните все поля:', doc)
+        // Выделить поле красной рамкой?
+        //console.log('Заполните все поля:', this.doc)
       }
     },
-    async removeDoc(id, collections) {
+    async removeDoc() {
       if (confirm('Точно удалить?')) {
         try {
           await this.$store.dispatch('removeDoc', {
-            id: this.doc.id,
-            collection: this.collection
+            collection: this.collection,
+            id: this.doc.id
           })
         } catch (err) {
         } finally {
           this.$emit('update-doc', this.collection)
         }
       }
-    }
-  },
-  watch: {
-    doc() {
-      this.doc = this.doc.id || Date.now().toString()
-      this.title = this.doc.title
-      this.alias = this.doc.alias
-      this.position = +this.doc.position || this.length + 1
-      this.active = this.doc.active ? true : false
-      this.img.url = this.doc.img.url || '/img/admin/image.svg'
-      this.img.name = this.doc.img.name || ''
-      console.log('this.img.name:', this.img.name)
-      console.log('this.img.url:', this.img.url)
     }
   }
 }

@@ -26,7 +26,7 @@
             >~</button>-->
           </h6>
           <transition name="fade" mode="out-in">
-            <img v-if="loading" src="/img/admin/loading.gif" alt="Loading..." />
+            <img v-if="loadingCol" src="/img/admin/loading.gif" alt="Loading..." />
             <div v-else>
               <CollectionsList
                 v-for="(collection, index) in collections"
@@ -50,7 +50,7 @@
           </h6>
 
           <transition name="fade" mode="out-in">
-            <img v-if="loading" src="/img/admin/loading.gif" alt="Loading..." />
+            <img v-if="loadingDoc" src="/img/admin/loading.gif" alt="Loading..." />
             <div v-else>
               <Docs
                 v-for="(doc, index) in docs"
@@ -90,7 +90,7 @@ import Docs from '@/components/admin/Docs'
 import Collections from '@/components/admin/forms/Collections'
 import Clients from '@/components/admin/forms/Clients'
 import Menus from '@/components/admin/forms/Menus'
-import Napravs from '@/components/admin/forms/Napravs2'
+import Napravs from '@/components/admin/forms/Napravs'
 import Portfolios from '@/components/admin/forms/Portfolios'
 import Prices from '@/components/admin/forms/Prices'
 import Sliders from '@/components/admin/forms/Sliders'
@@ -112,7 +112,8 @@ export default {
   data() {
     return {
       user: auth.currentUser,
-      loading: true,
+      loadingCol: true,
+      loadingDoc: true,
       selectCollectionAlias: '',
       selectDocId: '',
       createDoc: false,
@@ -138,9 +139,9 @@ export default {
     try {
       await this.$store.dispatch('getData', 'collections')
     } catch (err) {
-      console.log('Ошибка при получении данных в Админ:', err.message)
+      console.log('Ошибка при получении коллекций в Админ:', err.message)
     } finally {
-      this.loading = false
+      this.loadingCol = false
       try {
         await this.$store.dispatch('getData', 'clients')
         await this.$store.dispatch('getData', 'menus')
@@ -151,6 +152,8 @@ export default {
         await this.$store.dispatch('getData', 'zadachi')
       } catch (err) {
         console.log('Ошибка при получении данных в Админ:', err.message)
+      } finally {
+        this.loadingDoc = false
       }
     }
   },
@@ -170,8 +173,7 @@ export default {
       await this.$store.dispatch('logOut')
       this.$router.push('/login')
     }
-  },
-  watch: {}
+  }
 }
 </script>
 
