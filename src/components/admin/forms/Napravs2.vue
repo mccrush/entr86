@@ -32,6 +32,7 @@
               max="20"
               step="1"
               v-model="doc.position"
+              required
               class="form-control form-control-sm"
             />
           </div>
@@ -45,7 +46,7 @@
       </div>
       <div class="col-6 text-left"></div>
     </div>
-    <div v-if="doc.id" class="row">
+    <div class="row">
       <div class="col-6 text-left">
         <div class="form-group">
           <label for="img">Изображение</label>
@@ -54,11 +55,12 @@
             class="form-control-file"
             id="img"
             accept="image/png, image/jpeg"
+            :disabled="doc.id ? false : true"
             @change="uploadImage"
           />
         </div>
       </div>
-      <div class="col-6">
+      <div v-if="doc.id" class="col-6">
         <img v-if="doc.img.name" :src="doc.img.url" alt="Изображение" class height="76" />
 
         <button
@@ -73,15 +75,18 @@
       <div class="col-4">
         <transition name="fade" mode="out-in">
           <button
-            v-if="doc.id"
             @click="removeDoc"
             type="button"
             class="btn btn-sm btn-block btn-outline-danger"
+            :disabled="doc.id ? false : true"
           >Удалить</button>
         </transition>
       </div>
       <div class="col-4">
-        <button type="reset" class="btn btn-sm btn-block btn-light">Очистить</button>
+        <!-- <button
+          type="reset"
+          class="btn btn-sm btn-block btn-light"
+        >Очистить</button>-->
       </div>
       <div class="col-4">
         <button type="submit" class="btn btn-sm btn-block btn-success">Сохранить</button>
@@ -95,20 +100,6 @@ import { storage } from '@/main.js'
 
 export default {
   props: ['doc', 'collection', 'length'],
-  // data() {
-  //   return {
-  //     id: this.doc.id || Date.now().toString(),
-  //     status: this.doc.id ? 'update' : 'create',
-  //     title: this.doc.title || '',
-  //     alias: this.doc.alias || '',
-  //     position: +this.doc.position || this.length + 1,
-  //     active: this.doc.active ? true : false,
-  //     img: {
-  //       url: this.doc.img.url || '/img/admin/image.svg',
-  //       name: this.doc.img.name || ''
-  //     }
-  //   }
-  // },
   methods: {
     async removeImage() {
       let storageRef = storage.ref()
@@ -133,9 +124,9 @@ export default {
       }
     },
     async saveDoc() {
-      let newDoc = {}
+      let doc = {}
       if (this.doc.title.trim() && this.doc.alias.trim()) {
-        newDoc = {
+        doc = {
           id: this.doc.id || Date.now().toString(),
           title: this.doc.title.trim(),
           alias: this.doc.alias.trim(),
@@ -143,26 +134,21 @@ export default {
           active: this.doc.active,
           img: this.doc.img || { url: '', name: '' }
         }
-        if (!this.doc.id) {
-          try {
+        try {
+          if (!this.doc.id) {
             await this.$store.dispatch('addDoc', {
-              doc: newDoc,
+              doc,
               collection: this.collection
             })
-          } catch (err) {
-          } finally {
-            this.$emit('update-doc', this.collection)
-          }
-        } else {
-          try {
+          } else {
             await this.$store.dispatch('updateDoc', {
-              doc: newDoc,
+              doc,
               collection: this.collection
             })
-          } catch (err) {
-          } finally {
-            this.$emit('update-doc', this.collection)
           }
+        } catch (err) {
+        } finally {
+          this.$emit('update-doc', this.collection)
         }
       } else {
         // Выделить поле красной рамкой
