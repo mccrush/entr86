@@ -16,6 +16,7 @@
           </div>
         </div>
       </div>
+
       <div class="row">
         <div class="col-2 border-right p-0 min-height-450">
           <h6 class="border-bottom pt-2 pb-2 m-0">
@@ -38,6 +39,7 @@
             </div>
           </transition>
         </div>
+
         <div class="col-2 border-right p-0">
           <h6 class="border-bottom pt-2 pb-2 m-0">
             Документы
@@ -48,7 +50,6 @@
               title="Создать документ"
             >+</button>
           </h6>
-
           <transition name="fade" mode="out-in">
             <img v-if="loadingDoc" src="/img/admin/loading.gif" alt="Loading..." />
             <div v-else>
@@ -62,6 +63,7 @@
             </div>
           </transition>
         </div>
+
         <div class="col-8 pt-3 pb-3">
           <transition name="fade" mode="out-in">
             <Form

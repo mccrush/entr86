@@ -7,6 +7,7 @@
           v-model="doc.title"
           class="form-control form-control-sm"
           placeholder="Заголовок"
+          maxlength="70"
           required
         />
       </div>
@@ -31,7 +32,7 @@
               type="number"
               id="position"
               min="0"
-              max="20"
+              max="42"
               step="1"
               v-model="doc.position"
               required
@@ -61,10 +62,10 @@
       </div>
     </div>
 
-    <div v-if="collection != 'menus' || collection != 'prices'" class="row">
+    <div v-if="collection != 'menus' && collection != 'prices'" class="row">
       <div class="col-6 text-left">
         <div class="form-group">
-          <label for="img">Изображение</label>
+          <label for="img" class="small">Изображение (max 5 Мб)</label>
           <input
             type="file"
             class="form-control-file"
@@ -135,6 +136,10 @@ export default {
     async uploadImage(e) {
       const file = e.target.files[0]
       if (file) {
+        if (file.size / 1024 / 1024 > 5) {
+          alert('Изображение весит более 5 Мб!')
+          return false
+        }
         this.doc.img.url = '/img/admin/loading-image.gif'
         this.doc.img.name = file.name
         let storageRef = storage.ref()
@@ -157,11 +162,11 @@ export default {
     },
     async saveDoc() {
       let doc = {}
-      if (this.doc.title.trim() && this.doc.alias.trim()) {
+      if (this.doc.title.trim()) {
         doc = {
           id: this.doc.id || Date.now().toString(),
           title: this.doc.title.trim(),
-          alias: this.doc.alias.trim(),
+          alias: this.doc.alias || '',
           position: +this.doc.position,
           active: this.doc.active,
           desc: this.doc.desc || '',
