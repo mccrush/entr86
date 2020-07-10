@@ -4,7 +4,7 @@
       <div class="col-6">
         <input
           type="text"
-          v-model="doc.title"
+          v-model="title"
           class="form-control form-control-sm"
           placeholder="Заголовок"
           required
@@ -13,7 +13,7 @@
       <div class="col-6">
         <input
           type="text"
-          v-model="doc.alias"
+          v-model="alias"
           class="form-control form-control-sm"
           placeholder="Алиас"
           required
@@ -31,13 +31,13 @@
               min="0"
               max="20"
               step="1"
-              v-model="doc.position"
+              v-model="position"
               class="form-control form-control-sm"
             />
           </div>
           <div class="col-4 pt-1">
             <div class="form-check">
-              <input class="form-check-input" type="checkbox" v-model="doc.active" id="active" />
+              <input class="form-check-input" type="checkbox" v-model="active" id="active" />
               <label class="form-check-label" for="active">Активна</label>
             </div>
           </div>
@@ -47,7 +47,7 @@
     </div>
     <div class="row">
       <div class="col-6 text-left">
-        <div v-if="!this.img.name" class="form-group">
+        <div v-if="!img.name" class="form-group">
           <label for="img">Изображение</label>
           <input
             type="file"
@@ -61,7 +61,7 @@
       <div class="col-6">
         <img :src="img.url" alt="Изображение" class height="76" />
         <button
-          v-if="this.img.name"
+          v-if="img.name"
           class="btn btn-sm btn-light position-absolute"
           type="button"
           @click="removeImage"
@@ -72,7 +72,7 @@
       <div class="col-4">
         <transition name="fade" mode="out-in">
           <button
-            v-if="doc.id"
+            v-if="id"
             @click="removeDoc"
             type="button"
             class="btn btn-sm btn-block btn-outline-danger"
