@@ -12,6 +12,7 @@
       </div>
       <div class="col-6">
         <input
+          v-if="collection === 'menus' || collection === 'napravs' || collection === 'prices'"
           type="text"
           v-model="doc.alias"
           class="form-control form-control-sm"
@@ -20,7 +21,8 @@
         />
       </div>
     </div>
-    <div class="row mt-3">
+
+    <div>
       <div class="col-6">
         <div class="form-group row">
           <label for="position" class="col-4 pt-1">Позиция</label>
@@ -46,7 +48,20 @@
       </div>
       <div class="col-6 text-left"></div>
     </div>
-    <div class="row">
+
+    <div v-if="collection === 'portfolios' || collection === 'prices'" class="row">
+      <div class="col-12">
+        <textarea
+          type="text"
+          v-model="doc.desc"
+          class="form-control form-control-sm"
+          placeholder="Описание"
+          rows="9"
+        ></textarea>
+      </div>
+    </div>
+
+    <div v-if="collection != 'menus' || collection != 'prices'" class="row">
       <div class="col-6 text-left">
         <div class="form-group">
           <label for="img">Изображение</label>
@@ -148,6 +163,7 @@ export default {
           alias: this.doc.alias.trim(),
           position: +this.doc.position,
           active: this.doc.active,
+          desc: this.doc.desc || '',
           img: this.doc.img || { url: '', name: '' }
         }
         try {

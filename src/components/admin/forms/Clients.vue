@@ -4,7 +4,7 @@
       <div class="col-6">
         <input
           type="text"
-          v-model="title"
+          v-model="doc.title"
           class="form-control form-control-sm"
           placeholder="Заголовок"
           required
@@ -23,13 +23,13 @@
               min="0"
               max="42"
               step="1"
-              v-model="position"
+              v-model="doc.position"
               class="form-control form-control-sm"
             />
           </div>
           <div class="col-4 pt-1">
             <div class="form-check">
-              <input class="form-check-input" type="checkbox" v-model="active" id="active" />
+              <input class="form-check-input" type="checkbox" v-model="doc.active" id="active" />
               <label class="form-check-label" for="active">Активна</label>
             </div>
           </div>
@@ -39,15 +39,26 @@
     </div>
     <div class="row">
       <div class="col-6 text-left">
-        <form>
-          <div class="form-group">
-            <label for="img">Изображение</label>
-            <input type="file" class="form-control-file" id="img" />
-          </div>
-        </form>
+        <div class="form-group">
+          <label for="img">Изображение</label>
+          <input
+            type="file"
+            class="form-control-file"
+            id="img"
+            accept="image/png, image/jpeg"
+            :disabled="doc.id ? false : true"
+            @change="uploadImage"
+          />
+        </div>
       </div>
-      <div class="col-6">
-        <img :src="img" alt="Изображение" class height="76" />
+      <div v-if="doc.id" class="col-6">
+        <img v-if="doc.img.name" :src="doc.img.url" alt="Изображение" class height="76" />
+        <button
+          v-if="doc.img.name"
+          class="btn btn-sm btn-light position-absolute"
+          type="button"
+          @click="removeImage"
+        >Удалить</button>
       </div>
     </div>
     <div class="row mt-3">
@@ -61,9 +72,7 @@
           >Удалить</button>
         </transition>
       </div>
-      <div class="col-4">
-        <button type="reset" class="btn btn-sm btn-block btn-light">Очистить</button>
-      </div>
+      <div class="col-4"></div>
       <div class="col-4">
         <button type="submit" class="btn btn-sm btn-block btn-success">Сохранить</button>
       </div>
