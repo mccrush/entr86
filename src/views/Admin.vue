@@ -64,9 +64,8 @@
         </div>
         <div class="col-8 pt-3 pb-3">
           <transition name="fade" mode="out-in">
-            <component
+            <Form
               v-if="selectCollectionAlias && (selectDocId || createDoc)"
-              :is="selectCollectionAlias"
               :doc="doc"
               :collection="selectCollectionAlias"
               :length="docs.length"
@@ -86,28 +85,13 @@ import { mapGetters } from 'vuex'
 import { auth } from '@/main.js'
 import CollectionsList from '@/components/admin/Collections'
 import Docs from '@/components/admin/Docs'
-
-import Collections from '@/components/admin/forms/Collections'
-import Clients from '@/components/admin/forms/Clients'
-import Menus from '@/components/admin/forms/Menus'
-import Napravs from '@/components/admin/forms/Napravs'
-import Portfolios from '@/components/admin/forms/Portfolios'
-import Prices from '@/components/admin/forms/Prices'
-import Sliders from '@/components/admin/forms/Sliders'
-import Zadachi from '@/components/admin/forms/Zadachi'
+import Form from '@/components/admin/Form'
 
 export default {
   components: {
     CollectionsList,
     Docs,
-    Collections,
-    Clients,
-    Menus,
-    Napravs,
-    Portfolios,
-    Prices,
-    Sliders,
-    Zadachi
+    Form
   },
   data() {
     return {

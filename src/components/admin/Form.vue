@@ -22,7 +22,7 @@
       </div>
     </div>
 
-    <div>
+    <div class="row mt-3">
       <div class="col-6">
         <div class="form-group row">
           <label for="position" class="col-4 pt-1">Позиция</label>
@@ -85,6 +85,7 @@
         >Удалить</button>
       </div>
     </div>
+
     <div class="row mt-3">
       <div class="col-4">
         <transition name="fade" mode="out-in">
