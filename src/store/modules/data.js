@@ -18,15 +18,15 @@ export default {
       tempDoc.img = img
       state[collection][index] = tempDoc
     },
-    removeDoc(state, { id, collection }) {
+    removeDoc(state, { collection, id }) {
       let tempDoc = state[collection].filter(doc => doc.id != id)
       state[collection] = tempDoc
     },
-    updateDoc(state, { doc, collection }) {
+    updateDoc(state, { collection, doc }) {
       const index = state[collection].findIndex(col => col.id === doc.id)
       state[collection][index] = doc
     },
-    addDoc(state, { doc, collection }) {
+    addDoc(state, { collection, doc }) {
       state[collection].push(doc)
     },
     getData(state, { collections, collection }) {
@@ -45,7 +45,7 @@ export default {
         commit('updateImageFill', { collection, id, img })
       }
     },
-    async removeDoc({ commit, dispatch }, { id, collection }) {
+    async removeDoc({ commit, dispatch }, { collection, id }) {
       try {
         await db.collection(collection).doc(id).delete()
       } catch (err) {
@@ -53,10 +53,10 @@ export default {
         console.log('Ошибка при удалении документа:', err)
       } finally {
         console.log('Документ успешно удален')
-        commit('removeDoc', { id, collection })
+        commit('removeDoc', { collection, id })
       }
     },
-    async updateDoc({ commit, dispatch }, { doc, collection }) {
+    async updateDoc({ commit, dispatch }, { collection, doc }) {
       try {
         await db.collection(collection).doc(doc.id).update(doc)
       } catch (err) {
@@ -64,10 +64,10 @@ export default {
         console.log('Ошибка при обновлении документа:', err)
       } finally {
         console.log('Документ успешно обновлен')
-        commit('updateDoc', { doc, collection })
+        commit('updateDoc', { collection, doc })
       }
     },
-    async addDoc({ commit }, { doc, collection }) {
+    async addDoc({ commit }, { collection, doc }) {
       try {
         await db.collection(collection).doc(doc.id).set(doc, { merge: true })
       } catch (err) {
@@ -75,7 +75,7 @@ export default {
         console.log('Ошибка при создании документа:', err)
       } finally {
         console.log('Документ успешно создан')
-        commit('addDoc', { doc, collection })
+        commit('addDoc', { collection, doc })
       }
     },
     async getData({ commit }, collection) {

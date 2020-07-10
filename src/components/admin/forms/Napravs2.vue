@@ -118,9 +118,19 @@ export default {
       let imagesRef = storageRef.child(
         this.collection + '/' + this.doc.id + '/' + this.doc.img.name
       )
-      await imagesRef.delete()
-      this.doc.img.url = ''
-      this.doc.img.name = ''
+      try {
+        await imagesRef.delete()
+        this.doc.img.url = ''
+        this.doc.img.name = ''
+        await this.$store.dispatch('updateImageFill', {
+          collection: this.collection,
+          id: this.doc.id,
+          img: this.doc.img
+        })
+      } catch (err) {
+      } finally {
+        console.log('Изображение успешно удалено')
+      }
     },
     async uploadImage(e) {
       const file = e.target.files[0]
@@ -160,13 +170,13 @@ export default {
         try {
           if (!this.doc.id) {
             await this.$store.dispatch('addDoc', {
-              doc,
-              collection: this.collection
+              collection: this.collection,
+              doc
             })
           } else {
             await this.$store.dispatch('updateDoc', {
-              doc,
-              collection: this.collection
+              collection: this.collection,
+              doc
             })
           }
         } catch (err) {
@@ -175,15 +185,15 @@ export default {
         }
       } else {
         // Выделить поле красной рамкой
-        console.log('Заполните все поля:', doc)
+        console.log('Заполните все поля:', this.doc)
       }
     },
-    async removeDoc(id, collections) {
+    async removeDoc() {
       if (confirm('Точно удалить?')) {
         try {
           await this.$store.dispatch('removeDoc', {
-            id: this.doc.id,
-            collection: this.collection
+            collection: this.collection,
+            id: this.doc.id
           })
         } catch (err) {
         } finally {
