@@ -100,6 +100,18 @@ import { storage } from '@/main.js'
 
 export default {
   props: ['doc', 'collection', 'length'],
+  data() {
+    return {
+      change: false
+    }
+  },
+  mounted() {
+    if (this.change) {
+      window.onbeforeunload = function() {
+        return 'Прежде чем покинуть страницу, удалите изображение!'
+      }
+    }
+  },
   methods: {
     async removeImage() {
       let storageRef = storage.ref()
@@ -113,14 +125,25 @@ export default {
     async uploadImage(e) {
       const file = e.target.files[0]
       if (file) {
+        this.change = true
         this.doc.img.url = '/img/admin/loading-image.gif'
         this.doc.img.name = file.name
         let storageRef = storage.ref()
         let imagesRef = storageRef.child(
           this.collection + '/' + this.doc.id + '/' + file.name
         )
-        const snapshot = await imagesRef.put(file)
-        this.doc.img.url = await snapshot.ref.getDownloadURL()
+        try {
+          const snapshot = await imagesRef.put(file)
+          this.doc.img.url = await snapshot.ref.getDownloadURL()
+          await this.$store.dispatch('updateImageFill', {
+            collection: this.collection,
+            id: this.doc.id,
+            img: this.doc.img
+          })
+        } catch (err) {
+        } finally {
+          console.log('Изображение успешно загружено')
+        }
       }
     },
     async saveDoc() {

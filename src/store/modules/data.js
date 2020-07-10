@@ -12,6 +12,12 @@ export default {
     zadachi: [],
   },
   mutations: {
+    updateImageFill(state, { collection, id, img }) {
+      const index = state[collection].findIndex(col => col.id === id)
+      let tempDoc = state[collection][index]
+      tempDoc.img = img
+      state[collection][index] = tempDoc
+    },
     removeDoc(state, { id, collection }) {
       let tempDoc = state[collection].filter(doc => doc.id != id)
       state[collection] = tempDoc
@@ -28,7 +34,17 @@ export default {
     }
   },
   actions: {
-    async updateImageFill({ commit }, { collection, id, img }) { },
+    async updateImageFill({ commit }, { collection, id, img }) {
+      try {
+        await db.collection(collection).doc(id).update({ img })
+      } catch (err) {
+        //throw err
+        console.log('Ошибка при обновлении поля img:', err)
+      } finally {
+        console.log('Поле img успешно обновлено')
+        commit('updateImageFill', { collection, id, img })
+      }
+    },
     async removeDoc({ commit, dispatch }, { id, collection }) {
       try {
         await db.collection(collection).doc(id).delete()
