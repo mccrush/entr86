@@ -45,7 +45,7 @@
       </div>
       <div class="col-6 text-left"></div>
     </div>
-    <div class="row">
+    <div v-if="doc.id" class="row">
       <div class="col-6 text-left">
         <div class="form-group">
           <label for="img">Изображение</label>
@@ -53,7 +53,6 @@
             type="file"
             class="form-control-file"
             id="img"
-            required
             accept="image/png, image/jpeg"
             @change="uploadImage"
           />
@@ -111,14 +110,6 @@ export default {
   //   }
   // },
   methods: {
-    // selectImage(e) {
-    //   const file = e.target.files[0]
-    //   let reader = new FileReader()
-    //   reader.onload = e => {
-    //     this.img.url = e.target.result
-    //   }
-    //   reader.readAsDataURL(file)
-    // },
     async removeImage() {
       let storageRef = storage.ref()
       let imagesRef = storageRef.child(
@@ -145,7 +136,7 @@ export default {
       let newDoc = {}
       if (this.doc.title.trim() && this.doc.alias.trim()) {
         newDoc = {
-          id: this.doc.id,
+          id: this.doc.id || Date.now().toString(),
           title: this.doc.title.trim(),
           alias: this.doc.alias.trim(),
           position: +this.doc.position,
@@ -160,12 +151,7 @@ export default {
             })
           } catch (err) {
           } finally {
-            this.doc = null
-            // this.title = ''
-            // this.alias = ''
-            // this.position = +this.position + 1
-            // this.active = true
-            // this.img.url = '/img/admin/image.svg'
+            this.$emit('update-doc', this.collection)
           }
         } else {
           try {
@@ -197,29 +183,5 @@ export default {
       }
     }
   }
-  // watch: {
-  //   doc() {
-  //     this.doc = this.doc.id || Date.now().toString()
-  //     this.title = this.doc.title
-  //     this.alias = this.doc.alias
-  //     this.position = +this.doc.position || this.length + 1
-  //     this.active = this.doc.active ? true : false
-  //     this.img.url = this.doc.img.url || '/img/admin/image.svg'
-  //     this.img.name = this.doc.img.name || ''
-  //     console.log('this.img.name:', this.img.name)
-  //     console.log('this.img.url:', this.img.url)
-  //   }
-  // }
 }
 </script>
-
-<style scoped>
-.img-bg {
-  background: url(/img/admin/image.svg) no-repeat center center;
-  background-size: contain;
-}
-
-.img-thum {
-  height: 76px;
-}
-</style>

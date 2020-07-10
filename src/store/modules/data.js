@@ -15,8 +15,6 @@ export default {
     removeDoc(state, { id, collection }) {
       let tempDoc = state[collection].filter(doc => doc.id != id)
       state[collection] = tempDoc
-      console.log('state[collection]:', state[collection]);
-
     },
     updateDoc(state, { doc, collection }) {
       const index = state[collection].findIndex(col => col.id === doc.id)
