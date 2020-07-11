@@ -6,32 +6,59 @@
     />
     <div class="col-12">
       <h2 class="text-uppercase text-left mt-2 bold">Портфолио</h2>
-      <div v-for="portfolio in portfolios" :key="'pt'+portfolio.id" class="row">
-        <div class="col-12 mt-3">
-          <h3 class="text-uppercase text-left mt-2 bold">{{portfolio.title}}</h3>
-          <img :src="'img/portfolio/portfolios/'+portfolio.icon" alt width="100%" min-height="306" />
-          <p class="text-left mt-2">{{portfolio.description}}</p>
+      <div v-if="portfolios.length">
+        <div v-for="(portfolio, index) in portfolios" :key="'ptr'+index" class="row">
+          <div class="col-12 mt-3">
+            <h3 class="text-uppercase text-left mt-2 bold">{{portfolio.title}}</h3>
+            <img :src="portfolio.img.url" :alt="portfolio.title" width="100%" min-height="306" />
+            <p class="text-left mt-2">{{portfolio.desc}}</p>
+          </div>
         </div>
       </div>
+      <img v-else-if="loading" src="/img/admin/loading.gif" alt="Loading..." />
     </div>
   </div>
 </template>
 
 <script>
-import { portfolios } from '@/data/portfolios'
+//import { portfolios } from '@/data/portfolios'
 import vueHeadful from 'vue-headful'
 
 export default {
   components: {
     vueHeadful
   },
+  // data() {
+  //   return {
+  //     portfolios: []
+  //   }
+  // },
+  // mounted() {
+  //   this.portfolios = portfolios
+  // }
   data() {
     return {
-      portfolios: []
+      loading: true
     }
   },
-  mounted() {
-    this.portfolios = portfolios
+  computed: {
+    portfolios() {
+      return this.$store.getters.portfolios
+    }
+  },
+  async mounted() {
+    try {
+      await this.$store.dispatch('getData', 'portfolios')
+    } catch (err) {
+      console.log('Ошибка при получении Портфолио:', err.message)
+    } finally {
+      this.loading = false
+    }
+    // Прокрутка до нужного раздела
+    if (this.$route.hash) {
+      let elem = document.querySelector(this.$route.hash)
+      elem.scrollIntoView({ block: 'start', behavior: 'smooth' })
+    }
   }
 }
 </script>
