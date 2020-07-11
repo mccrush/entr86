@@ -1,12 +1,28 @@
 <template>
   <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-    <ol class="carousel-indicators">
-      <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+    <ol v-if="sliders.length" class="carousel-indicators">
+      <li
+        v-for="(slider, index) in sliders"
+        :key="'slde'+index"
+        data-target="#carouselExampleIndicators"
+        :data-slide-to="index"
+        :class="{'active': index === 0}"
+      ></li>
+      <!-- <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
       <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-      <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+      <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>-->
     </ol>
-    <div class="carousel-inner">
-      <div class="carousel-item active">
+    <transition name="fade" mode="out-in">
+      <div v-if="sliders.length" class="carousel-inner">
+        <div
+          v-for="(slider, index) in sliders"
+          :key="'sld'+index"
+          class="carousel-item"
+          :class="{'active': index === 0}"
+        >
+          <img :src="slider.img.url" class="d-block w-100" alt="..." />
+        </div>
+        <!-- <div class="carousel-item">
         <img src="/img/slider/s1.png" class="d-block w-100" alt="..." />
       </div>
       <div class="carousel-item">
@@ -14,8 +30,9 @@
       </div>
       <div class="carousel-item">
         <img src="/img/slider/s3.png" class="d-block w-100" alt="..." />
+        </div>-->
       </div>
-    </div>
+    </transition>
     <a
       class="carousel-control-prev"
       href="#carouselExampleIndicators"
@@ -40,7 +57,20 @@
 <script>
 import $ from 'jquery'
 export default {
-  mounted() {
+  computed: {
+    sliders() {
+      return this.$store.getters.sliders
+    }
+  },
+  async mounted() {
+    try {
+      await this.$store.dispatch('getData', 'sliders')
+    } catch (err) {
+      console.log('Ошибка при получении Прайсов:', err.message)
+    } finally {
+      this.loading = false
+    }
+    // Прокрутка до нужного раздела
     $('.carousel').carousel({
       interval: 5000
     })
