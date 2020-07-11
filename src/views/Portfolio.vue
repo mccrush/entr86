@@ -54,11 +54,6 @@ export default {
     } finally {
       this.loading = false
     }
-    // Прокрутка до нужного раздела
-    if (this.$route.hash) {
-      let elem = document.querySelector(this.$route.hash)
-      elem.scrollIntoView({ block: 'start', behavior: 'smooth' })
-    }
   }
 }
 </script>
