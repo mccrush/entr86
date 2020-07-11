@@ -50,7 +50,7 @@
       <div class="col-6 text-left"></div>
     </div>
 
-    <div v-if="collection === 'portfolios' || collection === 'prices'" class="row">
+    <div v-if="collection === 'portfolios' || (collection === 'prices' && doc.id)" class="row">
       <div class="col-12">
         <editor
           api-key="hanxollva4phpflvvnv1lje4y82fvprrkqrmpqeclw066js2"
@@ -101,7 +101,7 @@
       </div>
     </div>
 
-    <div v-if="collection === 'prices'" class="row">
+    <div v-if="collection === 'prices' && doc.id" class="row">
       <div class="col-12">
         <div class="form-group text-left">
           <label for="imgSrc" class="small">Сылка на изображение</label>

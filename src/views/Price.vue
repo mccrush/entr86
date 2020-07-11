@@ -3,51 +3,47 @@
     <vueHeadful title="ENTR - Прайс-лист" description="Стоимость услуг" />
     <div class="col-12">
       <h2 class="text-uppercase text-left mt-2 bold">Прайс-лист</h2>
-      <Design />
-
-      <Plenka />
-
-      <Shiroko />
-
-      <Svet />
-
-      <NeSvet />
-
-      <h3 class="text-uppercase text-left mt-5 bold">ПОСТПЕЧАТНАЯ ОБРАБОТКА, НАКАТКА</h3>
-      <NakatPlen />
-
-      <h3 class="text-uppercase text-left mt-5 bold">ВЫВЕСКИ НЕСВЕТОВЫЕ, ТАБЛИЧКИ</h3>
-      <NakatPlen2 />
+      <!-- <h3 class="text-uppercase text-left mt-5 bold">ПОСТПЕЧАТНАЯ ОБРАБОТКА, НАКАТКА</h3> -->
+      <div v-if="prices.length" class="overflow-auto">
+        <div
+          v-for="(price, index) in prices"
+          :key="'prc'+ index"
+          v-html="price.desc"
+          class="mt-3"
+          :id="price.alias"
+        ></div>
+      </div>
+      <img v-else-if="loading" src="/img/admin/loading.gif" alt="Loading..." />
     </div>
   </div>
 </template>
 
 <script>
-import Design from '@/components/price/Design'
-import Plenka from '@/components/price/Plenka'
-import Shiroko from '@/components/price/Shiroko'
-import Svet from '@/components/price/Svet'
-import NeSvet from '@/components/price/NeSvet'
-import NakatPlen from '@/components/price/NakatPlen'
-import NakatPlen2 from '@/components/price/NakatPlen2'
 import vueHeadful from 'vue-headful'
 
 export default {
   components: {
-    Design,
-    Plenka,
-    Shiroko,
-    Svet,
-    NeSvet,
-    NakatPlen,
-    NakatPlen2,
     vueHeadful
   },
-  // components: {
-  //   vueHeadful
-  // },
-  // Дождаться загрузки компонента и затем принудительно сделать скрол
-  mounted() {
+  data() {
+    return {
+      loading: true
+    }
+  },
+  computed: {
+    prices() {
+      return this.$store.getters.prices
+    }
+  },
+  async mounted() {
+    try {
+      await this.$store.dispatch('getData', 'prices')
+    } catch (err) {
+      console.log('Ошибка при получении Прайсов:', err.message)
+    } finally {
+      this.loading = false
+    }
+    // Прокрутка до нужного раздела
     if (this.$route.hash) {
       let elem = document.querySelector(this.$route.hash)
       elem.scrollIntoView({ block: 'start', behavior: 'smooth' })
