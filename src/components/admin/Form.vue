@@ -62,7 +62,7 @@
       </div>
     </div>
 
-    <div v-if="collection != 'menus' && collection != 'prices'" class="row">
+    <div v-if="collection != 'menus' && collection != 'prices'" class="row mt-3">
       <div class="col-6 text-left">
         <div class="form-group">
           <label for="img" class="small">Изображение (max 5 Мб)</label>
