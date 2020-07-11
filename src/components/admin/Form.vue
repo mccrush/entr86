@@ -52,17 +52,31 @@
 
     <div v-if="collection === 'portfolios' || collection === 'prices'" class="row">
       <div class="col-12">
-        <textarea
+        <editor
+          api-key="hanxollva4phpflvvnv1lje4y82fvprrkqrmpqeclw066js2"
           type="text"
           v-model="doc.desc"
           class="form-control form-control-sm"
           placeholder="Описание"
-          rows="9"
-        ></textarea>
+          :init="{
+            language: 'ru',
+         height: 300,
+         menubar: true,
+         plugins: [
+           'advlist autolink lists link image charmap print preview anchor',
+           'searchreplace visualblocks code fullscreen',
+           'insertdatetime media table paste code help wordcount'
+         ],
+         toolbar:
+           'undo redo | formatselect | bold italic backcolor | \
+           alignleft aligncenter alignright alignjustify | \
+           bullist numlist outdent indent | removeformat | help'
+       }"
+        ></editor>
       </div>
     </div>
 
-    <div v-if="collection != 'menus' && collection != 'prices'" class="row mt-3">
+    <div v-if="collection != 'menus'" class="row mt-3">
       <div class="col-6 text-left">
         <div class="form-group">
           <label for="img" class="small">Изображение (max 5 Мб)</label>
@@ -84,6 +98,30 @@
           type="button"
           @click="removeImage"
         >Удалить</button>
+      </div>
+    </div>
+
+    <div v-if="collection === 'prices'" class="row">
+      <div class="col-12">
+        <div class="form-group text-left">
+          <label for="imgSrc" class="small">Сылка на изображение</label>
+          <div class="input-group input-group-sm mb-3">
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Здесь появится ссылка"
+              id="imgSrc"
+              v-model="doc.img.url"
+            />
+            <div class="input-group-append">
+              <button
+                class="btn btn-outline-secondary"
+                type="button"
+                @click="copyToBuffer"
+              >Копировать</button>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -110,10 +148,19 @@
 
 <script>
 import { storage } from '@/main.js'
+import Editor from '@tinymce/tinymce-vue'
 
 export default {
+  components: {
+    editor: Editor
+  },
   props: ['doc', 'collection', 'length'],
   methods: {
+    copyToBuffer(e) {
+      const elem = e.target.parentNode.parentNode.childNodes[0]
+      elem.select()
+      document.execCommand('copy')
+    },
     async removeImage() {
       let storageRef = storage.ref()
       let imagesRef = storageRef.child(
