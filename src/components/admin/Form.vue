@@ -4,7 +4,7 @@
       <div class="col-6">
         <input
           type="text"
-          v-model="doc.title"
+          v-model.trim="doc.title"
           class="form-control form-control-sm"
           placeholder="Заголовок"
           maxlength="70"
@@ -15,7 +15,7 @@
         <input
           v-if="collection === 'menus' || collection === 'napravs' || collection === 'prices'"
           type="text"
-          v-model="doc.alias"
+          v-model.trim="doc.alias"
           class="form-control form-control-sm"
           placeholder="Алиас"
           required
@@ -34,7 +34,7 @@
               min="0"
               max="42"
               step="1"
-              v-model="doc.position"
+              v-model.number="doc.position"
               required
               class="form-control form-control-sm"
             />
@@ -209,7 +209,7 @@ export default {
     },
     async saveDoc() {
       let doc = {}
-      if (this.doc.title.trim()) {
+      if (this.doc.title) {
         doc = {
           id: this.doc.id || Date.now().toString(),
           title: this.doc.title.trim(),
