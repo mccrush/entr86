@@ -19,20 +19,8 @@
 </template>
 
 <script>
-//import zadachi from '@/data/zadachi'
-
 export default {
   props: ['zadachi']
-  // data() {
-  //   return {
-  //     zadachi
-  //   }
-  // },
-  // computed: {
-  //   zadachi() {
-  //     return this.$store.getters.zadachi
-  //   }
-  // }
 }
 </script>
 

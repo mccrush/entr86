@@ -15,15 +15,8 @@
 </template>
 
 <script>
-//import napravs from '@/data/napravs'
-
 export default {
   props: ['napravs']
-  // data() {
-  //   return {
-  //     napravs
-  //   }
-  // }
 }
 </script>
 
