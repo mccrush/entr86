@@ -8,7 +8,8 @@
       class="col-12 col-sm-6 col-md-4 d-flex align-items-center justify-content-start mt-4 napravLink"
     >
       <img :src="naprav.img.url" class="float-left mr-3" width="76" height="76" alt />
-      <h6 class="text-left wraping" v-html="naprav.title"></h6>
+      <h5 class="d-md-none text-left wraping" v-html="naprav.title"></h5>
+      <h6 class="d-none d-md-block text-left wraping" v-html="naprav.title"></h6>
     </router-link>
   </div>
 </template>
