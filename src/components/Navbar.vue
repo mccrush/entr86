@@ -18,12 +18,13 @@
         </button>
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav mr-auto text-uppercase">
-            <li v-for="(menu, index) in menus" :key="'nmu'+index" class="nav-item">
-              <router-link tag="a" :to="'/'+menu.alias" class="nav-link">{{menu.title}}</router-link>
-            </li>
+          <transition name="fade" appear>
+            <ul v-if="menus.length" class="navbar-nav mr-auto text-uppercase">
+              <li v-for="(menu, index) in menus" :key="'nmu'+index" class="nav-item">
+                <router-link tag="a" :to="'/'+menu.alias" class="nav-link">{{menu.title}}</router-link>
+              </li>
 
-            <!-- <li class="nav-item">
+              <!-- <li class="nav-item">
               <router-link tag="a" to="/price" class="nav-link">Прайс-лист</router-link>
             </li>
             <li class="nav-item">
@@ -31,8 +32,9 @@
             </li>
             <li class="nav-item">
               <router-link tag="a" to="/contacts" class="nav-link">Контакты</router-link>
-            </li>-->
-          </ul>
+              </li>-->
+            </ul>
+          </transition>
         </div>
       </nav>
     </div>

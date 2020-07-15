@@ -8,31 +8,18 @@
         :data-slide-to="index"
         :class="{'active': index === 0}"
       ></li>
-      <!-- <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-      <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-      <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>-->
     </ol>
-    <transition name="fade" mode="out-in">
-      <div v-if="sliders.length" class="carousel-inner">
-        <div
-          v-for="(slider, index) in sliders"
-          :key="'sld'+index"
-          class="carousel-item"
-          :class="{'active': index === 0}"
-        >
-          <img :src="slider.img.url" class="d-block w-100" rel="preload" alt="..." />
-        </div>
-        <!-- <div class="carousel-item">
-        <img src="/img/slider/s1.png" class="d-block w-100" alt="..." />
+
+    <div class="carousel-inner">
+      <div
+        v-for="(slider, index) in sliders"
+        :key="'sld'+index"
+        class="carousel-item"
+        :class="{'active': index === 0}"
+      >
+        <img :src="slider.img.url" class="d-block w-100" rel="preload" alt="..." />
       </div>
-      <div class="carousel-item">
-        <img src="/img/slider/s2.png" class="d-block w-100" alt="..." />
-      </div>
-      <div class="carousel-item">
-        <img src="/img/slider/s3.png" class="d-block w-100" alt="..." />
-        </div>-->
-      </div>
-    </transition>
+    </div>
     <a
       class="carousel-control-prev"
       href="#carouselExampleIndicators"
@@ -56,6 +43,7 @@
 
 <script>
 import $ from 'jquery'
+
 export default {
   props: ['sliders'],
   mounted() {

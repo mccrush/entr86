@@ -4,14 +4,20 @@
       title="ENTR - Рекламное агенство"
       description="Мы реализуем любые рекламно-производственные задачи"
     />
-    <Slider :sliders="sliders" />
+    <transition name="fade" appear>
+      <Slider v-if="sliders.length" :sliders="sliders" />
+    </transition>
 
     <!-- Задачи -->
-    <Zadachi :zadachi="zadachi" />
+    <transition name="fade" appear>
+      <Zadachi v-if="zadachi.length" :zadachi="zadachi" />
+    </transition>
     <div class="space"></div>
 
     <!-- Направления -->
-    <Napravs :napravs="napravs" />
+    <transition name="fade" appear>
+      <Napravs :napravs="napravs" />
+    </transition>
     <div class="space"></div>
 
     <!-- База -->
@@ -107,11 +113,11 @@ export default {
   font-size: 2.4rem;
 }
 
-.fade-enter-active,
+/* .fade-enter-active,
 .fade-leave-active {
   transition: opacity 0.3s ease;
 }
-.fade-enter, .fade-leave-to /* .fade-leave-active до версии 2.1.8 */ {
+.fade-enter, .fade-leave-to {
   opacity: 0;
-}
+} */
 </style>
