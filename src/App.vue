@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <transition name="fade" mode="out-in">
-      <Navbar v-if="$route.name != 'login' && $route.name != 'admin' && navbar" />
+      <Navbar v-if="$route.name != 'login' && $route.name != 'admin' && navbar" :menus="menus" />
     </transition>
     <div class="pt-4 pb-4" :class="$route.name === 'admin' ? 'container-fluid' : 'container'">
       <transition name="fade" mode="out-in">
@@ -33,12 +33,16 @@ export default {
     }
   },
   computed: {
+    menus() {
+      return this.$store.getters.menus.filter(item => item.active)
+    },
     clients() {
       return this.$store.getters.clients
     }
   },
   async beforeMount() {
     try {
+      await this.$store.dispatch('getData', 'menus')
       await this.$store.dispatch('getData', 'clients')
     } catch (err) {
       console.log('Ошибка при получении данных в App:', err.message)

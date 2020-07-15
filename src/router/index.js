@@ -11,6 +11,10 @@ const routes = [
     component: () => import('../views/Index.vue')
   },
   {
+    path: '/index',
+    redirect: '/'
+  },
+  {
     path: '/price',
     name: 'price',
     component: () => import('../views/Price.vue')
