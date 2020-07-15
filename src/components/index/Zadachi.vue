@@ -12,7 +12,8 @@
       style="overflow-wrap: anywhere;"
     >
       <img :src="zadacha.img.url" width="76" height="76" alt />
-      <h3 class="text-left ml-3 mr-3 bold">{{zadacha.title}}</h3>
+      <h4 class="d-md-none text-left ml-3 mr-3 bold">{{zadacha.title}}</h4>
+      <h3 class="d-none d-md-block text-left ml-3 mr-3 bold">{{zadacha.title}}</h3>
     </div>
   </div>
 </template>
