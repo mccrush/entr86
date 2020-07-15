@@ -20,7 +20,7 @@
           class="carousel-item"
           :class="{'active': index === 0}"
         >
-          <img :src="slider.img.url" class="d-block w-100" alt="..." />
+          <img :src="slider.img.url" class="d-block w-100" rel="preload" alt="..." />
         </div>
         <!-- <div class="carousel-item">
         <img src="/img/slider/s1.png" class="d-block w-100" alt="..." />

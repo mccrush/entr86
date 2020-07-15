@@ -17,12 +17,12 @@
               src="img/footer/icons/inst3.png"
               class="mr-2"
               alt="Instagram"
-              width="40"
-              height="40"
+              width="32"
+              height="32"
             />
           </a>
           <a href="https://vk.com/entrrpk" target="_blank">
-            <img src="img/footer/icons/vk.png" alt="Vk" width="40" height="40" />
+            <img src="img/footer/icons/vk.png" alt="Vk" width="32" height="32" />
           </a>
         </div>
         <div class="col-12 col-sm-6 pt-3 pb-3 pr-4">
@@ -61,7 +61,7 @@
       </div>
     </div>
     <div class="d-flex bg-black" style="background: #00000080;">
-      <div class="col-12 text-light center pt-1 pb-1">© 2020 entr86.ru</div>
+      <div class="col-12 text-light copy pt-1 pb-1">© 2020 entr86.ru</div>
     </div>
   </div>
 </template>
@@ -184,5 +184,9 @@ h5 {
 
 .no-select {
   user-select: none;
+}
+
+.copy {
+  font-size: 0.9rem;
 }
 </style>
