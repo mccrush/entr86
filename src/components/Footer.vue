@@ -59,9 +59,9 @@
           </div>
         </div>
       </div>
-      <div class="row">
-        <div class="col-12 text-light text-left mb-3">© 2020 entr86.ru</div>
-      </div>
+    </div>
+    <div class="d-flex bg-black" style="background: #00000080;">
+      <div class="col-12 text-light center pt-1 pb-1">© 2020 entr86.ru</div>
     </div>
   </div>
 </template>
