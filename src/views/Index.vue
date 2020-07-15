@@ -112,12 +112,4 @@ export default {
 .fs-24 {
   font-size: 2.4rem;
 }
-
-/* .fade-enter-active,
-.fade-leave-active {
-  transition: opacity 0.3s ease;
-}
-.fade-enter, .fade-leave-to {
-  opacity: 0;
-} */
 </style>
