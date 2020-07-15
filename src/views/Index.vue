@@ -4,14 +4,14 @@
       title="ENTR - Рекламное агенство"
       description="Мы реализуем любые рекламно-производственные задачи"
     />
-    <Slider />
+    <Slider :sliders="sliders" />
 
     <!-- Задачи -->
-    <Zadachi />
+    <Zadachi :zadachi="zadachi" />
     <div class="space"></div>
 
     <!-- Направления -->
-    <Napravs />
+    <Napravs :napravs="napravs" />
     <div class="space"></div>
 
     <!-- База -->
@@ -56,6 +56,28 @@ export default {
     Zadachi,
     Napravs,
     vueHeadful
+  },
+  computed: {
+    sliders() {
+      return this.$store.getters.sliders
+    },
+    zadachi() {
+      return this.$store.getters.zadachi
+    },
+    napravs() {
+      return this.$store.getters.napravs
+    }
+  },
+  async beforeMount() {
+    try {
+      await this.$store.dispatch('getData', 'sliders')
+      await this.$store.dispatch('getData', 'zadachi')
+      await this.$store.dispatch('getData', 'napravs')
+    } catch (err) {
+      console.log('Ошибка при получении данных в Index:', err.message)
+    } finally {
+      //this.loading = false
+    }
   }
 }
 </script>

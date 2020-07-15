@@ -6,26 +6,32 @@
     </div>
 
     <div
-      v-for="reshen in zadachi"
-      :key="'rs'+reshen.id"
+      v-for="zadacha in zadachi"
+      :key="'rs'+zadacha.id"
       class="col-12 d-flex align-items-center mt-3"
       style="overflow-wrap: anywhere;"
     >
-      <img :src="'/img/index/icons/'+reshen.icon" width="76" height="76" alt />
-      <h3 class="text-left ml-3 mr-3 bold" v-html="reshen.title"></h3>
+      <img :src="zadacha.img.url" width="76" height="76" alt />
+      <h3 class="text-left ml-3 mr-3 bold">{{zadacha.title}}</h3>
     </div>
   </div>
 </template>
 
 <script>
-import zadachi from '@/data/zadachi'
+//import zadachi from '@/data/zadachi'
 
 export default {
-  data() {
-    return {
-      zadachi
-    }
-  }
+  props: ['zadachi']
+  // data() {
+  //   return {
+  //     zadachi
+  //   }
+  // },
+  // computed: {
+  //   zadachi() {
+  //     return this.$store.getters.zadachi
+  //   }
+  // }
 }
 </script>
 

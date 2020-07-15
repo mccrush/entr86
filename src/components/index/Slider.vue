@@ -57,20 +57,26 @@
 <script>
 import $ from 'jquery'
 export default {
-  computed: {
-    sliders() {
-      return this.$store.getters.sliders
-    }
-  },
-  async mounted() {
-    try {
-      await this.$store.dispatch('getData', 'sliders')
-    } catch (err) {
-      console.log('Ошибка при получении Прайсов:', err.message)
-    } finally {
-      this.loading = false
-    }
-    // Прокрутка до нужного раздела
+  props: ['sliders'],
+  // computed: {
+  //   sliders() {
+  //     return this.$store.getters.sliders
+  //   }
+  // },
+  // async mounted() {
+  //   try {
+  //     await this.$store.dispatch('getData', 'sliders')
+  //   } catch (err) {
+  //     console.log('Ошибка при получении Прайсов:', err.message)
+  //   } finally {
+  //     this.loading = false
+  //   }
+  //   // Прокрутка до нужного раздела
+  //   $('.carousel').carousel({
+  //     interval: 5000
+  //   })
+  // }
+  mounted() {
     $('.carousel').carousel({
       interval: 5000
     })
