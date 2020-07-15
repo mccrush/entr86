@@ -25,7 +25,6 @@
             <img src="img/footer/icons/vk.png" alt="Vk" width="40" height="40" />
           </a>
         </div>
-        <!-- <div class="d-none d-md-block col-md-2"></div> -->
         <div class="col-12 col-sm-6 pt-3 pb-3 pr-4">
           <h5>Клиенты</h5>
           <div
@@ -45,33 +44,17 @@
             @touchend="scrolRightStop"
           >&raquo;</div>
           <div class="overflow-hidden ower" ref="clients">
-            <div class="row">
-              <div class="col-12 d-flex">
-                <img
-                  v-for="i in 11"
-                  :key="'ci'+i"
-                  :src="'img/footer/clients/'+i+'.png'"
-                  class="pr-2 pb-2 no-select"
-                  :alt="'Client '+i"
-                  width="90"
-                  height="90"
-                  draggable="false"
-                />
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-12 d-flex">
-                <img
-                  v-for="i in 11"
-                  :key="'ci'+i"
-                  :src="'img/footer/clients2/'+i+'.png'"
-                  class="pr-2 pb-2 no-select"
-                  :alt="'Client '+i"
-                  width="90"
-                  height="90"
-                  draggable="false"
-                />
-              </div>
+            <div class="d-flex flex-wrap" style="width: 990px;">
+              <img
+                v-for="(client, index) in clients"
+                :key="'cli'+index"
+                :src="client.img.url"
+                class="pr-2 pb-2 no-select"
+                :alt="client.title"
+                width="90"
+                height="90"
+                draggable="false"
+              />
             </div>
           </div>
         </div>
@@ -85,6 +68,7 @@
 
 <script>
 export default {
+  props: ['clients'],
   data() {
     return {
       timeLeft: null,
@@ -106,7 +90,7 @@ export default {
     },
     scrolRightStart() {
       this.timeRight = setInterval(() => {
-        if (this.$refs.clients.scrollLeft < 704) {
+        if (this.$refs.clients.scrollLeft < 990) {
           this.$refs.clients.scrollLeft = this.$refs.clients.scrollLeft + 3
         } else {
           clearInterval(this.timeRight)

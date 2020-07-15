@@ -9,7 +9,7 @@
       </transition>
     </div>
     <transition name="fade" mode="out-in">
-      <Footer v-if="$route.name != 'login' && $route.name != 'admin' && footer" />
+      <Footer v-if="$route.name != 'login' && $route.name != 'admin' && footer" :clients="clients" />
     </transition>
     <!-- <Dev /> -->
   </div>
@@ -30,6 +30,20 @@ export default {
     return {
       navbar: false,
       footer: false
+    }
+  },
+  computed: {
+    clients() {
+      return this.$store.getters.clients
+    }
+  },
+  async beforeMount() {
+    try {
+      await this.$store.dispatch('getData', 'clients')
+    } catch (err) {
+      console.log('Ошибка при получении данных в App:', err.message)
+    } finally {
+      //this.loading = false
     }
   },
   mounted() {
