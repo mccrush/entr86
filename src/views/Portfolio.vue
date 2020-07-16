@@ -11,7 +11,7 @@
           <div class="col-12 mt-3">
             <h3 class="text-uppercase text-left mt-2 bold">{{portfolio.title}}</h3>
             <img :src="portfolio.img.url" :alt="portfolio.title" width="100%" min-height="306" />
-            <p class="text-left mt-2">{{portfolio.desc}}</p>
+            <div class="text-left mt-2" v-html="portfolio.desc"></div>
           </div>
         </div>
       </div>
@@ -21,21 +21,12 @@
 </template>
 
 <script>
-//import { portfolios } from '@/data/portfolios'
 import vueHeadful from 'vue-headful'
 
 export default {
   components: {
     vueHeadful
   },
-  // data() {
-  //   return {
-  //     portfolios: []
-  //   }
-  // },
-  // mounted() {
-  //   this.portfolios = portfolios
-  // }
   data() {
     return {
       loading: true
@@ -49,10 +40,10 @@ export default {
   async mounted() {
     try {
       await this.$store.dispatch('getData', 'portfolios')
+      this.loading = false
     } catch (err) {
       console.log('Ошибка при получении Портфолио:', err.message)
     } finally {
-      this.loading = false
     }
   }
 }
