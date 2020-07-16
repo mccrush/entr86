@@ -50,18 +50,13 @@
               title="Создать документ"
             >+</button>
           </h6>
-          <transition name="fade" mode="out-in">
-            <img v-if="loadingDoc" src="/img/admin/loading.gif" alt="Loading..." />
-            <div v-else>
-              <Docs
-                v-for="(doc, index) in docs"
-                :key="'doc'+ index"
-                :doc="doc"
-                :selectDocId="selectDocId"
-                @select-doc="selectDoc"
-              />
-            </div>
-          </transition>
+          <Docs
+            v-for="(doc, index) in docs"
+            :key="'doc'+ index"
+            :doc="doc"
+            :selectDocId="selectDocId"
+            @select-doc="selectDoc"
+          />
         </div>
 
         <div class="col-8 pt-3 pb-3">
@@ -99,7 +94,6 @@ export default {
     return {
       user: auth.currentUser,
       loadingCol: true,
-      loadingDoc: true,
       selectCollectionAlias: '',
       selectDocId: '',
       createDoc: false,
@@ -124,23 +118,10 @@ export default {
   async mounted() {
     try {
       await this.$store.dispatch('getData', 'collections')
+      this.loadingCol = false
     } catch (err) {
       console.log('Ошибка при получении коллекций в Админ:', err.message)
     } finally {
-      this.loadingCol = false
-      try {
-        await this.$store.dispatch('getData', 'clients')
-        await this.$store.dispatch('getData', 'menus')
-        await this.$store.dispatch('getData', 'napravs')
-        await this.$store.dispatch('getData', 'portfolios')
-        await this.$store.dispatch('getData', 'prices')
-        await this.$store.dispatch('getData', 'sliders')
-        await this.$store.dispatch('getData', 'zadachi')
-      } catch (err) {
-        console.log('Ошибка при получении данных в Админ:', err.message)
-      } finally {
-        this.loadingDoc = false
-      }
     }
   },
   methods: {
