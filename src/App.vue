@@ -52,13 +52,36 @@ export default {
   async beforeMount() {
     try {
       await this.$store.dispatch('getData', 'menus')
-      await this.$store.dispatch('getData', 'sliders')
-      await this.$store.dispatch('getData', 'zadachi')
-      await this.$store.dispatch('getData', 'napravs')
       await this.$store.dispatch('getData', 'clients')
-      await this.$store.dispatch('getData', 'prices')
-      await this.$store.dispatch('getData', 'portfolios')
-      this.loading = false
+      if (this.$route.path === '/') {
+        await this.$store.dispatch('getData', 'sliders')
+        await this.$store.dispatch('getData', 'zadachi')
+        await this.$store.dispatch('getData', 'napravs')
+        this.loading = false
+        await this.$store.dispatch('getData', 'prices')
+        await this.$store.dispatch('getData', 'portfolios')
+      } else if (this.$route.path === '/price') {
+        await this.$store.dispatch('getData', 'prices')
+        this.loading = false
+        await this.$store.dispatch('getData', 'sliders')
+        await this.$store.dispatch('getData', 'zadachi')
+        await this.$store.dispatch('getData', 'napravs')
+        await this.$store.dispatch('getData', 'portfolios')
+      } else if (this.$route.path === '/portfolio') {
+        await this.$store.dispatch('getData', 'portfolios')
+        this.loading = false
+        await this.$store.dispatch('getData', 'sliders')
+        await this.$store.dispatch('getData', 'zadachi')
+        await this.$store.dispatch('getData', 'napravs')
+        await this.$store.dispatch('getData', 'prices')
+      } else {
+        this.loading = false
+        await this.$store.dispatch('getData', 'sliders')
+        await this.$store.dispatch('getData', 'zadachi')
+        await this.$store.dispatch('getData', 'napravs')
+        await this.$store.dispatch('getData', 'prices')
+        await this.$store.dispatch('getData', 'portfolios')
+      }
     } catch (err) {
       console.log('Ошибка при получении данных в App:', err.message)
     } finally {
