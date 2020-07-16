@@ -52,6 +52,9 @@ export default {
   async beforeMount() {
     try {
       await this.$store.dispatch('getData', 'menus')
+      await this.$store.dispatch('getData', 'sliders')
+      await this.$store.dispatch('getData', 'zadachi')
+      await this.$store.dispatch('getData', 'napravs')
       await this.$store.dispatch('getData', 'clients')
       this.loading = false
     } catch (err) {

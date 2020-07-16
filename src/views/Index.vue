@@ -4,20 +4,14 @@
       title="ENTR - Рекламное агенство"
       description="Мы реализуем любые рекламно-производственные задачи"
     />
-    <transition name="fade" appear>
-      <Slider v-if="sliders.length" :sliders="sliders" />
-    </transition>
+    <Slider v-if="sliders.length" :sliders="sliders" />
 
     <!-- Задачи -->
-    <transition name="fade" appear>
-      <Zadachi v-if="zadachi.length" :zadachi="zadachi" />
-    </transition>
+    <Zadachi v-if="zadachi.length" :zadachi="zadachi" />
     <div class="space"></div>
 
     <!-- Направления -->
-    <transition name="fade" appear>
-      <Napravs :napravs="napravs" />
-    </transition>
+    <Napravs :napravs="napravs" />
     <div class="space"></div>
 
     <!-- База -->
@@ -72,17 +66,6 @@ export default {
     },
     napravs() {
       return this.$store.getters.napravs
-    }
-  },
-  async beforeMount() {
-    try {
-      await this.$store.dispatch('getData', 'sliders')
-      await this.$store.dispatch('getData', 'zadachi')
-      await this.$store.dispatch('getData', 'napravs')
-    } catch (err) {
-      console.log('Ошибка при получении данных в Index:', err.message)
-    } finally {
-      //this.loading = false
     }
   }
 }
