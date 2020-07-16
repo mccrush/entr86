@@ -1,23 +1,17 @@
 <template>
   <div id="app">
-    <transition name="fade" appear mode="out-in">
-      <Loader v-if="loading" />
-    </transition>
-
     <transition name="fade" mode="out-in">
-      <div v-if="!loading">
-        <Navbar v-if="$route.name != 'login' && $route.name != 'admin'" :menus="menus" />
-
-        <div class="pt-4 pb-4" :class="$route.name === 'admin' ? 'container-fluid' : 'container'">
-          <transition name="fade" mode="out-in">
-            <router-view />
-          </transition>
-        </div>
-
-        <Footer v-if="$route.name != 'login' && $route.name != 'admin'" :clients="clients" />
-        <!-- <Dev /> -->
-      </div>
+      <Navbar v-if="$route.name != 'login' && $route.name != 'admin' && navbar" :menus="menus" />
     </transition>
+    <div class="pt-4 pb-4" :class="$route.name === 'admin' ? 'container-fluid' : 'container'">
+      <transition name="fade" mode="out-in">
+        <router-view />
+      </transition>
+    </div>
+    <transition name="fade" mode="out-in">
+      <Footer v-if="$route.name != 'login' && $route.name != 'admin' && footer" :clients="clients" />
+    </transition>
+    <!-- <Dev /> -->
   </div>
 </template>
 
@@ -29,7 +23,6 @@ import Footer from '@/components/Footer'
 
 export default {
   components: {
-    Loader,
     Navbar,
     Footer
     //Dev
@@ -37,8 +30,7 @@ export default {
   data() {
     return {
       navbar: false,
-      footer: false,
-      loading: true
+      footer: false
     }
   },
   computed: {
@@ -53,7 +45,6 @@ export default {
     try {
       await this.$store.dispatch('getData', 'menus')
       await this.$store.dispatch('getData', 'clients')
-      this.loading = false
     } catch (err) {
       console.log('Ошибка при получении данных в App:', err.message)
     } finally {
