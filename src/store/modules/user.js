@@ -5,10 +5,10 @@ export default {
     async logIn({ commit, dispatch }, { email, password }) {
       try {
         await auth.signInWithEmailAndPassword(email, password)
+        console.log('Авторизация прошла успешно');
       } catch (err) {
         throw err
       } finally {
-        console.log('Авторизация прошла успешно');
       }
     },
     async logOut() {

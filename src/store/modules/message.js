@@ -8,6 +8,6 @@ export default {
     }
   },
   getters: {
-    getMessage: state => state.message
+    message: state => state.message
   }
 }

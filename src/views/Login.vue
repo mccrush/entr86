@@ -56,22 +56,28 @@
         <button class="btn btn-success btn-block" type="submit">Войти</button>
       </form>
     </div>
+    <transition name="fade" mode="out-in">
+      <Message v-if="error" />
+    </transition>
   </div>
 </template>
 
 <script>
 import { auth } from '@/main.js'
 import vueHeadful from 'vue-headful'
+import Message from '@/components/Message'
 
 export default {
   components: {
-    vueHeadful
+    vueHeadful,
+    Message
   },
   data() {
     return {
       email: '',
       password: '',
-      passType: true
+      passType: true,
+      error: false
     }
   },
   beforeMount() {
@@ -80,6 +86,12 @@ export default {
     }
   },
   methods: {
+    showError() {
+      this.error = true
+      setTimeout(() => {
+        this.error = false
+      }, 4000)
+    },
     async login() {
       const formData = {
         email: this.email,
@@ -89,7 +101,9 @@ export default {
       if (this.email && this.password) {
         try {
           await this.$store.dispatch('logIn', formData)
+          this.$router.push('/admin')
         } catch (err) {
+          this.showError()
           if (err.code === 'auth/invalid-email') {
             this.$store.commit('addMessage', {
               text: 'Некорректный адрес почты!',
@@ -117,7 +131,6 @@ export default {
             })
           }
         } finally {
-          this.$router.push('/admin')
         }
       } else {
         this.$store.commit('addMessage', {
