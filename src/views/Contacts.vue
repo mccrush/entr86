@@ -1,4 +1,4 @@
-<template>
+<template v-once>
   <div class="row">
     <vueHeadful
       title="ENTR - Контакты"
