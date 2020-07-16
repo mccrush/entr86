@@ -37,45 +37,45 @@ export default {
     async updateImageFill({ commit }, { collection, id, img }) {
       try {
         await db.collection(collection).doc(id).update({ img })
+        console.log('Поле img успешно обновлено')
+        commit('updateImageFill', { collection, id, img })
       } catch (err) {
         //throw err
         console.log('Ошибка при обновлении поля img:', err)
       } finally {
-        console.log('Поле img успешно обновлено')
-        commit('updateImageFill', { collection, id, img })
       }
     },
     async removeDoc({ commit, dispatch }, { collection, id }) {
       try {
         await db.collection(collection).doc(id).delete()
+        console.log('Документ успешно удален')
+        commit('removeDoc', { collection, id })
       } catch (err) {
         //throw err
         console.log('Ошибка при удалении документа:', err)
       } finally {
-        console.log('Документ успешно удален')
-        commit('removeDoc', { collection, id })
       }
     },
     async updateDoc({ commit, dispatch }, { collection, doc }) {
       try {
         await db.collection(collection).doc(doc.id).update(doc)
+        console.log('Документ успешно обновлен')
+        commit('updateDoc', { collection, doc })
       } catch (err) {
         //throw err
         console.log('Ошибка при обновлении документа:', err)
       } finally {
-        console.log('Документ успешно обновлен')
-        commit('updateDoc', { collection, doc })
       }
     },
     async addDoc({ commit }, { collection, doc }) {
       try {
         await db.collection(collection).doc(doc.id).set(doc, { merge: true })
+        console.log('Документ успешно создан')
+        commit('addDoc', { collection, doc })
       } catch (err) {
         //throw err
         console.log('Ошибка при создании документа:', err)
       } finally {
-        console.log('Документ успешно создан')
-        commit('addDoc', { collection, doc })
       }
     },
     async getData({ commit }, collection) {
@@ -86,11 +86,10 @@ export default {
         snapshot.forEach(doc => {
           collections.push(doc.data())
         });
+        commit('getData', { collections, collection })
       } catch (err) {
         throw err
       } finally {
-        commit('getData', { collections, collection })
-        //console.log('collections:', collections) 
       }
     }
   },
