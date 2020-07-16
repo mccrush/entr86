@@ -243,6 +243,7 @@ export default {
     async removeDoc() {
       if (confirm('Точно удалить?')) {
         try {
+          await this.removeImage() // Сначала удаляем изображение
           await this.$store.dispatch('removeDoc', {
             collection: this.collection,
             id: this.doc.id
