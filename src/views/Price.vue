@@ -36,13 +36,6 @@ export default {
     }
   },
   async mounted() {
-    try {
-      await this.$store.dispatch('getData', 'prices')
-    } catch (err) {
-      console.log('Ошибка при получении Прайсов:', err.message)
-    } finally {
-      this.loading = false
-    }
     // Прокрутка до нужного раздела
     if (this.$route.hash) {
       let elem = document.querySelector(this.$route.hash)

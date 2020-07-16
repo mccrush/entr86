@@ -36,15 +36,6 @@ export default {
     portfolios() {
       return this.$store.getters.portfolios
     }
-  },
-  async mounted() {
-    try {
-      await this.$store.dispatch('getData', 'portfolios')
-      this.loading = false
-    } catch (err) {
-      console.log('Ошибка при получении Портфолио:', err.message)
-    } finally {
-    }
   }
 }
 </script>

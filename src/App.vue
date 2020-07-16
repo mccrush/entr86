@@ -56,6 +56,8 @@ export default {
       await this.$store.dispatch('getData', 'zadachi')
       await this.$store.dispatch('getData', 'napravs')
       await this.$store.dispatch('getData', 'clients')
+      await this.$store.dispatch('getData', 'prices')
+      await this.$store.dispatch('getData', 'portfolios')
       this.loading = false
     } catch (err) {
       console.log('Ошибка при получении данных в App:', err.message)
