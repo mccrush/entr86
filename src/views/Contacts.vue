@@ -6,16 +6,17 @@
     />
     <div class="col-12">
       <h2 class="text-uppercase text-left mt-2 bold">Контакты</h2>
-      <p class="text-left mb-2">
+      <div v-html="contacts[0].desc" class="text-left mb-2"></div>
+      <!-- <p class="text-left mb-2">
         ООО ЭНТР 628415,
         <br />Тюменская область
         ХМАО-Югра г.&nbsp;Сургут,
         ул. Инженерная 1/4
         <br />+7 3462 630 475
         <br />entr86@mail.ru
-      </p>
+      </p>-->
     </div>
-    <div class="col-12 mt-3">
+    <div class="col-12 mt-2">
       <iframe
         src="https://yandex.ru/map-widget/v1/?um=constructor%3A89e306c63e36ad25612fe85a9ceaac280e7fc91a1acb233fe8de9ab0786d8c9d&amp;source=constructor"
         width="100%"
@@ -63,6 +64,11 @@ import vueHeadful from 'vue-headful'
 export default {
   components: {
     vueHeadful
+  },
+  computed: {
+    contacts() {
+      return this.$store.getters.contacts
+    }
   }
 }
 </script>
