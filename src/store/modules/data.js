@@ -10,6 +10,7 @@ export default {
     prices: [],
     sliders: [],
     zadachi: [],
+    contacts: []
   },
   mutations: {
     updateImageFill(state, { collection, id, img }) {
@@ -102,5 +103,6 @@ export default {
     prices: state => state.prices,
     sliders: state => state.sliders,
     zadachi: state => state.zadachi,
+    contacts: state => state.contacts,
   }
 }

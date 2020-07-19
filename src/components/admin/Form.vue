@@ -50,7 +50,10 @@
       <div class="col-6 text-left"></div>
     </div>
 
-    <div v-if="collection === 'portfolios' || (collection === 'prices' && doc.id)" class="row">
+    <div
+      v-if="collection === 'portfolios' || (collection === 'prices' && doc.id) ||collection === 'contacts'"
+      class="row"
+    >
       <div class="col-12">
         <editor
           api-key="hanxollva4phpflvvnv1lje4y82fvprrkqrmpqeclw066js2"
@@ -76,7 +79,7 @@
       </div>
     </div>
 
-    <div v-if="collection != 'menus'" class="row mt-3">
+    <div v-if="collection != 'menus' || collection != 'contacts'" class="row mt-3">
       <div class="col-6 text-left">
         <div class="form-group">
           <label for="img" class="small">Изображение (max 5 Мб)</label>

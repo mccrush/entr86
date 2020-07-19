@@ -106,7 +106,8 @@ export default {
       'portfolios',
       'prices',
       'sliders',
-      'zadachi'
+      'zadachi',
+      'contacts'
     ])
   },
   async mounted() {
