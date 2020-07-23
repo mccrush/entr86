@@ -1,60 +1,63 @@
 <template>
-  <div class="row justify-content-center">
-    <vue-headful title="Авторизация" description="Авторизация" />
-    <div class="col-12 col-sm-8 col-md-6 text-left">
-      <form @submit.prevent="login" class="mt-5 mb-3 p-3 shadow-sm ml-auto mr-auto max-width">
-        <h4 class="text-center mt-2 mb-4">Авторизация</h4>
-        <label for="email">Почта</label>
-        <br />
-        <input
-          type="text"
-          class="form-control"
-          id="email"
-          required
-          v-model="email"
-          placeholder="example@mail.ru"
-        />
-        <br />
-        <label for="password">Пароль</label>
-        <div class="input-group">
-          <input
-            :type="passType ? 'password' : 'text'"
-            class="form-control"
-            id="password"
-            required
-            v-model="password"
-            ref="pass"
-            maxlength="20"
-          />
+  <div class="p-5 bg-dark vh-100 bg-image">
+    <div class="bg-white shadow-sm rounded-lg admin-block">
+      <div class="container-fluid p-3">
+        <div class="row">
+          <div class="col-12 text-left">
+            <form @submit.prevent="login" class>
+              <h4 class="text-center mt-2 mb-3">Authorization</h4>
+              <label for="email">Email</label>
+              <br />
+              <input
+                type="text"
+                class="form-control form-control-sm"
+                id="email"
+                required
+                v-model="email"
+                placeholder="example@mail.ru"
+              />
+              <br />
+              <label for="password">Password</label>
+              <div class="input-group">
+                <input
+                  :type="passType ? 'password' : 'text'"
+                  class="form-control form-control-sm"
+                  id="password"
+                  required
+                  v-model="password"
+                  ref="pass"
+                  maxlength="20"
+                />
 
-          <div class="input-group-append">
-            <button
-              class="btn btn-light p-0 pl-2 pr-2 border"
-              type="button"
-              @click="passType = !passType"
-            >
-              <img
-                v-if="passType"
-                src="@/assets/icons/eye-slash.svg"
-                width="24"
-                height="24"
-                alt="Показать пароль"
-                class="opacity-06"
-              />
-              <img
-                v-else
-                src="@/assets/icons/eye.svg"
-                width="24"
-                height="24"
-                alt="Скрыть пароль"
-                class="opacity-06"
-              />
-            </button>
+                <button
+                  class="btn btn-light p-0 pl-2 pr-2 border"
+                  type="button"
+                  @click="passType = !passType"
+                >
+                  <img
+                    v-if="passType"
+                    src="@/assets/icons/eye-slash.svg"
+                    width="24"
+                    height="24"
+                    alt="Показать пароль"
+                    class="opacity-06"
+                  />
+                  <img
+                    v-else
+                    src="@/assets/icons/eye.svg"
+                    width="24"
+                    height="24"
+                    alt="Скрыть пароль"
+                    class="opacity-06"
+                  />
+                </button>
+              </div>
+              <br />
+              <button class="btn btn-sm btn-success btn-block" type="submit">Login</button>
+            </form>
           </div>
         </div>
-        <br />
-        <button class="btn btn-success btn-block" type="submit">Войти</button>
-      </form>
+      </div>
     </div>
     <transition name="fade" mode="out-in">
       <Message v-if="error" />
@@ -144,6 +147,29 @@ export default {
 </script>
 
 <style scoped>
+.bg-image {
+  background-image: url(../assets/img/insert-backdrop.webp);
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+
+.admin-block {
+  width: 240px;
+  position: absolute;
+  top: calc(50% - 170px);
+  left: calc(50% - 120px);
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.3s ease;
+}
+.fade-enter,
+.fade-leave-to {
+  opacity: 0;
+}
+
+/* *** */
 .max-width {
   max-width: 300px;
 }
