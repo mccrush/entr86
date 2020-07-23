@@ -89,6 +89,10 @@ export default {
       this.$router.push('/admin')
     }
   },
+  mounted() {
+    const jvs = document.querySelector('#jvlabelWrap')
+    jvs.classList.add('d-none')
+  },
   methods: {
     showError() {
       this.error = true
