@@ -152,6 +152,10 @@ export default {
       console.log('Ошибка при получении коллекций в Админ:', err.message)
     } finally {
     }
+
+    const jvs = document.querySelector('#jvlabelWrap')
+    //jvs.style = 'display: none !important'
+    jvs.classList.add('d-none')
   },
   methods: {
     selectCollection(alias) {
