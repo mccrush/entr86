@@ -5,7 +5,7 @@
     <div v-else-if="$route.name != 'login' && $route.name != 'admin'">
       <Navbar :menus="menus" />
 
-      <div class="pt-4 pb-4" :class="$route.name === 'admin' ? 'container-fluid' : 'container'">
+      <div class="container pt-4 pb-4">
         <transition name="fade" mode="out-in">
           <router-view />
         </transition>
@@ -15,7 +15,9 @@
     </div>
 
     <div v-else>
-      <router-view />
+      <transition name="fade" mode="out-in">
+        <router-view />
+      </transition>
     </div>
   </div>
 </template>
