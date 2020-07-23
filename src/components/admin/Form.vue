@@ -97,7 +97,7 @@
         <img v-if="doc.img.name" :src="doc.img.url" alt="Изображение" class height="76" />
         <button
           v-if="doc.img.name"
-          class="btn btn-sm btn-light position-absolute"
+          class="btn btn-sm btn-light position-relative load-image"
           type="button"
           @click="removeImage"
         >Удалить</button>
@@ -260,3 +260,9 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+.load-image {
+  margin-top: -48px;
+}
+</style>
