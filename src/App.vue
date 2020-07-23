@@ -1,23 +1,22 @@
 <template>
   <div id="app">
-    <transition name="fade" appear mode="out-in">
-      <Loader v-if="loading" />
-    </transition>
+    <Loader v-if="loading" />
 
-    <transition name="fade" mode="out-in">
-      <div v-if="!loading">
-        <Navbar v-if="$route.name != 'login' && $route.name != 'admin'" :menus="menus" />
+    <div v-else-if="$route.name != 'login' && $route.name != 'admin'">
+      <Navbar :menus="menus" />
 
-        <div class="pt-4 pb-4" :class="$route.name === 'admin' ? 'container-fluid' : 'container'">
-          <transition name="fade" mode="out-in">
-            <router-view />
-          </transition>
-        </div>
-
-        <Footer v-if="$route.name != 'login' && $route.name != 'admin'" :clients="clients" />
-        <!-- <Dev /> -->
+      <div class="pt-4 pb-4" :class="$route.name === 'admin' ? 'container-fluid' : 'container'">
+        <transition name="fade" mode="out-in">
+          <router-view />
+        </transition>
       </div>
-    </transition>
+
+      <Footer :clients="clients" />
+    </div>
+
+    <div v-else>
+      <router-view />
+    </div>
   </div>
 </template>
 
