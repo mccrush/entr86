@@ -1,5 +1,5 @@
 <template>
-  <div class="p-5 bg-dark vh-100 bg-image">
+  <div class="p-1 p-lg-5 bg-dark vh-100 bg-image">
     <div class="bg-white shadow-sm rounded-lg admin-block">
       <div class="container-fluid">
         <div class="row">
@@ -116,7 +116,7 @@ export default {
   components: {
     CollectionsList,
     Docs,
-    Form
+    Form,
   },
   data() {
     return {
@@ -126,7 +126,7 @@ export default {
       selectDocId: '',
       createDoc: false,
       docs: [],
-      doc: {}
+      doc: {},
     }
   },
   computed: {
@@ -141,8 +141,8 @@ export default {
       'prices',
       'sliders',
       'zadachi',
-      'contacts'
-    ])
+      'contacts',
+    ]),
   },
   async mounted() {
     try {
@@ -167,13 +167,13 @@ export default {
     selectDoc(id) {
       this.createDoc = false
       this.selectDocId = id
-      this.doc = this.docs.find(doc => doc.id === id)
+      this.doc = this.docs.find((doc) => doc.id === id)
     },
     async logOut() {
       await this.$store.dispatch('logOut')
       this.$router.push('/login')
-    }
-  }
+    },
+  },
 }
 </script>
 

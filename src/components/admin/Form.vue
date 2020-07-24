@@ -129,7 +129,7 @@
     </div>
 
     <div class="row mt-3">
-      <div class="col-4">
+      <div class="col-12 col-sm-6 col-md-4">
         <transition name="fade" mode="out-in">
           <button
             @click="removeDoc"
@@ -139,10 +139,10 @@
           >Удалить</button>
         </transition>
       </div>
-      <div class="col-4">
+      <div class="d-none d-md-block col-4">
         <!-- Очистить -->
       </div>
-      <div class="col-4">
+      <div class="col-12 col-sm-6 col-md-4">
         <button type="submit" class="btn btn-sm btn-block btn-outline-success">Сохранить</button>
       </div>
     </div>
@@ -155,7 +155,7 @@ import Editor from '@tinymce/tinymce-vue'
 
 export default {
   components: {
-    editor: Editor
+    editor: Editor,
   },
   props: ['doc', 'collection', 'length'],
   methods: {
@@ -176,7 +176,7 @@ export default {
         await this.$store.dispatch('updateImageFill', {
           collection: this.collection,
           id: this.doc.id,
-          img: this.doc.img
+          img: this.doc.img,
         })
       } catch (err) {
       } finally {
@@ -202,7 +202,7 @@ export default {
           await this.$store.dispatch('updateImageFill', {
             collection: this.collection,
             id: this.doc.id,
-            img: this.doc.img
+            img: this.doc.img,
           })
         } catch (err) {
         } finally {
@@ -220,18 +220,18 @@ export default {
           position: +this.doc.position,
           active: this.doc.active,
           desc: this.doc.desc || '',
-          img: this.doc.img || { url: '', name: '' }
+          img: this.doc.img || { url: '', name: '' },
         }
         try {
           if (!this.doc.id) {
             await this.$store.dispatch('addDoc', {
               collection: this.collection,
-              doc
+              doc,
             })
           } else {
             await this.$store.dispatch('updateDoc', {
               collection: this.collection,
-              doc
+              doc,
             })
           }
         } catch (err) {
@@ -249,15 +249,15 @@ export default {
           await this.removeImage() // Сначала удаляем изображение
           await this.$store.dispatch('removeDoc', {
             collection: this.collection,
-            id: this.doc.id
+            id: this.doc.id,
           })
         } catch (err) {
         } finally {
           this.$emit('update-doc', this.collection)
         }
       }
-    }
-  }
+    },
+  },
 }
 </script>
 

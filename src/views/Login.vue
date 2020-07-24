@@ -1,5 +1,5 @@
 <template>
-  <div class="p-5 bg-dark vh-100 bg-image">
+  <div class="p-1 p-lg-5 bg-dark vh-100 bg-image">
     <div class="bg-white shadow-sm rounded-lg admin-block">
       <div class="container-fluid p-3">
         <div class="row">
@@ -74,14 +74,14 @@ import Message from '@/components/Message'
 export default {
   components: {
     vueHeadful,
-    Message
+    Message,
   },
   data() {
     return {
       email: '',
       password: '',
       passType: true,
-      error: false
+      error: false,
     }
   },
   beforeMount() {
@@ -103,7 +103,7 @@ export default {
     async login() {
       const formData = {
         email: this.email,
-        password: this.password
+        password: this.password,
       }
 
       if (this.email && this.password) {
@@ -115,27 +115,27 @@ export default {
           if (err.code === 'auth/invalid-email') {
             this.$store.commit('addMessage', {
               text: 'Некорректный адрес почты!',
-              type: 'bg-danger'
+              type: 'bg-danger',
             })
           } else if (err.code === 'auth/invalid-password') {
             this.$store.commit('addMessage', {
               text: 'Некорректный пароль!',
-              type: 'bg-danger'
+              type: 'bg-danger',
             })
           } else if (err.code === 'auth/wrong-password') {
             this.$store.commit('addMessage', {
               text: 'Неверный пароль!',
-              type: 'bg-danger'
+              type: 'bg-danger',
             })
           } else if (err.code === 'auth/user-not-found') {
             this.$store.commit('addMessage', {
               text: 'Пользователь с такой почтой не найден',
-              type: 'bg-danger'
+              type: 'bg-danger',
             })
           } else {
             this.$store.commit('addMessage', {
               text: 'Ошибка: ' + err.code,
-              type: 'bg-danger'
+              type: 'bg-danger',
             })
           }
         } finally {
@@ -143,11 +143,11 @@ export default {
       } else {
         this.$store.commit('addMessage', {
           text: 'Ошибка: поля не заполнены',
-          type: 'bg-danger'
+          type: 'bg-danger',
         })
       }
-    }
-  }
+    },
+  },
 }
 </script>
 
