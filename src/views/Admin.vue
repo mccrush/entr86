@@ -4,7 +4,10 @@
       <div class="container-fluid">
         <div class="row">
           <div class="col-12 border-bottom p-3 text-left">
-            <h6 class="m-0 mt-2 text-muted d-inline-block">Admin panel</h6>
+            <h6 class="m-0 mt-2 text-muted d-inline-block">
+              Admin panel
+              <span class="text-danger small">- необходимо оплатить 2 этап разработки</span>
+            </h6>
             <button @click="logOut" class="btn btn-sm btn-light text-muted float-right">Logout</button>
             <span
               class="d-inline-block float-right text-muted small mt-2 mr-3"
