@@ -6,7 +6,7 @@
           <div class="col-12 border-bottom p-3 text-left">
             <h6 class="m-0 mt-2 text-muted d-inline-block">
               Admin panel
-              <span class="text-danger small">- необходимо оплатить 2 этап разработки</span>
+              <!-- <span class="text-danger small">- необходимо оплатить 2 этап разработки</span> -->
             </h6>
             <button @click="logOut" class="btn btn-sm btn-light text-muted float-right">Logout</button>
             <span
