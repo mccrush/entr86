@@ -32,23 +32,23 @@ export default {
   components: {
     Loader,
     Navbar,
-    Footer
+    Footer,
     //Dev
   },
   data() {
     return {
       navbar: false,
       footer: false,
-      loading: true
+      loading: true,
     }
   },
   computed: {
     menus() {
-      return this.$store.getters.menus.filter(item => item.active)
+      return this.$store.getters.menus.filter((item) => item.active)
     },
     clients() {
       return this.$store.getters.clients
-    }
+    },
   },
   async beforeMount() {
     try {
@@ -108,7 +108,11 @@ export default {
     setTimeout(() => {
       this.footer = true
     }, 100)
-  }
+
+    alert(
+      'Сайт работает в демонстрационном режиме. Напоминаем, что необходимо оплатить работу за второй этап разработки'
+    )
+  },
 }
 </script>
 
