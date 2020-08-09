@@ -10,7 +10,7 @@
         <div v-for="(portfolio, index) in portfolios" :key="'ptr'+index" class="row">
           <div class="col-12 mt-3">
             <h3 class="text-uppercase text-left mt-2 bold">{{portfolio.title}}</h3>
-            <img :src="portfolio.img.url" :alt="portfolio.title" width="100%" min-height="306" />
+            <img :src="portfolio.img.url" :alt="portfolio.title" width="100%" min-height="305" />
             <div class="text-left mt-2" v-html="portfolio.desc"></div>
           </div>
         </div>
@@ -25,18 +25,18 @@ import vueHeadful from 'vue-headful'
 
 export default {
   components: {
-    vueHeadful
+    vueHeadful,
   },
   data() {
     return {
-      loading: true
+      loading: true,
     }
   },
   computed: {
     portfolios() {
       return this.$store.getters.portfolios
-    }
-  }
+    },
+  },
 }
 </script>
 
