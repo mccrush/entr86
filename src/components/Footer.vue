@@ -60,8 +60,18 @@
         </div>
       </div>
     </div>
-    <div class="d-flex bg-black" style="background: #00000080;">
-      <div class="col-12 text-light copy pt-1 pb-1">© 2020 entr86.ru</div>
+    <div class="bg-black" style="background: #00000080;">
+      <div class="container d-flex justify-content-between">
+        <div class="text-light copy pt-1 pb-1">© 2020 entr86.ru</div>
+        <div class="text-light copy pt-1 pb-1">
+          Разработка сайта —
+          <a
+            href="https://mccrush.ru"
+            target="_blank"
+            title="Перейти на сайт mccrush.ru"
+          >«mccrush.ru»</a>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -72,7 +82,7 @@ export default {
   data() {
     return {
       timeLeft: null,
-      timeRight: null
+      timeRight: null,
     }
   },
   methods: {
@@ -99,7 +109,7 @@ export default {
     },
     scrolRightStop() {
       clearInterval(this.timeRight)
-    }
+    },
   },
   mounted() {
     const slider = document.querySelector('.ower')
@@ -107,7 +117,7 @@ export default {
     let startX
     let scrollLeft
 
-    slider.addEventListener('mousedown', e => {
+    slider.addEventListener('mousedown', (e) => {
       isDown = true
       slider.classList.add('active')
       startX = e.pageX - slider.offsetLeft
@@ -121,7 +131,7 @@ export default {
       isDown = false
       slider.classList.remove('active')
     })
-    slider.addEventListener('mousemove', e => {
+    slider.addEventListener('mousemove', (e) => {
       if (!isDown) return
       e.preventDefault()
       const x = e.pageX - slider.offsetLeft
@@ -129,7 +139,7 @@ export default {
       slider.scrollLeft = scrollLeft - walk
     })
     //
-    slider.addEventListener('touchstart', e => {
+    slider.addEventListener('touchstart', (e) => {
       isDown = true
       slider.classList.add('active')
       startX = e.pageX - slider.offsetLeft
@@ -143,14 +153,14 @@ export default {
       isDown = false
       slider.classList.remove('active')
     })
-    slider.addEventListener('touchmove', e => {
+    slider.addEventListener('touchmove', (e) => {
       if (!isDown) return
       e.preventDefault()
       const x = e.pageX - slider.offsetLeft
       const walk = x - startX
       slider.scrollLeft = scrollLeft - walk
     })
-  }
+  },
 }
 </script>
 
@@ -188,5 +198,10 @@ h5 {
 
 .copy {
   font-size: 0.9rem;
+}
+
+a,
+a:hover {
+  color: #fff;
 }
 </style>
