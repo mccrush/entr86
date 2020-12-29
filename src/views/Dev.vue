@@ -15,12 +15,12 @@
 </template>
 
 <style scoped>
-.row {
-  height: 600px;
-}
+  .row {
+    height: 600px;
+  }
 
-.dev {
-  border: 4px solid #000;
-  box-shadow: 0 0 0 8px #ffcc00;
-}
+  .dev {
+    border: 4px solid #000;
+    box-shadow: 0 0 0 8px #ffcc00;
+  }
 </style>

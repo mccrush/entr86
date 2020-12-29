@@ -1,9 +1,6 @@
 <template>
   <div>
-    <vueHeadful
-      title="ENTR - Рекламное агенство"
-      description="Мы реализуем любые рекламно-производственные задачи"
-    />
+    <vueHeadful title="ENTR - Рекламное агенство" description="Мы реализуем любые рекламно-производственные задачи" />
     <Slider v-if="sliders.length" :sliders="sliders" />
 
     <!-- Задачи -->
@@ -45,54 +42,54 @@
 </template>
 
 <script>
-import Slider from '@/components/index/Slider'
-import Zadachi from '@/components/index/Zadachi'
-import Napravs from '@/components/index/Napravs'
-import vueHeadful from 'vue-headful'
+  import Slider from '@/components/index/Slider'
+  import Zadachi from '@/components/index/Zadachi'
+  import Napravs from '@/components/index/Napravs'
+  import vueHeadful from 'vue-headful'
 
-export default {
-  components: {
-    Slider,
-    Zadachi,
-    Napravs,
-    vueHeadful
-  },
-  computed: {
-    sliders() {
-      return this.$store.getters.sliders
+  export default {
+    components: {
+      Slider,
+      Zadachi,
+      Napravs,
+      vueHeadful
     },
-    zadachi() {
-      return this.$store.getters.zadachi
-    },
-    napravs() {
-      return this.$store.getters.napravs
+    computed: {
+      sliders() {
+        return this.$store.getters.sliders
+      },
+      zadachi() {
+        return this.$store.getters.zadachi
+      },
+      napravs() {
+        return this.$store.getters.napravs
+      }
     }
   }
-}
 </script>
 
 <style>
-.space {
-  height: 50px;
-}
+  .space {
+    height: 50px;
+  }
 
-.fs-35 {
-  font-size: 3.5rem;
-}
+  .fs-35 {
+    font-size: 3.5rem;
+  }
 
-.fs-38 {
-  font-size: 3.8rem;
-}
+  .fs-38 {
+    font-size: 3.8rem;
+  }
 
-.fs-31 {
-  font-size: 3.1rem;
-}
+  .fs-31 {
+    font-size: 3.1rem;
+  }
 
-.fs-21 {
-  font-size: 2.1rem;
-}
+  .fs-21 {
+    font-size: 2.1rem;
+  }
 
-.fs-24 {
-  font-size: 2.4rem;
-}
+  .fs-24 {
+    font-size: 2.4rem;
+  }
 </style>

@@ -11,7 +11,7 @@
               <div class="bg-ping line">&nbsp;</div>
             </div>
             <div class>
-              <img src="img/price/icons/p0.png" alt width="96" height="96" class />
+              <img src="img/price/icons/p0.png" alt="price" width="96" height="96" />
             </div>
           </div>
         </td>
@@ -22,10 +22,7 @@
         <td colspan="6" class="text-right text-nowrap">от 10 000 &#x20bd;</td>
       </tr>
       <tr>
-        <td
-          colspan="6"
-          class="text-left"
-        >Разработка анимации логотипа (с использованием 2d и 3d графики)</td>
+        <td colspan="6" class="text-left">Разработка анимации логотипа (с использованием 2d и 3d графики)</td>
         <td colspan="6" class="text-right text-nowrap">от 5000 &#x20bd;/см</td>
       </tr>
       <tr>
@@ -37,7 +34,7 @@
 </template>
 
 <style scoped>
-table.table {
-  min-width: 560px;
-}
+  table.table {
+    min-width: 560px;
+  }
 </style>

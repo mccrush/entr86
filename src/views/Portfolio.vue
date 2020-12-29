@@ -1,9 +1,7 @@
 <template>
   <div class="row">
-    <vueHeadful
-      title="ENTR - Портфолио"
-      description="Наружная реклама – играет значительную роль в бизнесе. Для печати рекламных изображений используется большое количество разнообразных материалов, включая ткани, бумагу и самоклеящуюся пленку."
-    />
+    <vueHeadful title="ENTR - Портфолио"
+      description="Наружная реклама – играет значительную роль в бизнесе. Для печати рекламных изображений используется большое количество разнообразных материалов, включая ткани, бумагу и самоклеящуюся пленку." />
     <div class="col-12">
       <h2 class="text-uppercase text-left mt-2 bold">Портфолио</h2>
       <div v-if="portfolios.length">
@@ -21,23 +19,23 @@
 </template>
 
 <script>
-import vueHeadful from 'vue-headful'
+  import vueHeadful from 'vue-headful'
 
-export default {
-  components: {
-    vueHeadful,
-  },
-  data() {
-    return {
-      loading: true,
-    }
-  },
-  computed: {
-    portfolios() {
-      return this.$store.getters.portfolios
+  export default {
+    components: {
+      vueHeadful,
     },
-  },
-}
+    data() {
+      return {
+        loading: true,
+      }
+    },
+    computed: {
+      portfolios() {
+        return this.$store.getters.portfolios
+      },
+    },
+  }
 </script>
 
 <style scoped>

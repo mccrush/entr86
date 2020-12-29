@@ -49,7 +49,7 @@
 </template>
 
 <style scoped>
-table.table {
-  min-width: 560px;
-}
+  table.table {
+    min-width: 560px;
+  }
 </style>

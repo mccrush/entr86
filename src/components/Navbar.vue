@@ -5,15 +5,8 @@
         <router-link to="/" tag="a" class="navbar-brand">
           <img src="/logo.gif" class="logo" height="64" alt="logo" loading="lazy" />
         </router-link>
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-toggle="collapse"
-          data-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
 
@@ -40,26 +33,27 @@
 </template>
 
 <script>
-export default {
-  props: ['menus']
-}
+  export default {
+    props: ['menus']
+  }
 </script>
 
 <style scoped>
-.nav-border {
-  border-bottom: 4px solid #000;
-  box-shadow: 0 0 0 8px #ffcc00;
-}
-.nav-item a {
-  font-weight: bold;
-  font-size: 0.9rem;
-}
+  .nav-border {
+    border-bottom: 4px solid #000;
+    box-shadow: 0 0 0 8px #ffcc00;
+  }
 
-.nav-item a.router-link-exact-active.router-link-active {
-  color: #ffcc00;
-}
+  .nav-item a {
+    font-weight: bold;
+    font-size: 0.9rem;
+  }
 
-.logo {
-  margin: -30px 0 -16px 0;
-}
+  .nav-item a.router-link-exact-active.router-link-active {
+    color: #ffcc00;
+  }
+
+  .logo {
+    margin: -30px 0 -16px 0;
+  }
 </style>

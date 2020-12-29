@@ -12,12 +12,11 @@
 </template>
 
 <script>
-import vueHeadful from 'vue-headful'
+  import vueHeadful from 'vue-headful'
 
-export default {
-  components: {
-    vueHeadful
+  export default {
+    components: {
+      vueHeadful
+    }
   }
-}
 </script>
-
