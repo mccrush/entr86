@@ -40,8 +40,9 @@
       <div class="container d-flex justify-content-between">
         <div class="text-light copy pt-1 pb-1">© 2020 entr86.ru</div>
         <div class="text-light copy pt-1 pb-1">
-          Разработка сайта —
-          <a href="https://mccrush.ru" target="_blank" title="Перейти на сайт mccrush.ru">«mccrush.ru»</a>
+          Разработка сайта
+          <a href="https://mccrush.ru" class="author-site" target="_blank"
+            title="Перейти на сайт mccrush.ru">«mccrush.ru»</a>
         </div>
       </div>
     </div>
@@ -175,5 +176,15 @@
   a,
   a:hover {
     color: #fff;
+  }
+
+  .author-site {
+    display: inline-block;
+    text-decoration: none;
+    transition: 0.3s;
+  }
+
+  .author-site:hover {
+    transform: rotate(-3deg);
   }
 </style>
