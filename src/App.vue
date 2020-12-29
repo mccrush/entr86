@@ -6,9 +6,15 @@
       <Navbar :menus="menus" />
 
       <div class="container pt-4 pb-4">
-        <transition name="fade" mode="out-in">
+        <!-- <transition name="fade" mode="out-in">
           <router-view />
-        </transition>
+        </transition> -->
+
+        <router-view v-slot="{ Component }">
+          <transition name="fade" mode="out-in">
+            <component :is="Component" />
+          </transition>
+        </router-view>
       </div>
 
       <Footer :clients="clients" />
