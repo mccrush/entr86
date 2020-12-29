@@ -8,7 +8,7 @@
         <div v-for="(portfolio, index) in portfolios" :key="'ptr'+index" class="row">
           <div class="col-12 mt-3">
             <h3 class="text-uppercase text-left mt-2 bold">{{portfolio.title}}</h3>
-            <img :src="portfolio.img.url" :alt="portfolio.title" width="100%" min-height="305" />
+            <img :src="portfolio.img.url" :alt="portfolio.title" class="portfolio-image" />
             <div class="text-left mt-2" v-html="portfolio.desc"></div>
           </div>
         </div>
@@ -39,4 +39,8 @@
 </script>
 
 <style scoped>
+  .portfolio-image {
+    width: 100%;
+    min-height: 305px;
+  }
 </style>
