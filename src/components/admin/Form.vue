@@ -33,7 +33,7 @@
     <div v-if="collection === 'portfolios' || (collection === 'prices' && doc.id) ||collection === 'contacts'"
       class="row">
       <div class="col-12">
-        <editor api-key="hanxollva4phpflvvnv1lje4y82fvprrkqrmpqeclw066js2" type="text" v-model="doc.desc"
+        <editor api-key="hanxollva4phpflvvnv1lje4y82fvprrkqrmpqeclw066js2" v-model="doc.desc"
           class="form-control form-control-sm" placeholder="Описание" :init="{
             language: 'ru',
          height: 300,
