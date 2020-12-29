@@ -139,7 +139,10 @@
 
       const jvs = document.querySelector('#jvlabelWrap')
       //jvs.style = 'display: none !important'
-      jvs.classList.add('d-none')
+      if (jvs) {
+        jvs.classList.add('d-none')
+      }
+
     },
     methods: {
       selectCollection(alias) {

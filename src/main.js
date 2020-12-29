@@ -5,10 +5,6 @@ import router from './router'
 import store from './store'
 import { auth } from './firebase'
 
-import 'bootstrap'
-import 'bootstrap/dist/css/bootstrap.min.css'
-
-
 let app
 auth.onAuthStateChanged((user) => {
   if (!app) {

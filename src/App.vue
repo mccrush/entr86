@@ -17,14 +17,17 @@
     </div>
 
     <div v-else>
-      <transition name="fade" mode="out-in">
-        <router-view />
-      </transition>
+      <router-view v-slot="{ Component }">
+        <transition name="fade" mode="out-in">
+          <component :is="Component" />
+        </transition>
+      </router-view>
     </div>
   </div>
 </template>
 
 <script>
+  import 'bootstrap/dist/css/bootstrap.min.css'
   import Loader from '@/components/Loader'
   import Navbar from '@/components/Navbar'
   import Footer from '@/components/Footer'
