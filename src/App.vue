@@ -6,10 +6,6 @@
       <Navbar :menus="menus" />
 
       <div class="container pt-4 pb-4">
-        <!-- <transition name="fade" mode="out-in">
-          <router-view />
-        </transition> -->
-
         <router-view v-slot="{ Component }">
           <transition name="fade" mode="out-in">
             <component :is="Component" />
@@ -39,7 +35,7 @@
       Loader,
       Navbar,
       Footer,
-      //Dev
+      //Dev заглушка при режиме разработки
     },
     data() {
       return {
