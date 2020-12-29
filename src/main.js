@@ -1,4 +1,5 @@
-import Vue from 'vue'
+//import Vue from 'vue'
+import { createApp } from 'vue'
 import App from './App.vue'
 import './registerServiceWorker'
 import router from './router'
@@ -7,7 +8,7 @@ import store from './store'
 import 'bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css'
 
-Vue.config.productionTip = false
+//Vue.config.productionTip = false
 
 import * as firebase from "firebase/app";
 import "firebase/auth";
@@ -34,11 +35,13 @@ export const storage = firebase.storage();
 let app = "";
 firebase.auth().onAuthStateChanged((user) => {
   if (!app) {
-    app = new Vue({
-      router,
-      store,
-      render: h => h(App)
-    }).$mount('#app')
+    // app = new Vue({
+    //   router,
+    //   store,
+    //   render: h => h(App)
+    // }).$mount('#app')
+
+    app = createApp(App).use(store).use(router).mount('#app')
   }
   if (user) {
     //store.dispatch("logIn");
