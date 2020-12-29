@@ -23,6 +23,7 @@
 
 <script>
   import $ from 'jquery'
+  import carousel from 'bootstrap'
 
   export default {
     props: ['sliders'],
