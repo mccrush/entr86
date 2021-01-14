@@ -38,7 +38,7 @@
     </div>
     <div class="bg-black" style="background: #00000080;">
       <div class="container d-flex justify-content-between">
-        <div class="text-light copy pt-1 pb-1">© 2020 entr86.ru</div>
+        <div class="text-light copy pt-1 pb-1">© 2021 entr86.ru</div>
         <div class="text-light copy pt-1 pb-1">
           Разработка сайта
           <a href="https://mccrush.ru" class="author-site" target="_blank"
