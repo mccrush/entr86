@@ -1,9 +1,9 @@
-import * as firebase from "firebase/app";
-import "firebase/auth";
-import "firebase/firestore"; // DB
-import "firebase/storage"; // File
-
+import firebase from "firebase/app"
+import "firebase/auth"
+import "firebase/firestore" // DB
+import "firebase/storage" // File
 import apiKey from '../apiKey'
+
 const firebaseConfig = {
   apiKey,
   authDomain: "enter-e221d.firebaseapp.com",
