@@ -18,6 +18,10 @@
           <br />г. Сургут, ул. Инженерная 1/4
         </p> -->
         <h4 class="text-center">Домен entr86.ru отключен за неуплату</h4>
+        <p class="lh-1 mt-3">
+          Разработка приложений<br />
+          <a href="https://mccrush.ru">«mccrush apps»</a>
+        </p>
       </div>
     </div>
   </div>
@@ -31,5 +35,9 @@
 .dev {
   border: 4px solid #000;
   box-shadow: 0 0 0 8px #ffcc00;
+}
+
+.lh-1 {
+  line-height: 1.2;
 }
 </style>
