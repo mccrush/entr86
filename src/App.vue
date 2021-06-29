@@ -1,6 +1,7 @@
 <template>
   <div id="app">
-    <Loader v-if="loading" />
+     <Dev  />
+    <!-- <Loader v-if="loading" />
 
     <div v-else-if="$route.name != 'login' && $route.name != 'admin'">
       <Navbar :menus="menus" />
@@ -22,7 +23,7 @@
           <component :is="Component" />
         </transition>
       </router-view>
-    </div>
+    </div> -->
   </div>
 </template>
 
@@ -31,14 +32,14 @@
   import Loader from '@/components/Loader'
   import Navbar from '@/components/Navbar'
   import Footer from '@/components/Footer'
-  //import Dev from '@/views/Dev' заглушка при режиме разработки
+  import Dev from '@/views/Dev' // заглушка при режиме разработки
 
   export default {
     components: {
       Loader,
       Navbar,
       Footer,
-      //Dev заглушка при режиме разработки
+      Dev// заглушка при режиме разработки
     },
     data() {
       return {
