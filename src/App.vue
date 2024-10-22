@@ -28,17 +28,15 @@
 
 <script>
 import 'bootstrap/dist/css/bootstrap.min.css'
-import Loader from '@/components/Loader'
-import Navbar from '@/components/Navbar'
-import Footer from '@/components/Footer'
-//import Dev from '@/views/Dev' // заглушка при режиме разработки
+import Loader from './components/Loader'
+import Navbar from './components/Navbar'
+import Footer from './components/Footer'
 
 export default {
   components: {
     Loader,
     Navbar,
     Footer
-    //Dev// заглушка при режиме разработки
   },
   data() {
     return {

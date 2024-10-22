@@ -1,6 +1,9 @@
 <template>
   <div>
-    <vueHeadful title="ENTR - Рекламное агенство" description="Мы реализуем любые рекламно-производственные задачи" />
+    <HeadersTitle
+      title="ENTR - Рекламное агенство"
+      description="Мы реализуем любые рекламно-производственные задачи"
+    />
     <Slider v-if="sliders.length" :sliders="sliders" />
 
     <!-- Задачи -->
@@ -32,8 +35,7 @@
       <div class="col-12 mt-3">
         <h2 class="text-uppercase color-blue bold fs-31">
           Мы будем рады видеть
-          <br />вас в числе
-          <br />наших клиентов!
+          <br />вас в числе <br />наших клиентов!
         </h2>
       </div>
     </div>
@@ -42,54 +44,54 @@
 </template>
 
 <script>
-  import Slider from '@/components/index/Slider'
-  import Zadachi from '@/components/index/Zadachi'
-  import Napravs from '@/components/index/Napravs'
-  import vueHeadful from 'vue-headful'
+import Slider from './../components/index/Slider'
+import Zadachi from './../components/index/Zadachi'
+import Napravs from './../components/index/Napravs'
+import HeadersTitle from './../components/interface/HeadersTitle.vue'
 
-  export default {
-    components: {
-      Slider,
-      Zadachi,
-      Napravs,
-      vueHeadful
+export default {
+  components: {
+    Slider,
+    Zadachi,
+    Napravs,
+    HeadersTitle
+  },
+  computed: {
+    sliders() {
+      return this.$store.getters.sliders
     },
-    computed: {
-      sliders() {
-        return this.$store.getters.sliders
-      },
-      zadachi() {
-        return this.$store.getters.zadachi
-      },
-      napravs() {
-        return this.$store.getters.napravs
-      }
+    zadachi() {
+      return this.$store.getters.zadachi
+    },
+    napravs() {
+      return this.$store.getters.napravs
     }
   }
+}
 </script>
 
 <style>
-  .space {
-    height: 50px;
-  }
+.space {
+  height: 50px;
+}
 
-  .fs-35 {
-    font-size: 3.5rem;
-  }
+.fs-35 {
+  font-size: 3.5rem;
+}
 
-  .fs-38 {
-    font-size: 3.8rem;
-  }
+.fs-38 {
+  font-size: 3.8rem;
+}
 
-  .fs-31 {
-    font-size: 3.1rem;
-  }
+.fs-31 {
+  font-size: 3.1rem;
+}
 
-  .fs-21 {
-    font-size: 2.1rem;
-  }
+.fs-21 {
+  font-size: 2.1rem;
+}
 
-  .fs-24 {
-    font-size: 2.4rem;
-  }
+.fs-24 {
+  font-size: 2.4rem;
+}
 </style>
