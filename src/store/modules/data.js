@@ -93,14 +93,15 @@ export default {
     }
   },
   getters: {
-    collections: state => state.collections,
-    clients: state => state.clients,
-    menus: state => state.menus,
-    napravs: state => state.napravs,
-    portfolios: state => state.portfolios,
-    prices: state => state.prices,
     sliders: state => state.sliders,
-    zadachi: state => state.zadachi,
+    collections: state => state.collections,
+    menus: state => state.menus,
+    clients: state => state.clients,
     contacts: state => state.contacts,
+    napravs: state => state.napravs,
+    zadachi: state => state.zadachi,
+
+    portfolios: state => state.portfolios,
+    prices: state => state.prices
   }
 }

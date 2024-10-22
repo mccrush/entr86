@@ -8,7 +8,7 @@
       class="col-12 col-sm-6 col-md-4 d-flex align-items-center justify-content-start mt-4 napravLink"
     >
       <img
-        :src="naprav.img.url"
+        :src="naprav['img.url']"
         class="float-left me-3"
         width="76"
         height="76"
@@ -25,7 +25,7 @@
 
 <script>
 export default {
-  props: ['napravs']
+  props: { napravs: Array }
 }
 </script>
 
