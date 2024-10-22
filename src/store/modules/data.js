@@ -1,5 +1,3 @@
-import { db } from './../../firebase.js'
-
 export default {
   state: {
     clients: [],

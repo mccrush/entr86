@@ -179,7 +179,6 @@
 </template>
 
 <script>
-import { storage } from './../firebase.js'
 import Editor from '@tinymce/tinymce-vue'
 
 export default {
@@ -194,6 +193,7 @@ export default {
       document.execCommand('copy')
     },
     async removeImage() {
+      return
       let storageRef = storage.ref()
       let imagesRef = storageRef.child(
         this.collection + '/' + this.doc.id + '/' + this.doc.img.name
@@ -213,6 +213,7 @@ export default {
       }
     },
     async uploadImage(e) {
+      return
       const file = e.target.files[0]
       if (file) {
         if (file.size / 1024 / 1024 > 5) {

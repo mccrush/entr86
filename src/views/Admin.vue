@@ -14,22 +14,11 @@
             >
               Logout
             </button>
-            <span
-              class="d-inline-block float-right text-muted small mt-2 mr-3"
-              >{{ '@' + user.email.split('@')[0] }}</span
+            <span class="d-inline-block float-right text-muted small mt-2 mr-3"
+              >UsEmail</span
             >
           </div>
         </div>
-
-        <!-- <div class="row">
-          <div class="col-12 d-flex justify-content-between align-content-center border-bottom p-3">
-            <h5 class="m-0 mt-1">Панель администратора</h5>
-            <div>
-              <span class="text-muted small mr-3">{{'@'+ user.email.split('@')[0]}}</span>
-              <button @click="logOut" class="btn btn-sm btn-light">Выйти</button>
-            </div>
-          </div>
-        </div>-->
 
         <div class="row">
           <div
@@ -130,7 +119,6 @@
 
 <script>
 import { mapGetters } from 'vuex'
-import { auth } from './../firebase.js'
 import CollectionsList from './../components/admin/Collections.vue'
 import Docs from './../components/admin/Docs.vue'
 import Form from './../components/admin/Form.vue'
@@ -143,7 +131,6 @@ export default {
   },
   data() {
     return {
-      user: auth.currentUser,
       loadingCol: true,
       selectCollectionAlias: '',
       selectDocId: '',

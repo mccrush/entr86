@@ -1,5 +1,3 @@
-import { auth } from "./../../firebase.js"
-
 export default {
   actions: {
     async logIn({ commit, dispatch }, { email, password }) {

@@ -69,7 +69,6 @@
 </template>
 
 <script>
-import { auth } from './../firebase.js'
 import HeadersTitle from './../components/interface/HeadersTitle.vue'
 import Message from './../components/Message.vue'
 
@@ -84,11 +83,6 @@ export default {
       password: '',
       passType: true,
       error: false
-    }
-  },
-  beforeMount() {
-    if (auth.currentUser) {
-      this.$router.push('/admin')
     }
   },
   mounted() {

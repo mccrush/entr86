@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import { auth } from './../firebase.js'
+
+import store from './../store'
 
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
@@ -48,27 +49,15 @@ const router = createRouter({
   ]
 })
 
-
-// const router = new VueRouter({
-//   mode: 'history',
-//   base: process.env.BASE_URL,
-//   routes,
-//   scrollBehavior(to, from, savedPosition) {
-//     if (to.hash) {
-//       return { selector: to.hash }
-//     } else {
-//       return { x: 0, y: 0 }
-//     }
-//   }
-// })
-
 router.beforeEach((to, from, next) => {
-  let currentUser = auth.currentUser
+  //let currentUser = auth.currentUser
+
+  const isLoggedIn = store._wrappedGetters.isLoggedIn
   let requiresAuth = to.matched.some(record => record.meta.requiresAuth)
 
   // 3
   if (requiresAuth) {
-    if (currentUser) {
+    if (isLoggedIn) {
       next()
     } else {
       next('login')
