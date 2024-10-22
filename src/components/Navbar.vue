@@ -2,7 +2,7 @@
   <div class="nav-border">
     <div class="container p-0">
       <nav class="navbar navbar-expand-sm navbar-light bg-white pb-2">
-        <router-link to="/" tag="a" class="navbar-brand">
+        <router-link to="/" class="navbar-brand">
           <img
             src="/logo.gif"
             class="logo"
@@ -30,7 +30,7 @@
               :key="'nmu' + index"
               class="nav-item"
             >
-              <router-link tag="a" :to="'/' + menu.alias" class="nav-link">{{
+              <router-link :to="'/' + menu.alias" class="nav-link">{{
                 menu.title
               }}</router-link>
             </li>

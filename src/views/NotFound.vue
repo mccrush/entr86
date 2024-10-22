@@ -5,7 +5,7 @@
       <h2 class="text-uppercase mt-2 bold">Ошибка 404</h2>
       <h4>Страница не найдена</h4>
       <p>
-        <router-link to="/" tag="a">Перейти на главную</router-link>
+        <router-link to="/">Перейти на главную</router-link>
       </p>
     </div>
   </div>

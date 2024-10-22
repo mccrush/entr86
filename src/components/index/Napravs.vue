@@ -1,7 +1,6 @@
 <template>
   <div class="row justify-content-center m-auto" style="max-width: 720px">
     <router-link
-      tag="a"
       v-for="naprav in napravs"
       :key="'np' + naprav.id"
       :to="{ path: '/price', hash: '#' + naprav.alias }"
@@ -31,6 +30,7 @@ export default {
 
 <style scoped>
 .napravLink {
+  position: relative;
   cursor: pointer;
   top: 0;
   transition: 0.3s;
