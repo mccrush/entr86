@@ -34,16 +34,6 @@
                 menu.title
               }}</router-link>
             </li>
-
-            <!-- <li class="nav-item">
-              <router-link tag="a" to="/price" class="nav-link">Прайс-лист</router-link>
-            </li>
-            <li class="nav-item">
-              <router-link tag="a" to="/portfolio" class="nav-link">Портфолио</router-link>
-            </li>
-            <li class="nav-item">
-              <router-link tag="a" to="/contacts" class="nav-link">Контакты</router-link>
-            </li>-->
           </ul>
         </div>
       </nav>

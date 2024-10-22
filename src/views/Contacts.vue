@@ -23,7 +23,7 @@
       <div class="row">
         <div class="col-12 col-sm-6 mt-4">
           <img
-            src="img/contacts/qr/q1.png"
+            src="/img/contacts/qr/q1.png"
             alt="Позвоните нам"
             width="200"
             class="mb-4"
@@ -32,7 +32,7 @@
             class="bg-dark shadow-sm ps-3 pe-3 pt-1 pb-1 mt-3 d-inline-block w-75 rounded-lg justify-content-center m-auto mt-3 position-relative link-block"
           >
             <img
-              src="img/footer/icons/phone_40.png"
+              src="/img/footer/icons/phone_40.png"
               width="30"
               heigth="30"
               class="me-2 mb-1"
@@ -46,7 +46,7 @@
         </div>
         <div class="col-12 col-sm-6 mt-4">
           <img
-            src="img/contacts/qr/q2.png"
+            src="/img/contacts/qr/q2.png"
             alt="Позвоните нам"
             width="200"
             class="mb-4"
@@ -55,7 +55,7 @@
             class="bg-dark ps-3 pe-3 pt-1 pb-1 w-75 rounded-lg justify-content-center m-auto mt-3 position-relative link-block"
           >
             <img
-              src="img/footer/icons/inst3.png"
+              src="/img/footer/icons/inst3.png"
               width="30"
               heigth="30"
               class="me-2 mb-1"

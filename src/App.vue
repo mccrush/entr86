@@ -55,49 +55,6 @@ export default {
   },
   async beforeMount() {
     try {
-      // await this.$store.dispatch('getData', 'menus')
-      // await this.$store.dispatch('getData', 'clients')
-      // if (this.$route.path === '/') {
-      //   await this.$store.dispatch('getData', 'sliders')
-      //   await this.$store.dispatch('getData', 'zadachi')
-      //   await this.$store.dispatch('getData', 'napravs')
-      //   this.loading = false
-      //   await this.$store.dispatch('getData', 'prices')
-      //   await this.$store.dispatch('getData', 'portfolios')
-      //   await this.$store.dispatch('getData', 'contacts')
-      // } else if (this.$route.path === '/price') {
-      //   await this.$store.dispatch('getData', 'prices')
-      //   this.loading = false
-      //   await this.$store.dispatch('getData', 'sliders')
-      //   await this.$store.dispatch('getData', 'zadachi')
-      //   await this.$store.dispatch('getData', 'napravs')
-      //   await this.$store.dispatch('getData', 'portfolios')
-      //   await this.$store.dispatch('getData', 'contacts')
-      // } else if (this.$route.path === '/portfolio') {
-      //   await this.$store.dispatch('getData', 'portfolios')
-      //   this.loading = false
-      //   await this.$store.dispatch('getData', 'sliders')
-      //   await this.$store.dispatch('getData', 'zadachi')
-      //   await this.$store.dispatch('getData', 'napravs')
-      //   await this.$store.dispatch('getData', 'prices')
-      //   await this.$store.dispatch('getData', 'contacts')
-      // } else if (this.$route.path === '/contacts') {
-      //   await this.$store.dispatch('getData', 'contacts')
-      //   this.loading = false
-      //   await this.$store.dispatch('getData', 'sliders')
-      //   await this.$store.dispatch('getData', 'zadachi')
-      //   await this.$store.dispatch('getData', 'napravs')
-      //   await this.$store.dispatch('getData', 'prices')
-      //   await this.$store.dispatch('getData', 'portfolios')
-      // } else {
-      //   this.loading = false
-      //   await this.$store.dispatch('getData', 'sliders')
-      //   await this.$store.dispatch('getData', 'zadachi')
-      //   await this.$store.dispatch('getData', 'napravs')
-      //   await this.$store.dispatch('getData', 'prices')
-      //   await this.$store.dispatch('getData', 'portfolios')
-      //   await this.$store.dispatch('getData', 'contacts')
-      // }
     } catch (err) {
       console.log('Ошибка при получении данных в App:', err.message)
     }
