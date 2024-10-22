@@ -56,7 +56,7 @@
           </div>
         </div>
       </div>
-      <div class="col-6 text-left"></div>
+      <div class="col-6 text-start"></div>
     </div>
 
     <div
@@ -95,7 +95,7 @@
       v-if="collection != 'menus' || collection != 'contacts'"
       class="row mt-3"
     >
-      <div class="col-6 text-left">
+      <div class="col-6 text-start">
         <div class="form-group">
           <label for="img" class="small">Изображение (max 5 Мб)</label>
           <input
@@ -129,7 +129,7 @@
 
     <div v-if="collection === 'prices' && doc.id" class="row">
       <div class="col-12">
-        <div class="form-group text-left">
+        <div class="form-group text-start">
           <label for="imgSrc" class="small">Сылка на изображение</label>
           <div class="input-group input-group-sm mb-3">
             <input

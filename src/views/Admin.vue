@@ -3,7 +3,7 @@
     <div class="bg-white shadow-sm rounded-lg admin-block">
       <div class="container-fluid">
         <div class="row">
-          <div class="col-12 border-bottom p-3 text-left">
+          <div class="col-12 border-bottom p-3 text-start">
             <h6 class="m-0 mt-2 text-muted d-inline-block">
               Admin panel
               <!-- <span class="text-danger small">- необходимо оплатить 2 этап разработки</span> -->
@@ -14,7 +14,7 @@
             >
               Logout
             </button>
-            <span class="d-inline-block float-right text-muted small mt-2 mr-3"
+            <span class="d-inline-block float-right text-muted small mt-2 me-3"
               >UsEmail</span
             >
           </div>
@@ -24,13 +24,7 @@
           <div
             class="col-3 col-md-2 border-right p-0 overflow-auto admin-sidebar"
           >
-            <h6 class="text-center m-0 mt-2 pb-2 border-bottom">
-              Коллекции
-              <!-- <button
-              @click="selectCollection('collections')"
-              class="btn btn-sm btn-outline-primary p-0 pl-2 pr-2 ml-1"
-              >~</button>-->
-            </h6>
+            <h6 class="text-center m-0 mt-2 pb-2 border-bottom">Коллекции</h6>
             <transition name="fade" mode="out-in">
               <img
                 v-if="loadingCol"
@@ -49,28 +43,6 @@
             </transition>
           </div>
 
-          <!-- <div class="col-2 border-right p-0 min-height-450">
-            <h6 class="border-bottom pt-2 pb-2 m-0">
-              Коллекции
-              <button
-              @click="selectCollection('collections')"
-              class="btn btn-sm btn-outline-primary p-0 pl-2 pr-2 ml-1"
-              >~</button>
-            </h6>
-            <transition name="fade" mode="out-in">
-              <img v-if="loadingCol" src="/img/admin/loading.gif" alt="Loading..." />
-              <div v-else>
-                <CollectionsList
-                  v-for="(collection, index) in collections"
-                  :key="'cole'+ index"
-                  :collection="collection"
-                  :selectCollectionAlias="selectCollectionAlias"
-                  @select-collection="selectCollection"
-                />
-              </div>
-            </transition>
-          </div>-->
-
           <div
             class="col-3 col-md-2 p-0 border-right overflow-auto admin-sidebar"
           >
@@ -82,7 +54,7 @@
                   selectDocId = ''
                   doc = { active: true, position: docs.length + 1 }
                 "
-                class="btn btn-sm btn-outline-primary p-0 pl-2 pr-2 ml-1"
+                class="btn btn-sm btn-outline-primary p-0 ps-2 pe-2 ms-1"
                 :disabled="!selectCollectionAlias ? true : false"
                 title="Создать документ"
               >

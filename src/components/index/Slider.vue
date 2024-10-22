@@ -54,16 +54,10 @@
 </template>
 
 <script>
-import $ from 'jquery'
 import { Carousel } from 'bootstrap'
 
 export default {
-  props: ['sliders']
-  // mounted() {
-  //   $('.carousel').carousel({
-  //     interval: 5000
-  //   })
-  // }
+  props: { sliders: Array }
 }
 </script>
 

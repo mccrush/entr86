@@ -5,7 +5,7 @@
       description="Наружная реклама – играет значительную роль в бизнесе. Для печати рекламных изображений используется большое количество разнообразных материалов, включая ткани, бумагу и самоклеящуюся пленку."
     />
     <div class="col-12">
-      <h2 class="text-uppercase text-left mt-2 bold">Портфолио</h2>
+      <h2 class="text-uppercase text-start mt-2 bold">Портфолио</h2>
       <div v-if="portfolios.length">
         <div
           v-for="(portfolio, index) in portfolios"
@@ -13,7 +13,7 @@
           class="row"
         >
           <div class="col-12 mt-3">
-            <h3 class="text-uppercase text-left mt-2 bold">
+            <h3 class="text-uppercase text-start mt-2 bold">
               {{ portfolio.title }}
             </h3>
             <img
@@ -21,7 +21,7 @@
               :alt="portfolio.title"
               class="portfolio-image"
             />
-            <div class="text-left mt-2" v-html="portfolio.desc"></div>
+            <div class="text-start mt-2" v-html="portfolio.desc"></div>
           </div>
         </div>
       </div>

@@ -6,8 +6,8 @@
     />
 
     <div class="col-12">
-      <h2 class="text-uppercase text-left mt-2 bold">Контакты</h2>
-      <div v-html="contacts[0].desc" class="text-left mb-2"></div>
+      <h2 class="text-uppercase text-start mt-2 bold">Контакты</h2>
+      <div v-html="contacts[0].desc" class="text-start mb-2"></div>
     </div>
     <div class="col-12 mt-2">
       <iframe
@@ -29,13 +29,13 @@
             class="mb-4"
           />
           <div
-            class="bg-dark shadow-sm pl-3 pr-3 pt-1 pb-1 mt-3 d-inline-block w-75 rounded-lg justify-content-center m-auto mt-3 position-relative link-block"
+            class="bg-dark shadow-sm ps-3 pe-3 pt-1 pb-1 mt-3 d-inline-block w-75 rounded-lg justify-content-center m-auto mt-3 position-relative link-block"
           >
             <img
               src="img/footer/icons/phone_40.png"
               width="30"
               heigth="30"
-              class="mr-2 mb-1"
+              class="me-2 mb-1"
             />
             <h5 class="mt-2 d-inline-block">
               <a href="tel:+73462630475" target="_blank" class="stretched-link"
@@ -52,13 +52,13 @@
             class="mb-4"
           />
           <div
-            class="bg-dark pl-3 pr-3 pt-1 pb-1 w-75 rounded-lg justify-content-center m-auto mt-3 position-relative link-block"
+            class="bg-dark ps-3 pe-3 pt-1 pb-1 w-75 rounded-lg justify-content-center m-auto mt-3 position-relative link-block"
           >
             <img
               src="img/footer/icons/inst3.png"
               width="30"
               heigth="30"
-              class="mr-2 mb-1"
+              class="me-2 mb-1"
             />
             <h5 class="mt-2 d-inline-block">
               <a

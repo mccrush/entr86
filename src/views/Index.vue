@@ -19,7 +19,7 @@
       <div class="col-12 mt-4">
         <h4 class="mb-0 bold fs-24">Собственная производ&shy;ственная</h4>
         <h1 class="blue fs-38">база позволяет нам:</h1>
-        <ul class="list-unstyled text-left mt-3">
+        <ul class="list-unstyled text-start mt-3">
           <li>
             <h5>1. Контролировать качество на всех этапах</h5>
           </li>

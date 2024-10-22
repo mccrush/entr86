@@ -3,7 +3,7 @@
     <div class="bg-white shadow-sm rounded-lg admin-block">
       <div class="container-fluid p-3">
         <div class="row">
-          <div class="col-12 text-left">
+          <div class="col-12 text-start">
             <form @submit.prevent="login" class>
               <h4 class="text-center mt-2 mb-3">Authorization</h4>
               <label for="email">Email</label>
@@ -30,7 +30,7 @@
                 />
                 <div class="input-group-append">
                   <button
-                    class="btn btn-light p-0 pl-2 pr-2 border"
+                    class="btn btn-light p-0 ps-2 pe-2 border"
                     type="button"
                     @click="passType = !passType"
                   >

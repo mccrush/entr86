@@ -1,7 +1,7 @@
 <template>
   <div class="bg-dark">
     <div class="container">
-      <div class="row text-light text-left">
+      <div class="row text-light text-start">
         <div class="col-12 col-sm-6 pt-3 pb-3">
           <h5>Контакты</h5>
           <p class="mb-2">
@@ -12,7 +12,6 @@
           <a href="https://www.instagram.com/entr86/" target="_blank">
             <img
               src="/img/footer/icons/inst3.png"
-              class="mr-2"
               alt="Instagram"
               width="32"
               height="32"
@@ -21,16 +20,17 @@
           <a href="https://vk.com/entrrpk" target="_blank">
             <img
               src="/img/footer/icons/vk.png"
+              class="ms-2"
               alt="Vk"
               width="32"
               height="32"
             />
           </a>
         </div>
-        <div class="col-12 col-sm-6 pt-3 pb-3 pr-4">
+        <div class="col-12 col-sm-6 position-relative pt-3 pb-3 pe-4">
           <h5>Клиенты</h5>
           <div
-            class="errow errowLeft position-absolute rounded-circle text-center shadow pt-1"
+            class="errow errowLeft rounded-circle text-center shadow pt-1"
             @mousedown="scrolLeftStart"
             @mouseup="scrolLeftStop"
             @mouseover="scrolLeftStop"
@@ -40,7 +40,7 @@
             &laquo;
           </div>
           <div
-            class="errow errowRight position-absolute rounded-circle text-center shadow pt-1"
+            class="errow errowRight rounded-circle text-center shadow pt-1"
             @mousedown="scrolRightStart"
             @mouseup="scrolRightStop"
             @mouseover="scrolRightStop"
@@ -54,8 +54,8 @@
               <img
                 v-for="(client, index) in clients"
                 :key="'cli' + index"
-                :src="client.img.url"
-                class="pr-2 pb-2 no-select"
+                :src="client['img.url']"
+                class="pe-2 pb-2 no-select"
                 :alt="client.title"
                 width="90"
                 height="90"
@@ -86,7 +86,7 @@
 
 <script>
 export default {
-  props: ['clients'],
+  props: { clients: Array },
   data() {
     return {
       timeLeft: null,
@@ -178,6 +178,7 @@ h5 {
 }
 
 .errow {
+  position: absolute;
   width: 40px;
   height: 40px;
   background: #ffffff;

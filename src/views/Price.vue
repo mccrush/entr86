@@ -2,8 +2,8 @@
   <div class="row">
     <HeadersTitle title="ENTR - Прайс-лист" description="Стоимость услуг" />
     <div class="col-12">
-      <h2 class="text-uppercase text-left mt-2 bold">Прайс-лист</h2>
-      <!-- <h3 class="text-uppercase text-left mt-5 bold">ПОСТПЕЧАТНАЯ ОБРАБОТКА, НАКАТКА</h3> -->
+      <h2 class="text-uppercase text-start mt-2 bold">Прайс-лист</h2>
+      <!-- <h3 class="text-uppercase text-start mt-5 bold">ПОСТПЕЧАТНАЯ ОБРАБОТКА, НАКАТКА</h3> -->
       <div v-if="prices.length" class="overflow-auto">
         <div
           v-for="(price, index) in prices"

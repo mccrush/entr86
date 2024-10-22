@@ -42,3 +42,4 @@ const { data } = supabase.auth.onAuthStateChange((event, session) => {
 
 // Данные которые получаем для всех пользователей
 store.dispatch('getItems', { type: 'sliders' })
+store.dispatch('getItems', { type: 'clients' })
