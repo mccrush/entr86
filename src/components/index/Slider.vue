@@ -4,9 +4,7 @@
     class="carousel slide"
     data-bs-ride="carousel"
   >
-    <pre>{{ sliders }}</pre>
-    <pre>Length</pre>
-    <ol v-if="sliders.length" class="carousel-indicators">
+    <!-- <ol v-if="sliders.length" class="carousel-indicators">
       <li
         v-for="(slider, index) in sliders"
         :key="'slde' + index"
@@ -14,7 +12,7 @@
         :data-slide-to="index"
         :class="{ active: index === 0 }"
       ></li>
-    </ol>
+    </ol> -->
 
     <div class="carousel-inner">
       <div
@@ -25,10 +23,10 @@
         data-bs-interval="5000"
       >
         <img
-          :src="slider.img.url"
+          :src="slider['img.url']"
           class="d-block w-100"
           rel="preload"
-          alt="..."
+          :alt="slider['img.name']"
         />
       </div>
     </div>
@@ -36,26 +34,28 @@
       class="carousel-control-prev"
       href="#carouselExampleIndicators"
       role="button"
-      data-slide="prev"
+      data-bs-target="#carouselExampleIndicators"
+      data-bs-slide="prev"
     >
       <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="sr-only">Previous</span>
+      <span class="visually-hidden">Previous</span>
     </a>
     <a
       class="carousel-control-next"
       href="#carouselExampleIndicators"
       role="button"
-      data-slide="next"
+      data-bs-target="#carouselExampleIndicators"
+      data-bs-slide="next"
     >
       <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="sr-only">Next</span>
+      <span class="visually-hidden">Next</span>
     </a>
   </div>
 </template>
 
 <script>
 import $ from 'jquery'
-//import { Carousel } from 'bootstrap'
+import { Carousel } from 'bootstrap'
 
 export default {
   props: ['sliders']
