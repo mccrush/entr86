@@ -28,9 +28,9 @@
 
 <script>
 import 'bootstrap/dist/css/bootstrap.min.css'
-import Loader from './components/Loader'
-import Navbar from './components/Navbar'
-import Footer from './components/Footer'
+import Loader from './components/Loader.vue'
+import Navbar from './components/Navbar.vue'
+import Footer from './components/Footer.vue'
 
 export default {
   components: {

@@ -44,9 +44,9 @@
 </template>
 
 <script>
-import Slider from './../components/index/Slider'
-import Zadachi from './../components/index/Zadachi'
-import Napravs from './../components/index/Napravs'
+import Slider from './../components/index/Slider.vue'
+import Zadachi from './../components/index/Zadachi.vue'
+import Napravs from './../components/index/Napravs.vue'
 import HeadersTitle from './../components/interface/HeadersTitle.vue'
 
 export default {

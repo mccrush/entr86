@@ -131,9 +131,9 @@
 <script>
 import { mapGetters } from 'vuex'
 import { auth } from './../firebase.js'
-import CollectionsList from './../components/admin/Collections'
-import Docs from './../components/admin/Docs'
-import Form from './../components/admin/Form'
+import CollectionsList from './../components/admin/Collections.vue'
+import Docs from './../components/admin/Docs.vue'
+import Form from './../components/admin/Form.vue'
 
 export default {
   components: {

@@ -71,7 +71,7 @@
 <script>
 import { auth } from './../firebase.js'
 import HeadersTitle from './../components/interface/HeadersTitle.vue'
-import Message from './../components/Message'
+import Message from './../components/Message.vue'
 
 export default {
   components: {
