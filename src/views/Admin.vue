@@ -156,7 +156,7 @@ export default {
   },
   async mounted() {
     try {
-      await this.$store.dispatch('getData', 'collections')
+      //await this.$store.dispatch('getData', 'collections')
       this.loadingCol = false
     } catch (err) {
       console.log('Ошибка при получении коллекций в Админ:', err.message)

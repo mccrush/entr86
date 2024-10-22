@@ -4,7 +4,7 @@
       title="ENTR - Рекламное агенство"
       description="Мы реализуем любые рекламно-производственные задачи"
     />
-    <Slider v-if="sliders.length" :sliders="sliders" />
+    <Slider :sliders="sliders" />
 
     <!-- Задачи -->
     <Zadachi v-if="zadachi.length" :zadachi="zadachi" />
