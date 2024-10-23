@@ -35,7 +35,8 @@ export default {
 
     async updateItem({ commit }, { item }) {
       try {
-        //console.log('database.js updateItem() item =', item)
+        console.log('database.js updateItem() item =', item)
+
         const { error } = await supabase
           .from(item.type)
           .update(item)
@@ -61,7 +62,7 @@ export default {
 
     async getItems({ commit }, { type }) {
       try {
-        console.log('database.js getItems() type =', type)
+        //console.log('database.js getItems() type =', type)
         const { data, error } = await supabase.from(type).select()
         if (error) throw error
         if (data) {

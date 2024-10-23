@@ -6,6 +6,7 @@
           <div class="col-12 border-bottom p-3 text-start">
             <h6 class="m-0 mt-2 text-muted d-inline-block">
               Admin panel
+              <router-link to="/" class="navbar-brand"> H </router-link>
               <!-- <span class="text-danger small">- необходимо оплатить 2 этап разработки</span> -->
             </h6>
             <button
@@ -25,22 +26,21 @@
             class="col-3 col-md-2 border-end p-0 overflow-auto admin-sidebar"
           >
             <h6 class="text-center m-0 mt-2 pb-2 border-bottom">Коллекции</h6>
-            <transition name="fade" mode="out-in">
-              <img
-                v-if="loadingCol"
-                src="/img/admin/loading.gif"
-                alt="Loading..."
+
+            <img
+              v-if="loadingCol"
+              src="/img/admin/loading.gif"
+              alt="Loading..."
+            />
+            <div v-else>
+              <CollectionsList
+                v-for="(collection, index) in collections"
+                :key="'cole' + index"
+                :collection="collection"
+                :selectCollectionAlias="selectCollectionAlias"
+                @select-collection="selectCollection"
               />
-              <div v-else>
-                <CollectionsList
-                  v-for="(collection, index) in collections"
-                  :key="'cole' + index"
-                  :collection="collection"
-                  :selectCollectionAlias="selectCollectionAlias"
-                  @select-collection="selectCollection"
-                />
-              </div>
-            </transition>
+            </div>
           </div>
 
           <div
@@ -67,17 +67,14 @@
           </div>
 
           <div class="col-6 col-md-8 pt-3 pb-3 overflow-auto admin-form">
-            <transition name="fade" mode="out-in">
-              <Form
-                v-if="selectCollectionAlias && (selectDocId || createDoc)"
-                :doc="doc"
-                :collection="selectCollectionAlias"
-                :length="docs.length"
-                @update-doc="selectCollection"
-              />
-              <h6 v-else-if="!selectCollectionAlias">Выберите Коллекцию</h6>
-              <h6 v-else>Выберите Документ</h6>
-            </transition>
+            <Form
+              v-if="selectCollectionAlias && (selectDocId || createDoc)"
+              :doc="doc"
+              :collection="selectCollectionAlias"
+              :length="docs.length"
+            />
+            <h6 v-else-if="!selectCollectionAlias">Выберите Коллекцию</h6>
+            <h6 v-else>Выберите Документ</h6>
           </div>
         </div>
       </div>

@@ -6,7 +6,7 @@
       <!-- <h3 class="text-uppercase text-start mt-5 bold">ПОСТПЕЧАТНАЯ ОБРАБОТКА, НАКАТКА</h3> -->
       <div v-if="prices.length" class="overflow-auto">
         <div
-          v-for="(price, index) in prices"
+          v-for="(price, index) in pricesSorted"
           :key="'prc' + index"
           v-html="price.desc"
           class="mt-3"
@@ -19,6 +19,7 @@
 </template>
 
 <script>
+import { sortMethod } from './../helpers/sortMethod'
 import HeadersTitle from './../components/interface/HeadersTitle.vue'
 
 export default {
@@ -33,6 +34,9 @@ export default {
   computed: {
     prices() {
       return this.$store.getters.prices
+    },
+    pricesSorted() {
+      return sortMethod(this.prices, 'asc', 'position')
     }
   },
   async mounted() {

@@ -4,60 +4,58 @@
       <div class="container-fluid p-3">
         <div class="row">
           <div class="col-12 text-start">
-            <form @submit.prevent="login" class>
-              <h4 class="text-center mt-2 mb-3">Authorization</h4>
-              <label for="email">Email</label>
-              <br />
+            <h4 class="text-center mt-2 mb-3">Authorization</h4>
+            <label for="email">Email</label>
+            <br />
+            <input
+              type="text"
+              class="form-control form-control-sm"
+              id="email"
+              required
+              v-model="email"
+              placeholder="example@mail.ru"
+            />
+            <br />
+            <label for="password">Password</label>
+            <div class="input-group">
               <input
-                type="text"
+                :type="passType ? 'password' : 'text'"
                 class="form-control form-control-sm"
-                id="email"
+                id="password"
                 required
-                v-model="email"
-                placeholder="example@mail.ru"
+                v-model="password"
+                ref="pass"
+                maxlength="20"
               />
-              <br />
-              <label for="password">Password</label>
-              <div class="input-group">
-                <input
-                  :type="passType ? 'password' : 'text'"
-                  class="form-control form-control-sm"
-                  id="password"
-                  required
-                  v-model="password"
-                  ref="pass"
-                  maxlength="20"
-                />
-                <div class="input-group-append">
-                  <button
-                    class="btn btn-light p-0 ps-2 pe-2 border"
-                    type="button"
-                    @click="passType = !passType"
-                  >
-                    <img
-                      v-if="passType"
-                      src="./assets/icons/eye-slash.svg"
-                      width="24"
-                      height="24"
-                      alt="Показать пароль"
-                      class="opacity-06"
-                    />
-                    <img
-                      v-else
-                      src="./assets/icons/eye.svg"
-                      width="24"
-                      height="24"
-                      alt="Скрыть пароль"
-                      class="opacity-06"
-                    />
-                  </button>
-                </div>
+              <div class="input-group-append">
+                <button
+                  class="btn btn-light p-0 ps-2 pe-2 border"
+                  type="button"
+                  @click="passType = !passType"
+                >
+                  <img
+                    v-if="passType"
+                    src="./../assets/icons/eye-slash.svg"
+                    width="24"
+                    height="24"
+                    alt="Показать пароль"
+                    class="opacity-06"
+                  />
+                  <img
+                    v-else
+                    src="./../assets/icons/eye.svg"
+                    width="24"
+                    height="24"
+                    alt="Скрыть пароль"
+                    class="opacity-06"
+                  />
+                </button>
               </div>
-              <br />
-              <button class="btn btn-sm btn-success btn-block" type="submit">
-                Login
-              </button>
-            </form>
+            </div>
+            <br />
+            <button class="btn btn-sm btn-success btn-block" @click="logIn">
+              Login
+            </button>
           </div>
         </div>
       </div>
@@ -79,16 +77,16 @@ export default {
   },
   data() {
     return {
-      email: '',
-      password: '',
+      email: 'enter22.ru@gmail.com',
+      password: 'nCtqcKst',
       passType: true,
       error: false
     }
   },
-  mounted() {
-    const jvs = document.querySelector('#jvlabelWrap')
-    jvs.classList.add('d-none')
-  },
+  // mounted() {
+  //   const jvs = document.querySelector('#jvlabelWrap')
+  //   jvs.classList.add('d-none')
+  // },
   methods: {
     showError() {
       this.error = true
@@ -96,7 +94,7 @@ export default {
         this.error = false
       }, 4000)
     },
-    async login() {
+    async logIn() {
       const formData = {
         email: this.email,
         password: this.password
@@ -105,7 +103,7 @@ export default {
       if (this.email && this.password) {
         try {
           await this.$store.dispatch('logIn', formData)
-          this.$router.push('/admin')
+          //this.$router.push('/admin')
         } catch (err) {
           this.showError()
           if (err.code === 'auth/invalid-email') {

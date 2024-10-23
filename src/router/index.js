@@ -52,7 +52,7 @@ const router = createRouter({
 router.beforeEach((to, from, next) => {
   //let currentUser = auth.currentUser
 
-  const isLoggedIn = store._wrappedGetters.isLoggedIn
+  const isLoggedIn = store.getters.isLoggedIn
   let requiresAuth = to.matched.some(record => record.meta.requiresAuth)
 
   // 3

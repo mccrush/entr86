@@ -128,7 +128,7 @@ h6 {
 }
 
 .bg-ping {
-  background: #e4097d;
+  background: #e4097d !important;
 }
 
 .color-blue {
@@ -136,7 +136,7 @@ h6 {
 }
 
 .bg-blue {
-  background: #00aaee;
+  background: #00aaee !important;
 }
 
 .fade-enter-active,
