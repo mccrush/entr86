@@ -1,6 +1,6 @@
 <template>
   <button
-    class="btn btn-sm btn-block rounded-0 text-start m-0"
+    class="btn btn-sm rounded-0 text-start w-100 m-0"
     :class="
       selectCollectionAlias === collection.alias ? 'btn-warning' : 'btn-light'
     "

@@ -10,11 +10,11 @@
             </h6>
             <button
               @click="logOut"
-              class="btn btn-sm btn-light text-muted float-right"
+              class="btn btn-sm btn-light text-muted float-end"
             >
               Logout
             </button>
-            <span class="d-inline-block float-right text-muted small mt-2 me-3"
+            <span class="d-inline-block float-end text-muted small mt-2 me-3"
               >UsEmail</span
             >
           </div>
@@ -22,7 +22,7 @@
 
         <div class="row">
           <div
-            class="col-3 col-md-2 border-right p-0 overflow-auto admin-sidebar"
+            class="col-3 col-md-2 border-end p-0 overflow-auto admin-sidebar"
           >
             <h6 class="text-center m-0 mt-2 pb-2 border-bottom">Коллекции</h6>
             <transition name="fade" mode="out-in">
@@ -44,16 +44,12 @@
           </div>
 
           <div
-            class="col-3 col-md-2 p-0 border-right overflow-auto admin-sidebar"
+            class="col-3 col-md-2 p-0 border-end overflow-auto admin-sidebar"
           >
             <h6 class="text-center m-0 mt-2 pb-2 border-bottom">
               Документы
               <button
-                @click="
-                  createDoc = true
-                  selectDocId = ''
-                  doc = { active: true, position: docs.length + 1 }
-                "
+                @click="createNewDoc"
                 class="btn btn-sm btn-outline-primary p-0 ps-2 pe-2 ms-1"
                 :disabled="!selectCollectionAlias ? true : false"
                 title="Создать документ"
@@ -91,7 +87,7 @@
 
 <script>
 import { mapGetters } from 'vuex'
-import CollectionsList from './../components/admin/Collections.vue'
+import CollectionsList from './../components/admin/CollectionsList.vue'
 import Docs from './../components/admin/Docs.vue'
 import Form from './../components/admin/Form.vue'
 
@@ -155,7 +151,12 @@ export default {
     },
     async logOut() {
       await this.$store.dispatch('logOut')
-      this.$router.push('/login')
+      //this.$router.push('/login')
+    },
+    createNewDoc() {
+      this.createDoc = true
+      this.selectDocId = ''
+      this.doc = { active: true, position: this.docs.length + 1 }
     }
   }
 }

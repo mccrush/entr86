@@ -1,7 +1,7 @@
 <template>
   <form @submit.prevent="saveDoc">
     <div class="row">
-      <div class="col-6">
+      <div class="col-12">
         <input
           type="text"
           v-model.trim="doc.title"
@@ -11,7 +11,7 @@
           required
         />
       </div>
-      <div class="col-6">
+      <div class="col-12">
         <input
           v-if="
             collection === 'menus' ||
@@ -27,9 +27,9 @@
       </div>
     </div>
 
-    <div class="row mt-3">
+    <div class="row mt-3 p-3">
       <div class="col-6">
-        <div class="form-group row">
+        <div class="form-group row bg-light border p-2 pe-4">
           <label for="position" class="col-4 pt-1">Позиция</label>
           <div class="col-4">
             <input
@@ -93,9 +93,9 @@
 
     <div
       v-if="collection != 'menus' || collection != 'contacts'"
-      class="row mt-3"
+      class="row mt-3 p-3"
     >
-      <div class="col-6 text-start">
+      <div class="col-6 text-start bg-light p-3">
         <div class="form-group">
           <label for="img" class="small">Изображение (max 5 Мб)</label>
           <input
@@ -108,17 +108,17 @@
           />
         </div>
       </div>
-      <div v-if="doc.id" class="col-6">
+      <div v-if="doc.id" class="col-6 bg-light p-3">
         <img
-          v-if="doc.img.name"
-          :src="doc.img.url"
+          v-if="doc['img.name']"
+          :src="doc['img.url']"
           alt="Изображение"
           class
           height="76"
         />
         <button
-          v-if="doc.img.name"
-          class="btn btn-sm btn-light position-relative load-image"
+          v-if="doc['img.name']"
+          class="btn btn-sm btn-light border position-relative load-image"
           type="button"
           @click="removeImage"
         >
@@ -137,7 +137,7 @@
               class="form-control"
               placeholder="Здесь появится ссылка"
               id="imgSrc"
-              v-model="doc.img.url"
+              v-model.trim="doc['img.url']"
             />
             <div class="input-group-append">
               <button
@@ -153,7 +153,7 @@
       </div>
     </div>
 
-    <div class="row mt-3">
+    <div class="row border-top mt-3 p-3">
       <div class="col-12 col-sm-6 col-md-4">
         <transition name="fade" mode="out-in">
           <button
@@ -162,7 +162,7 @@
             class="btn btn-sm btn-block btn-outline-danger"
             :disabled="doc.id ? false : true"
           >
-            Удалить
+            Удалить документ
           </button>
         </transition>
       </div>
@@ -171,7 +171,7 @@
       </div>
       <div class="col-12 col-sm-6 col-md-4">
         <button type="submit" class="btn btn-sm btn-block btn-outline-success">
-          Сохранить
+          Сохранить изменения
         </button>
       </div>
     </div>
@@ -250,7 +250,8 @@ export default {
           position: +this.doc.position,
           active: this.doc.active,
           desc: this.doc.desc || '',
-          img: this.doc.img || { url: '', name: '' }
+          'img.url': '',
+          'img.name': ''
         }
         try {
           if (!this.doc.id) {
