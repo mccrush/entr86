@@ -17,7 +17,7 @@
               {{ portfolio.title }}
             </h3>
             <img
-              :src="portfolio.img.url"
+              :src="portfolio['img.url']"
               :alt="portfolio.title"
               class="portfolio-image"
             />
@@ -25,7 +25,7 @@
           </div>
         </div>
       </div>
-      <img v-else-if="loading" src="/img/admin/loading.gif" alt="Loading..." />
+      <img v-else src="/img/admin/loading.gif" alt="Loading..." />
     </div>
   </div>
 </template>
