@@ -77,8 +77,8 @@ export default {
   },
   data() {
     return {
-      email: 'enter22.ru@gmail.com',
-      password: 'nCtqcKst',
+      email: '',
+      password: '',
       passType: true,
       error: false
     }
